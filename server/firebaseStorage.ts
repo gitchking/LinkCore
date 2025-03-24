@@ -63,7 +63,18 @@ export class FirebaseStorage implements IStorage {
       await counterRef.set({ value: id });
     }
     
-    const newLink: Link = { ...link, id };
+    // Create a properly typed Link object
+    const newLink: Link = {
+      id,
+      url: link.url,
+      title: link.title,
+      description: link.description ?? null,
+      category: link.category,
+      tags: link.tags ?? [],
+      featured: link.featured,
+      nsfw: link.nsfw ?? false,
+      createdAt: link.createdAt
+    };
     await db.collection('links').doc(id.toString()).set(newLink);
     return newLink;
   }
