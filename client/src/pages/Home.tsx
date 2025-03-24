@@ -20,7 +20,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [showNSFW, setShowNSFW] = useState(false); // Default to not showing NSFW content
+  const [showNSFW, setShowNSFW] = useState(true); // Default to showing NSFW content
   const [isDevMode, setIsDevMode] = useState(false);
   const [postManagementOpen, setPostManagementOpen] = useState(false);
   
