@@ -1,6 +1,7 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Search, X, Home, Info, Settings } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -24,9 +25,9 @@ export function MobileMenu({
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent side="right" className="w-3/4 max-w-xs p-0">
         <SheetHeader className="p-4 border-b">
-          <SheetTitle className="font-montserrat font-semibold">Menu</SheetTitle>
+          <SheetTitle className="font-semibold">Menu</SheetTitle>
           <button 
-            className="absolute right-4 top-4 text-neutral-500"
+            className="absolute right-4 top-4 text-muted-foreground"
             onClick={onClose}
           >
             <X className="h-4 w-4" />
@@ -48,11 +49,17 @@ export function MobileMenu({
             </div>
           </div>
           
+          {/* Theme Toggle */}
+          <div className="mb-4 flex items-center justify-between px-3 py-2">
+            <span className="text-foreground">Theme</span>
+            <ThemeToggle />
+          </div>
+          
           {/* Main Menu Items */}
           <nav className="space-y-1">
             <a
               href="/"
-              className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/';
@@ -65,7 +72,7 @@ export function MobileMenu({
             
             <a
               href="/about"
-              className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/about';
@@ -79,7 +86,7 @@ export function MobileMenu({
             {openSettings && (
               <a
                 href="#"
-                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+                className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
                 onClick={(e) => {
                   e.preventDefault();
                   openSettings();

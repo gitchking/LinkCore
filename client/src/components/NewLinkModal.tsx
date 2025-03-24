@@ -254,7 +254,7 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
               value={formData.tags}
               onChange={handleChange}
             />
-            <p className="mt-1 text-xs text-neutral-500">
+            <p className="mt-1 text-xs text-muted-foreground">
               Add relevant tags to make your link easier to find
             </p>
           </div>
@@ -264,17 +264,17 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
             <div className="flex items-center justify-between">
               <div>
                 <Label>Content Rating</Label>
-                <p className="text-xs text-neutral-500">Indicate whether this link contains mature content</p>
+                <p className="text-xs text-muted-foreground">Indicate whether this link contains mature content</p>
               </div>
               <div className="flex items-center space-x-4">
-                <div className={`flex items-center space-x-1 ${!formData.nsfw ? 'text-green-600 font-semibold' : 'text-neutral-500'}`}>
+                <div className={`flex items-center space-x-1 ${!formData.nsfw ? 'text-green-600 font-semibold' : 'text-muted-foreground'}`}>
                   <span>SFW</span>
                 </div>
                 <Switch 
                   checked={formData.nsfw}
                   onCheckedChange={handleSwitchChange}
                 />
-                <div className={`flex items-center space-x-1 ${formData.nsfw ? 'text-red-600 font-semibold' : 'text-neutral-500'}`}>
+                <div className={`flex items-center space-x-1 ${formData.nsfw ? 'text-red-600 font-semibold' : 'text-muted-foreground'}`}>
                   <span>NSFW</span>
                 </div>
               </div>
