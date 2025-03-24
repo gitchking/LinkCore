@@ -1,0 +1,50 @@
+Here’s your list of VTuber-related tools and websites with links and brief context for each. These platforms focus on tracking, archiving, and enhancing the VTuber experience, primarily centered around Hololive and other virtual content creators. Descriptions are based on their general purpose and reputation as of March 24, 2025, with "ARCHIVE" removed where applicable.
+
+1. **Holodex** - [https://holodex.net](https://holodex.net)  
+   A fan-made multiview tool for watching multiple VTuber streams simultaneously, with features like live schedules, clip searching, and music playback from Hololive and other creators.
+
+2. **vstats** - [https://vstats.pw](https://vstats.pw)  
+   A statistics tracker for VTuber channels, offering detailed data on subscriber counts, viewership, and growth trends, popular among fans analyzing Hololive and Nijisanji stats.
+
+3. **Amatsukaze** - [https://amatsukaze.live](https://amatsukaze.live)  
+   A VTuber streaming and tracking tool, providing live schedules and notifications, with a focus on Japanese VTubers and a clean, user-friendly interface.
+
+4. **vChama** - [https://vchama.com](https://vchama.com)  
+   A community-driven site for VTuber schedules and live stream updates, supporting various groups and indie creators, with a simple design for quick access.
+
+5. **vTubie** - [https://vtubie.com](https://vtubie.com)  
+   A wholesome platform for discovering VTubers and VStreamers, featuring profiles, schedules, and a database to connect creators with viewers.
+
+6. **Hololist** - [https://hololist.net](https://hololist.net)  
+   A comprehensive database of VTubers, VStreamers, and VUPs, listing profiles, stats, and links to their content, aimed at cataloging the virtual creator community.
+
+7. **HoloClips** - [https://holoclips.net](https://holoclips.net)  
+   A site aggregating Hololive clips from YouTube, allowing fans to browse highlights and memorable moments from streams, with easy filtering options.
+
+8. **Ragtag Archive** - [https://ragtag.moe](https://ragtag.moe)  
+   An archive of VTuber content, including streams and clips, focused on preserving Hololive and indie material that might otherwise be lost.
+
+9. **Patchwork Archive** - [https://patchworkarchive.com](https://patchworkarchive.com)  
+   A collaborative archive project for VTuber streams, offering downloads and backups of Hololive and other VTuber content, emphasizing community preservation.
+
+10. **hololyzer** - [https://hololyzer.net](https://hololyzer.net)  
+    A tool analyzing Hololive stream data, such as chat activity, viewer counts, and trends, providing insights for fans and researchers alike.
+
+11. **HoloTracker** - [https://holotracker.net](https://holotracker.net)  
+    A tracking tool for Hololive streams, offering real-time updates, schedules, and historical data on member activities and collaborations.
+
+12. **UserLocal VTuber** - [https://virtual-youtuber.userlocal.jp](https://virtual-youtuber.userlocal.jp)  
+    A Japanese site ranking VTubers by popularity, with stats on subscribers and views, covering Hololive, Nijisanji, and independents.
+
+13. **GoodVTuberSubs** - [https://goodvtubersubs.com](https://goodvtubersubs.com)  
+    A resource for finding high-quality English subtitles for VTuber streams, focusing on Hololive and other popular creators, with fan-submitted content.
+
+14. **VTuberSchedules** - [https://vtuberschedules.com](https://vtuberschedules.com)  
+    A schedule aggregator for VTuber streams across multiple groups, providing time zone adjustments and notifications for upcoming broadcasts.
+
+### Notes
+- **Scope**: Most tools (e.g., Holodex, HoloClips, hololyzer, HoloTracker) are heavily Hololive-centric, reflecting its prominence in VTuber culture, while others like vTubie and UserLocal cover a broader range of creators.
+- **Functionality**: These range from live tracking (Holodex, vChama) and stats (vstats, UserLocal) to archiving (Ragtag, Patchwork) and community support (GoodVTuberSubs, VTuberSchedules).
+- **Availability**: All are web-based and generally free, though some (e.g., archives) may rely on community uploads, and links are based on their most commonly associated domains as of today.
+
+Let me know if you’d like more details or additional VTuber tools to expand this list!
