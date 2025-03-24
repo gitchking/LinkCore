@@ -79,8 +79,15 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
     
     if (!formData.url) {
       newErrors.url = "URL is required";
-    } else if (!/^https?:\/\/.+\..+/.test(formData.url)) {
-      newErrors.url = "Please enter a valid URL";
+    } else {
+      // More lenient URL validation - should accept most valid URLs
+      try {
+        new URL(formData.url);
+        // If we can parse it as a URL, it's valid
+      } catch (e) {
+        // If URL constructor throws, it's not valid
+        newErrors.url = "Please enter a valid URL";
+      }
     }
     
     if (!formData.title.trim()) {
