@@ -1,0 +1,128 @@
+Nyaa
+A popular BitTorrent community focused on East Asian media, including anime, manga, and games.
+
+AnimeTosho
+An automated service that mirrors torrents from Nyaa, providing direct download links and Usenet integration.
+
+AniDex
+A torrent tracker and indexer for anime-related content, supporting both torrents and XDCC downloads.
+
+SubsPlease
+Provides timely releases of anime episodes with English subtitles, offering both torrent and XDCC download options.
+
+Tokyo Toshokan
+A BitTorrent library for Japanese media, including anime, manga, and music.
+
+CDJapan
+An online retailer offering physical copies of Japanese CDs, DVDs, Blu-rays, and other merchandise.
+
+SeaDex
+A torrent tracker dedicated to Southeast Asian media, including anime and drama series.
+
+Sneedex
+A platform offering a variety of anime torrents for download.
+
+TokyoInsider
+Provides direct download links for various Japanese media, including anime and music.
+
+MangaZip
+Offers raw (untranslated) manga for direct download.
+
+DLRaw
+Provides raw manga scans and light novels for download.
+
+DL-Raw
+Another source for downloading raw manga and light novels.
+
+Hi10Anime
+Specializes in high-quality, compressed anime releases in 10-bit color depth, requiring user registration for access.
+
+AnimeOut
+Offers direct downloads of anime series and movies in various resolutions, with registration required.
+
+KayoAnime
+Provides direct download links for anime series and movies.
+
+MKVseries
+Hosts a collection of anime series available for direct download in MKV format.
+
+Moriya Shrine
+Dedicated to Touhou Project content, offering games, music, and related media for download.
+
+Panda Backup
+Provides backup links for various anime series and movies.
+
+AniMK
+An XDCC bot offering anime series and movies for download via IRC.
+
+nibl.co.uk
+Hosts XDCC bots providing anime downloads through IRC channels.
+
+Beatrice-Raws
+Offers raw (unsubtitled) anime releases via XDCC.
+
+Shana Project
+Automates anime torrent downloads by allowing users to subscribe to their favorite series.
+
+AcgnX
+A platform offering a variety of anime torrents.
+
+SakuraCircle
+Provides direct download links for anime, including adult content.
+
+ACG.RIP
+Hosts a collection of anime torrents for download.
+
+AniRena
+A torrent tracker focusing on anime series and movies.
+
+Bangumi.moe
+Offers a selection of anime torrents for download.
+
+Nipponsei
+Specializes in anime music releases available via XDCC.
+
+DKB
+Provides direct download links for various anime series.
+
+Flugel Anime
+Hosts a collection of anime series and movies available for direct download.
+
+NoobSubs
+Offers direct downloads of anime series with a focus on high-quality releases.
+
+AnimeKaizoku
+Provides direct download links for anime series and movies.
+
+ToonWorld4All
+Hosts a variety of animated series, including anime, available for direct download.
+
+CartoonsArea
+Offers direct downloads of various animated series, including anime.
+
+ToonsHub
+Provides direct download links for anime and other animated series.
+
+CoolsAnime
+Hosts a collection of anime series and movies available for direct download.
+
+AnimeRss
+Provides raw anime episodes for direct download.
+
+JPFiles
+Offers raw Japanese media files, including anime, for direct download.
+
+Chauthanh
+Hosts a variety of anime series and movies available for direct download.
+
+DeadToons
+Provides direct download links for various animated series, including anime.
+
+Anilot
+Offers direct downloads of anime series and movies.
+
+AniDL
+Hosts a collection of anime series available for direct download.
+
+Anime Time
+Provides a platform to watch anime series online.
