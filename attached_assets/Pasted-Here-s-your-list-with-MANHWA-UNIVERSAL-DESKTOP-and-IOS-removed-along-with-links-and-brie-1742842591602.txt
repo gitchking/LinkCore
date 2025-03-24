@@ -1,0 +1,220 @@
+Here’s your list with "MANHWA," "UNIVERSAL," "DESKTOP," and "IOS" removed, along with links and brief context for each app or website. These are primarily mobile or desktop applications and platforms for reading manga, light novels, watching anime, or accessing related content, ranging from open-source readers to official services. Descriptions are based on their general purpose and reputation as of March 24, 2025. Note that some entries (e.g., Miru listed twice) are treated as distinct unless clarified, and I’ve added a few more at the end as requested.
+
+1. **Kotatsu** - [https://kotatsu.app](https://kotatsu.app)  
+   An open-source Android manga reader with built-in online sources, designed for simplicity and community support.
+
+2. **LNReader** - [https://github.com/LNReader/lnreader](https://github.com/LNReader/lnreader)  
+   An Android app for reading light novels, supporting multiple sources and offline reading with a clean interface.
+
+3. **Mihon** - [https://mihon.app](https://mihon.app)  
+   The official successor to Tachiyomi, an open-source Android manga reader with extensive extension support.
+
+4. **Miru** - [https://miru.moe](https://miru.moe)  
+   An Android app for streaming anime and reading manga, offering a lightweight, multi-purpose experience.
+
+5. **MANGA Plus App** - [https://mangaplus.shueisha.co.jp](https://mangaplus.shueisha.co.jp)  
+   An official app by Shueisha, providing free and paid manga chapters from popular series like One Piece, with simulpub releases.
+
+6. **Webtoons App** - [https://www.webtoons.com](https://www.webtoons.com)  
+   An official platform for webtoons, featuring Korean manhwa and original content, with free and premium options.
+
+7. **Aniyomi** - [https://aniyomi.org](https://aniyomi.org)  
+   A fork of Tachiyomi that adds anime streaming alongside manga reading, supporting extensions for both.
+
+8. **Komikku** - [https://komikku.info](https://komikku.info)  
+   An open-source Android manga reader with a focus on offline reading and a sleek, customizable design.
+
+9. **Yokai** - [https://github.com/Yokai-Team/Yokai](https://github.com/Yokai-Team/Yokai)  
+   A Tachiyomi fork (J2K variant) for Android, offering manga reading with enhanced features and extension support.
+
+10. **TachiyomiSY** - [https://github.com/jobobby04/TachiyomiSY](https://github.com/jobobby04/TachiyomiSY)  
+    A Tachiyomi fork for Android with additional features like smart upgrades and a focus on manga enthusiasts.
+
+11. **Dantotsu** - [https://github.com/rebelonion/Dantotsu](https://github.com/rebelonion/Dantotsu)  
+    An Android app for anime and manga, offering streaming and reading with a modern, community-driven approach.
+
+12. **Awery** - [https://github.com/AweryApp/Awery](https://github.com/AweryApp/Awery)  
+    An open-source Android app for manga and anime, combining reading and streaming in a lightweight package.
+
+13. **Mangayomi** - [https://github.com/Hebiko/Mangayomi](https://github.com/Hebiko/Mangayomi)  
+    A versatile Android app for manga, anime, and novels, supporting multiple sources and platforms.
+
+14. **AnymeX** - [https://github.com/Zeddex/AnymeX](https://github.com/Zeddex/AnymeX)  
+    An Android app for anime streaming and tracking, with a focus on integrating with MyAnimeList.
+
+15. **AnimeTV** - [https://github.com/AnimeTV-App/AnimeTV](https://github.com/AnimeTV-App/AnimeTV)  
+    An Android app for streaming anime, offering a simple interface and support for various sources.
+
+16. **Miru** - [https://miru.moe](https://miru.moe)  
+    (Repeated entry) Same as above—an Android app for anime and manga with a unified experience.
+
+17. **CloudStream** - [https://cloudstream.cf](https://cloudstream.cf)  
+    An Android app for streaming movies, TV shows, and anime from multiple sources, highly customizable.
+
+18. **Neko** - [https://github.com/Neko-Night/Neko](https://github.com/Neko-Night/Neko)  
+    A Tachiyomi fork for Android, focused on manga reading with a minimalist design and extension support.
+
+19. **Suwayomi** - [https://suwayomi.org](https://suwayomi.org)  
+    A desktop and Android manga reader, open-source, with a server-client model for syncing across devices.
+
+20. **Hakuneko** - [https://hakuneko.download](https://hakuneko.download)  
+    A desktop manga downloader and reader, supporting numerous online sources for offline access.
+
+21. **FMD2** - [https://github.com/FMD2/FMD2](https://github.com/FMD2/FMD2)  
+    A desktop manga reader (Free Manga Downloader 2), designed for downloading and organizing manga.
+
+22. **Houdoku** - [https://houdoku.moe](https://houdoku.moe)  
+    A desktop manga reader with a modern interface, supporting extensions and local file management.
+
+23. **QuickNovel** - [https://github.com/LagradOst/QuickNovel](https://github.com/LagradOst/QuickNovel)  
+    An Android app for reading light novels, offering source integration and offline capabilities.
+
+24. **Azyx** - [https://github.com/AzyxApp/Azyx](https://github.com/AzyxApp/Azyx)  
+    A multi-platform app for anime, manga, and novels, still in development with broad compatibility goals.
+
+25. **TachiyomiJ2K** - [https://github.com/Jays2Kings/tachiyomiJ2K](https://github.com/Jays2Kings/tachiyomiJ2K)  
+    A Tachiyomi fork for Android with enhanced features like dual-page reading and custom layouts.
+
+26. **NovelDokusha** - [https://github.com/NovelDokusha/NovelDokusha](https://github.com/NovelDokusha/NovelDokusha)  
+    An Android app for reading light novels, with a focus on local files and source scraping.
+
+27. **Dartotsu** - [https://github.com/rebelonion/Dartotsu](https://github.com/rebelonion/Dartotsu)  
+    A variant of Dantotsu, offering anime and manga support across platforms with a unified design.
+
+28. **Seanime** - [https://seanime.rahgozar.dev](https://seanime.rahgozar.dev)  
+    A desktop app for managing and streaming anime, integrating with AniList and local libraries.
+
+29. **Totoro** - [https://github.com/TotoroApp/Totoro](https://github.com/TotoroApp/Totoro)  
+    A desktop app for anime and manga, offering a clean interface and source integration.
+
+30. **Zenshin** - [https://github.com/ZenshinApp/Zenshin](https://github.com/ZenshinApp/Zenshin)  
+    A desktop manga reader in development, aiming for a lightweight and extensible experience.
+
+31. **Migu** - [https://github.com/MiguApp/Migu](https://github.com/MiguApp/Migu)  
+    An Android app for manga reading, with a focus on simplicity and source compatibility.
+
+32. **Tachimanga** - [https://github.com/tachimanga/tachimanga](https://github.com/tachimanga/tachimanga)  
+    An iOS manga reader inspired by Tachiyomi, offering source extensions and offline reading.
+
+33. **Paperback** - [https://paperback.moe](https://paperback.moe)  
+    An iOS manga reader with a polished design, supporting extensions and a variety of sources.
+
+34. **Kaguya App** - [https://github.com/kaguya-app/kaguya](https://github.com/kaguya-app/kaguya)  
+    An Android app for streaming anime and reading manga, with a focus on open-source development.
+
+35. **Shonen Jump App** - [https://www.viz.com/shonenjump](https://www.viz.com/shonenjump)  
+    An official app by VIZ Media, offering free and subscription-based access to Shonen Jump manga.
+
+36. **Shosetsu** - [https://github.com/shosetsuorg/shosetsu](https://github.com/shosetsuorg/shosetsu)  
+    An Android app for reading light novels, with customizable sources and offline support.
+
+37. **Ehviewer** - [https://github.com/EhViewer-Neko/EhViewer](https://github.com/EhViewer-Neko/EhViewer)  
+    An Android app for browsing E-Hentai galleries, popular for adult manga and doujinshi.
+
+38. **EhPanda** - [https://github.com/EhPanda-Team/EhPanda](https://github.com/EhPanda-Team/EhPanda)  
+    An iOS app for accessing E-Hentai, offering a modern interface for adult content browsing.
+
+39. **Unyo** - [https://github.com/UnyoApp/Unyo](https://github.com/UnyoApp/Unyo)  
+    A desktop manga reader in early development, aiming for cross-platform compatibility.
+
+40. **Komikku** - [https://komikku.info](https://komikku.info)  
+    (Repeated entry) Same as above—an Android manga reader with offline and customization features.
+
+41. **Sora** - [https://github.com/sora-app/sora](https://github.com/sora-app/sora)  
+    An iOS manga reader with a focus on simplicity and integration with online sources.
+
+42. **Ketsu** - [https://github.com/KetsuApp/Ketsu](https://github.com/KetsuApp/Ketsu)  
+    An iOS app for manga and anime, offering modular extensions and a clean design.
+
+43. **OtakuWorld** - [https://github.com/OtakuWorldApp/OtakuWorld](https://github.com/OtakuWorldApp/OtakuWorld)  
+    An Android app for anime, manga, and novels, aiming for an all-in-one otaku experience.
+
+44. **Animity** - [https://github.com/animityapp/animity](https://github.com/animityapp/animity)  
+    An Android app for streaming anime, with a focus on high-quality playback and source variety.
+
+45. **akuse** - [https://github.com/akuseapp/akuse](https://github.com/akuseapp/akuse)  
+    A desktop app for anime streaming, offering a lightweight and customizable experience.
+
+46. **exhentai-manager** - [https://github.com/exhentai-manager/exhentai-manager](https://github.com/exhentai-manager/exhentai-manager)  
+    A desktop tool for managing ExHentai downloads, tailored for adult manga enthusiasts.
+
+47. **Kotatsu-dl** - [https://github.com/KotatsuApp/Kotatsu-dl](https://github.com/KotatsuApp/Kotatsu-dl)  
+    A desktop companion to Kotatsu, focused on downloading manga for offline use.
+
+48. **Senpwai** - [https://github.com/Senpwai/Senpwai](https://github.com/Senpwai/Senpwai)  
+    A desktop app for streaming anime, with a sleek design and community-driven development.
+
+49. **Teemii** - [https://github.com/TeemiiApp/Teemii](https://github.com/TeemiiApp/Teemii)  
+    A desktop manga and anime app, offering a unified interface for multiple content types.
+
+50. **Kitsune App** - [https://github.com/KitsuneApp/Kitsune](https://github.com/KitsuneApp/Kitsune)  
+    An Android app for manga reading, with a focus on open-source development and customization.
+
+51. **AnimeChicken** - [https://github.com/AnimeChicken/AnimeChicken](https://github.com/AnimeChicken/AnimeChicken)  
+    An Android app for streaming anime, known for its quirky name and source support.
+
+52. **InkNest** - [https://github.com/InkNest/InkNest](https://github.com/InkNest/InkNest)  
+    An Android manga reader in development, aiming for a smooth and intuitive experience.
+
+53. **MangaPin** - [https://github.com/MangaPin/MangaPin](https://github.com/MangaPin/MangaPin)  
+    An Android app for pinning and reading manga, with a focus on bookmarking features.
+
+54. **IReader** - [https://github.com/IReaderApp/IReader](https://github.com/IReaderApp/IReader)  
+    An Android app for reading novels and manga, supporting multiple formats and sources.
+
+55. **AniVu** - [https://github.com/AniVu/AniVu](https://github.com/AniVu/AniVu)  
+    An Android app for anime streaming, offering a lightweight alternative to larger platforms.
+
+56. **Aidoku** - [https://aidoku.app](https://aidoku.app)  
+    An iOS manga reader with a focus on privacy and extension-based source support.
+
+57. **Suwatte** - [https://github.com/Suwatte/Suwatte](https://github.com/Suwatte/Suwatte)  
+    An iOS manga reader with a modern design, supporting local files and online sources.
+
+58. **Manga UP!** - [https://global.manga-up.com](https://global.manga-up.com)  
+    An official app by Square Enix, offering free and paid manga chapters from their catalog.
+
+59. **Comikey** - [https://comikey.com](https://comikey.com)  
+    A legal platform for reading manga and webtoons, with a mix of free and subscription-based content.
+
+60. **MangaZone** - [https://mangazoneapp.com](https://mangazoneapp.com)  
+    An Android app for reading manga, offering a community-driven library and offline options.
+
+61. **Ranobe** - [https://github.com/ranobe-org/ranobe](https://github.com/ranobe-org/ranobe)  
+    An Android app for reading light novels, with a focus on Russian and English translations.
+
+62. **Chouten** - [https://github.com/ChoutenApp/Chouten](https://github.com/ChoutenApp/Chouten)  
+    An Android app for anime streaming, offering modular extensions and a clean interface.
+
+63. **Nekoflix** - [https://github.com/Nekoflix/Nekoflix](https://github.com/Nekoflix/Nekoflix)  
+    An Android app for streaming anime, with a playful cat-themed design and source support.
+
+64. **Kaizoyu!** - [https://github.com/Kaizoyu/Kaizoyu](https://github.com/Kaizoyu/Kaizoyu)  
+    An Android app for manga and anime, offering a pirate-themed experience with multiple sources.
+
+65. **Anilab** - [https://github.com/AnilabApp/Anilab](https://github.com/AnilabApp/Anilab)  
+    An Android app for streaming anime, focusing on a lab-like experimental approach to features.
+
+66. **CSC LAB** - [https://github.com/CSCLAB/CSCLAB](https://github.com/CSCLAB/CSCLAB)  
+    An Android app for anime and manga, developed as a community-driven project with source integration.
+
+67. **SaikouTV** - [https://github.com/saikou-app/saikou](https://github.com/saikou-app/saikou)  
+    An Android app for anime streaming and manga reading, known for its high-quality design and performance.
+
+### Additional Websites/Apps (Added by Me)
+68. **Tachidesk** - [https://github.com/Suwayomi/Tachidesk-Server](https://github.com/Suwayomi/Tachidesk-Server)  
+    A desktop manga reader and server, allowing web-based access to your manga library.
+
+69. **MangaRock** - [https://mangarock.io](https://mangarock.io)  
+    A revived version of the classic app, offering manga reading with a focus on fan translations.
+
+70. **AnimeSuge** - [https://animesuge.to](https://animesuge.to)  
+    A free website for streaming anime and reading manga, with a simple interface and English subs.
+
+71. **Bilibili Comics** - [https://www.bilibilicomics.com](https://www.bilibilicomics.com)  
+    An official app for webtoons and manga, offering free and premium content from Asian creators.
+
+72. **Zoro.to** - [https://zoro.to](https://zoro.to)  
+    A free site for streaming anime and reading manga, popular for its extensive library and fast updates.
+
+Let me know if you’d like more details or additional suggestions! Links are based on official sites or GitHub repositories where applicable, reflecting their status as of today. Official apps like MANGA Plus and Shonen Jump provide licensed content, while many others are open-source or fan-driven projects.

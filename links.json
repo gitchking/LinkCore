@@ -18989,6 +18989,3016 @@
       "nsfw": true,
       "createdAt": "2025-03-24T18:52:22.124Z",
       "featured": false
+    },
+    {
+      "id": 1276,
+      "url": "https://kotatsu.app",
+      "title": "Kotatsu",
+      "description": "An open-source Android manga reader with built-in online sources, designed for simplicity and community support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "open-source",
+        "community"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.006Z",
+      "featured": false
+    },
+    {
+      "id": 1277,
+      "url": "https://github.com/LNReader/lnreader",
+      "title": "LNReader",
+      "description": "An Android app for reading light novels, supporting multiple sources and offline reading with a clean interface.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "light-novels",
+        "offline-reading",
+        "clean-interface"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.118Z",
+      "featured": false
+    },
+    {
+      "id": 1278,
+      "url": "https://mihon.app",
+      "title": "Mihon",
+      "description": "The official successor to Tachiyomi, an open-source Android manga reader with extensive extension support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "open-source",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.227Z",
+      "featured": false
+    },
+    {
+      "id": 1279,
+      "url": "https://miru.moe",
+      "title": "Miru",
+      "description": "An Android app for streaming anime and reading manga, offering a lightweight, multi-purpose experience.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "manga-reader",
+        "lightweight"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.335Z",
+      "featured": false
+    },
+    {
+      "id": 1280,
+      "url": "https://mangaplus.shueisha.co.jp",
+      "title": "MANGA Plus App",
+      "description": "An official app by Shueisha, providing free and paid manga chapters from popular series like One Piece, with simulpub releases.",
+      "category": "apps",
+      "tags": [
+        "official",
+        "manga",
+        "shueisha",
+        "simulpub"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.444Z",
+      "featured": false
+    },
+    {
+      "id": 1281,
+      "url": "https://www.webtoons.com",
+      "title": "Webtoons App",
+      "description": "An official platform for webtoons, featuring Korean manhwa and original content, with free and premium options.",
+      "category": "apps",
+      "tags": [
+        "official",
+        "webtoons",
+        "korean",
+        "premium"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.552Z",
+      "featured": false
+    },
+    {
+      "id": 1282,
+      "url": "https://aniyomi.org",
+      "title": "Aniyomi",
+      "description": "A fork of Tachiyomi that adds anime streaming alongside manga reading, supporting extensions for both.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "manga-reader",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.659Z",
+      "featured": false
+    },
+    {
+      "id": 1283,
+      "url": "https://komikku.info",
+      "title": "Komikku",
+      "description": "An open-source Android manga reader with a focus on offline reading and a sleek, customizable design.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "open-source",
+        "offline-reading"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.767Z",
+      "featured": false
+    },
+    {
+      "id": 1284,
+      "url": "https://github.com/Yokai-Team/Yokai",
+      "title": "Yokai",
+      "description": "A Tachiyomi fork (J2K variant) for Android, offering manga reading with enhanced features and extension support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "tachiyomi-fork",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.876Z",
+      "featured": false
+    },
+    {
+      "id": 1285,
+      "url": "https://github.com/jobobby04/TachiyomiSY",
+      "title": "TachiyomiSY",
+      "description": "A Tachiyomi fork for Android with additional features like smart upgrades and a focus on manga enthusiasts.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "tachiyomi-fork",
+        "smart-upgrades"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:17.984Z",
+      "featured": false
+    },
+    {
+      "id": 1286,
+      "url": "https://github.com/rebelonion/Dantotsu",
+      "title": "Dantotsu",
+      "description": "An Android app for anime and manga, offering streaming and reading with a modern, community-driven approach.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "manga-reader",
+        "community-driven"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.092Z",
+      "featured": false
+    },
+    {
+      "id": 1287,
+      "url": "https://github.com/AweryApp/Awery",
+      "title": "Awery",
+      "description": "An open-source Android app for manga and anime, combining reading and streaming in a lightweight package.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "anime-streaming",
+        "open-source"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.201Z",
+      "featured": false
+    },
+    {
+      "id": 1288,
+      "url": "https://github.com/Hebiko/Mangayomi",
+      "title": "Mangayomi",
+      "description": "A versatile Android app for manga, anime, and novels, supporting multiple sources and platforms.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga",
+        "anime",
+        "novels"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.309Z",
+      "featured": false
+    },
+    {
+      "id": 1289,
+      "url": "https://github.com/Zeddex/AnymeX",
+      "title": "AnymeX",
+      "description": "An Android app for anime streaming and tracking, with a focus on integrating with MyAnimeList.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "tracking",
+        "myanimelist"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.417Z",
+      "featured": false
+    },
+    {
+      "id": 1290,
+      "url": "https://github.com/AnimeTV-App/AnimeTV",
+      "title": "AnimeTV",
+      "description": "An Android app for streaming anime, offering a simple interface and support for various sources.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "simple-interface",
+        "sources"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.525Z",
+      "featured": false
+    },
+    {
+      "id": 1291,
+      "url": "https://cloudstream.cf",
+      "title": "CloudStream",
+      "description": "An Android app for streaming movies, TV shows, and anime from multiple sources, highly customizable.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "streaming",
+        "movies",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.633Z",
+      "featured": false
+    },
+    {
+      "id": 1292,
+      "url": "https://github.com/Neko-Night/Neko",
+      "title": "Neko",
+      "description": "A Tachiyomi fork for Android, focused on manga reading with a minimalist design and extension support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "tachiyomi-fork",
+        "minimalist"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.738Z",
+      "featured": false
+    },
+    {
+      "id": 1293,
+      "url": "https://suwayomi.org",
+      "title": "Suwayomi",
+      "description": "A desktop and Android manga reader, open-source, with a server-client model for syncing across devices.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "android",
+        "manga-reader",
+        "open-source"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.846Z",
+      "featured": false
+    },
+    {
+      "id": 1294,
+      "url": "https://hakuneko.download",
+      "title": "Hakuneko",
+      "description": "A desktop manga downloader and reader, supporting numerous online sources for offline access.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-downloader",
+        "offline-access",
+        "reader"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:18.953Z",
+      "featured": false
+    },
+    {
+      "id": 1295,
+      "url": "https://github.com/FMD2/FMD2",
+      "title": "FMD2",
+      "description": "A desktop manga reader (Free Manga Downloader 2), designed for downloading and organizing manga.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-reader",
+        "downloader",
+        "organizer"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.061Z",
+      "featured": false
+    },
+    {
+      "id": 1296,
+      "url": "https://houdoku.moe",
+      "title": "Houdoku",
+      "description": "A desktop manga reader with a modern interface, supporting extensions and local file management.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-reader",
+        "modern-interface",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.168Z",
+      "featured": false
+    },
+    {
+      "id": 1297,
+      "url": "https://github.com/LagradOst/QuickNovel",
+      "title": "QuickNovel",
+      "description": "An Android app for reading light novels, offering source integration and offline capabilities.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "light-novels",
+        "offline",
+        "source-integration"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.275Z",
+      "featured": false
+    },
+    {
+      "id": 1298,
+      "url": "https://github.com/AzyxApp/Azyx",
+      "title": "Azyx",
+      "description": "A multi-platform app for anime, manga, and novels, still in development with broad compatibility goals.",
+      "category": "apps",
+      "tags": [
+        "multi-platform",
+        "anime",
+        "manga",
+        "novels"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.382Z",
+      "featured": false
+    },
+    {
+      "id": 1299,
+      "url": "https://github.com/Jays2Kings/tachiyomiJ2K",
+      "title": "TachiyomiJ2K",
+      "description": "A Tachiyomi fork for Android with enhanced features like dual-page reading and custom layouts.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "tachiyomi-fork",
+        "dual-page"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.488Z",
+      "featured": false
+    },
+    {
+      "id": 1300,
+      "url": "https://github.com/NovelDokusha/NovelDokusha",
+      "title": "NovelDokusha",
+      "description": "An Android app for reading light novels, with a focus on local files and source scraping.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "light-novels",
+        "local-files",
+        "source-scraping"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.594Z",
+      "featured": false
+    },
+    {
+      "id": 1301,
+      "url": "https://github.com/rebelonion/Dartotsu",
+      "title": "Dartotsu",
+      "description": "A variant of Dantotsu, offering anime and manga support across platforms with a unified design.",
+      "category": "apps",
+      "tags": [
+        "multi-platform",
+        "anime",
+        "manga",
+        "unified-design"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.701Z",
+      "featured": false
+    },
+    {
+      "id": 1302,
+      "url": "https://seanime.rahgozar.dev",
+      "title": "Seanime",
+      "description": "A desktop app for managing and streaming anime, integrating with AniList and local libraries.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "anime-streaming",
+        "anilist",
+        "local-libraries"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.807Z",
+      "featured": false
+    },
+    {
+      "id": 1303,
+      "url": "https://github.com/TotoroApp/Totoro",
+      "title": "Totoro",
+      "description": "A desktop app for anime and manga, offering a clean interface and source integration.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "anime",
+        "manga",
+        "clean-interface"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:19.914Z",
+      "featured": false
+    },
+    {
+      "id": 1304,
+      "url": "https://github.com/ZenshinApp/Zenshin",
+      "title": "Zenshin",
+      "description": "A desktop manga reader in development, aiming for a lightweight and extensible experience.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-reader",
+        "lightweight",
+        "extensible"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.020Z",
+      "featured": false
+    },
+    {
+      "id": 1305,
+      "url": "https://github.com/MiguApp/Migu",
+      "title": "Migu",
+      "description": "An Android app for manga reading, with a focus on simplicity and source compatibility.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "simplicity",
+        "compatibility"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.129Z",
+      "featured": false
+    },
+    {
+      "id": 1306,
+      "url": "https://github.com/tachimanga/tachimanga",
+      "title": "Tachimanga",
+      "description": "An iOS manga reader inspired by Tachiyomi, offering source extensions and offline reading.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga-reader",
+        "tachiyomi-inspired",
+        "offline-reading"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.234Z",
+      "featured": false
+    },
+    {
+      "id": 1307,
+      "url": "https://paperback.moe",
+      "title": "Paperback",
+      "description": "An iOS manga reader with a polished design, supporting extensions and a variety of sources.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga-reader",
+        "polished-design",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.340Z",
+      "featured": false
+    },
+    {
+      "id": 1308,
+      "url": "https://github.com/kaguya-app/kaguya",
+      "title": "Kaguya App",
+      "description": "An Android app for streaming anime and reading manga, with a focus on open-source development.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "manga-reader",
+        "open-source"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.445Z",
+      "featured": false
+    },
+    {
+      "id": 1309,
+      "url": "https://www.viz.com/shonenjump",
+      "title": "Shonen Jump App",
+      "description": "An official app by VIZ Media, offering free and subscription-based access to Shonen Jump manga.",
+      "category": "apps",
+      "tags": [
+        "official",
+        "manga",
+        "viz-media",
+        "subscription"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.550Z",
+      "featured": false
+    },
+    {
+      "id": 1310,
+      "url": "https://github.com/shosetsuorg/shosetsu",
+      "title": "Shosetsu",
+      "description": "An Android app for reading light novels, with customizable sources and offline support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "light-novels",
+        "offline",
+        "customizable"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.656Z",
+      "featured": false
+    },
+    {
+      "id": 1311,
+      "url": "https://github.com/EhViewer-Neko/EhViewer",
+      "title": "Ehviewer",
+      "description": "An Android app for browsing E-Hentai galleries, popular for adult manga and doujinshi.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "e-hentai",
+        "adult",
+        "doujinshi"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:00:20.763Z",
+      "featured": false
+    },
+    {
+      "id": 1312,
+      "url": "https://github.com/EhPanda-Team/EhPanda",
+      "title": "EhPanda",
+      "description": "An iOS app for accessing E-Hentai, offering a modern interface for adult content browsing.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "e-hentai",
+        "adult",
+        "modern-interface"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:00:20.869Z",
+      "featured": false
+    },
+    {
+      "id": 1313,
+      "url": "https://github.com/UnyoApp/Unyo",
+      "title": "Unyo",
+      "description": "A desktop manga reader in early development, aiming for cross-platform compatibility.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-reader",
+        "early-development",
+        "cross-platform"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:20.977Z",
+      "featured": false
+    },
+    {
+      "id": 1314,
+      "url": "https://github.com/sora-app/sora",
+      "title": "Sora",
+      "description": "An iOS manga reader with a focus on simplicity and integration with online sources.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga-reader",
+        "simplicity",
+        "online-sources"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.084Z",
+      "featured": false
+    },
+    {
+      "id": 1315,
+      "url": "https://github.com/KetsuApp/Ketsu",
+      "title": "Ketsu",
+      "description": "An iOS app for manga and anime, offering modular extensions and a clean design.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga",
+        "anime",
+        "modular-extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.190Z",
+      "featured": false
+    },
+    {
+      "id": 1316,
+      "url": "https://github.com/OtakuWorldApp/OtakuWorld",
+      "title": "OtakuWorld",
+      "description": "An Android app for anime, manga, and novels, aiming for an all-in-one otaku experience.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime",
+        "manga",
+        "novels"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.297Z",
+      "featured": false
+    },
+    {
+      "id": 1317,
+      "url": "https://github.com/animityapp/animity",
+      "title": "Animity",
+      "description": "An Android app for streaming anime, with a focus on high-quality playback and source variety.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "high-quality",
+        "source-variety"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.404Z",
+      "featured": false
+    },
+    {
+      "id": 1318,
+      "url": "https://github.com/akuseapp/akuse",
+      "title": "akuse",
+      "description": "A desktop app for anime streaming, offering a lightweight and customizable experience.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "anime-streaming",
+        "lightweight",
+        "customizable"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.510Z",
+      "featured": false
+    },
+    {
+      "id": 1319,
+      "url": "https://github.com/exhentai-manager/exhentai-manager",
+      "title": "exhentai-manager",
+      "description": "A desktop tool for managing ExHentai downloads, tailored for adult manga enthusiasts.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "exhentai",
+        "adult",
+        "downloads"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:00:21.615Z",
+      "featured": false
+    },
+    {
+      "id": 1320,
+      "url": "https://github.com/KotatsuApp/Kotatsu-dl",
+      "title": "Kotatsu-dl",
+      "description": "A desktop companion to Kotatsu, focused on downloading manga for offline use.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-downloader",
+        "offline-use",
+        "kotatsu"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.721Z",
+      "featured": false
+    },
+    {
+      "id": 1321,
+      "url": "https://github.com/Senpwai/Senpwai",
+      "title": "Senpwai",
+      "description": "A desktop app for streaming anime, with a sleek design and community-driven development.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "anime-streaming",
+        "sleek-design",
+        "community-driven"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.829Z",
+      "featured": false
+    },
+    {
+      "id": 1322,
+      "url": "https://github.com/TeemiiApp/Teemii",
+      "title": "Teemii",
+      "description": "A desktop manga and anime app, offering a unified interface for multiple content types.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga",
+        "anime",
+        "unified-interface"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:21.935Z",
+      "featured": false
+    },
+    {
+      "id": 1323,
+      "url": "https://github.com/KitsuneApp/Kitsune",
+      "title": "Kitsune App",
+      "description": "An Android app for manga reading, with a focus on open-source development and customization.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reading",
+        "open-source",
+        "customization"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.042Z",
+      "featured": false
+    },
+    {
+      "id": 1324,
+      "url": "https://github.com/AnimeChicken/AnimeChicken",
+      "title": "AnimeChicken",
+      "description": "An Android app for streaming anime, known for its quirky name and source support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "quirky",
+        "source-support"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.148Z",
+      "featured": false
+    },
+    {
+      "id": 1325,
+      "url": "https://github.com/InkNest/InkNest",
+      "title": "InkNest",
+      "description": "An Android manga reader in development, aiming for a smooth and intuitive experience.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "development",
+        "intuitive"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.254Z",
+      "featured": false
+    },
+    {
+      "id": 1326,
+      "url": "https://github.com/MangaPin/MangaPin",
+      "title": "MangaPin",
+      "description": "An Android app for pinning and reading manga, with a focus on bookmarking features.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "bookmarking",
+        "pinning"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.360Z",
+      "featured": false
+    },
+    {
+      "id": 1327,
+      "url": "https://github.com/IReaderApp/IReader",
+      "title": "IReader",
+      "description": "An Android app for reading novels and manga, supporting multiple formats and sources.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "novels",
+        "manga",
+        "multiple-formats"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.468Z",
+      "featured": false
+    },
+    {
+      "id": 1328,
+      "url": "https://github.com/AniVu/AniVu",
+      "title": "AniVu",
+      "description": "An Android app for anime streaming, offering a lightweight alternative to larger platforms.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "lightweight",
+        "alternative"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.585Z",
+      "featured": false
+    },
+    {
+      "id": 1329,
+      "url": "https://aidoku.app",
+      "title": "Aidoku",
+      "description": "An iOS manga reader with a focus on privacy and extension-based source support.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga-reader",
+        "privacy",
+        "extensions"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.691Z",
+      "featured": false
+    },
+    {
+      "id": 1330,
+      "url": "https://github.com/Suwatte/Suwatte",
+      "title": "Suwatte",
+      "description": "An iOS manga reader with a modern design, supporting local files and online sources.",
+      "category": "apps",
+      "tags": [
+        "ios",
+        "manga-reader",
+        "modern-design",
+        "local-files"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.798Z",
+      "featured": false
+    },
+    {
+      "id": 1331,
+      "url": "https://global.manga-up.com",
+      "title": "Manga UP!",
+      "description": "An official app by Square Enix, offering free and paid manga chapters from their catalog.",
+      "category": "apps",
+      "tags": [
+        "official",
+        "manga",
+        "square-enix",
+        "paid"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:22.903Z",
+      "featured": false
+    },
+    {
+      "id": 1332,
+      "url": "https://comikey.com",
+      "title": "Comikey",
+      "description": "A legal platform for reading manga and webtoons, with a mix of free and subscription-based content.",
+      "category": "apps",
+      "tags": [
+        "legal",
+        "manga",
+        "webtoons",
+        "subscription"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.011Z",
+      "featured": false
+    },
+    {
+      "id": 1333,
+      "url": "https://mangazoneapp.com",
+      "title": "MangaZone",
+      "description": "An Android app for reading manga, offering a community-driven library and offline options.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga-reader",
+        "community-driven",
+        "offline"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.118Z",
+      "featured": false
+    },
+    {
+      "id": 1334,
+      "url": "https://github.com/ranobe-org/ranobe",
+      "title": "Ranobe",
+      "description": "An Android app for reading light novels, with a focus on Russian and English translations.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "light-novels",
+        "russian",
+        "english"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.225Z",
+      "featured": false
+    },
+    {
+      "id": 1335,
+      "url": "https://github.com/ChoutenApp/Chouten",
+      "title": "Chouten",
+      "description": "An Android app for anime streaming, offering modular extensions and a clean interface.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "modular",
+        "clean-interface"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.331Z",
+      "featured": false
+    },
+    {
+      "id": 1336,
+      "url": "https://github.com/Nekoflix/Nekoflix",
+      "title": "Nekoflix",
+      "description": "An Android app for streaming anime, with a playful cat-themed design and source support.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "cat-themed",
+        "source-support"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.436Z",
+      "featured": false
+    },
+    {
+      "id": 1337,
+      "url": "https://github.com/Kaizoyu/Kaizoyu",
+      "title": "Kaizoyu!",
+      "description": "An Android app for manga and anime, offering a pirate-themed experience with multiple sources.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "manga",
+        "anime",
+        "pirate-themed"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.544Z",
+      "featured": false
+    },
+    {
+      "id": 1338,
+      "url": "https://github.com/AnilabApp/Anilab",
+      "title": "Anilab",
+      "description": "An Android app for streaming anime, focusing on a lab-like experimental approach to features.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "experimental",
+        "features"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.747Z",
+      "featured": false
+    },
+    {
+      "id": 1339,
+      "url": "https://github.com/CSCLAB/CSCLAB",
+      "title": "CSC LAB",
+      "description": "An Android app for anime and manga, developed as a community-driven project with source integration.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime",
+        "manga",
+        "community-driven"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.853Z",
+      "featured": false
+    },
+    {
+      "id": 1340,
+      "url": "https://github.com/saikou-app/saikou",
+      "title": "SaikouTV",
+      "description": "An Android app for anime streaming and manga reading, known for its high-quality design and performance.",
+      "category": "apps",
+      "tags": [
+        "android",
+        "anime-streaming",
+        "manga-reading",
+        "high-quality"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:23.959Z",
+      "featured": false
+    },
+    {
+      "id": 1341,
+      "url": "https://github.com/Suwayomi/Tachidesk-Server",
+      "title": "Tachidesk",
+      "description": "A desktop manga reader and server, allowing web-based access to your manga library.",
+      "category": "apps",
+      "tags": [
+        "desktop",
+        "manga-reader",
+        "server",
+        "web-based"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:24.064Z",
+      "featured": false
+    },
+    {
+      "id": 1342,
+      "url": "https://mangarock.io",
+      "title": "MangaRock",
+      "description": "A revived version of the classic app, offering manga reading with a focus on fan translations.",
+      "category": "apps",
+      "tags": [
+        "manga-reading",
+        "fan-translations",
+        "revived",
+        "classic"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:24.172Z",
+      "featured": false
+    },
+    {
+      "id": 1343,
+      "url": "https://animesuge.to",
+      "title": "AnimeSuge",
+      "description": "A free website for streaming anime and reading manga, with a simple interface and English subs.",
+      "category": "apps",
+      "tags": [
+        "anime-streaming",
+        "manga-reading",
+        "free",
+        "english-subs"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:24.278Z",
+      "featured": false
+    },
+    {
+      "id": 1344,
+      "url": "https://www.bilibilicomics.com",
+      "title": "Bilibili Comics",
+      "description": "An official app for webtoons and manga, offering free and premium content from Asian creators.",
+      "category": "apps",
+      "tags": [
+        "official",
+        "webtoons",
+        "manga",
+        "asian"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:24.386Z",
+      "featured": false
+    },
+    {
+      "id": 1345,
+      "url": "https://zoro.to",
+      "title": "Zoro.to",
+      "description": "A free site for streaming anime and reading manga, popular for its extensive library and fast updates.",
+      "category": "apps",
+      "tags": [
+        "anime-streaming",
+        "manga-reading",
+        "free",
+        "fast-updates"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:00:24.492Z",
+      "featured": false
+    },
+    {
+      "id": 1346,
+      "url": "https://www.animekai.com",
+      "title": "AnimeKai",
+      "description": "Free anime streaming website",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.060Z",
+      "featured": false
+    },
+    {
+      "id": 1347,
+      "url": "https://animepahe.com",
+      "title": "animepahe",
+      "description": "High-quality anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.063Z",
+      "featured": true
+    },
+    {
+      "id": 1348,
+      "url": "https://www.hianime.com",
+      "title": "HiAnime",
+      "description": "Popular anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.068Z",
+      "featured": false
+    },
+    {
+      "id": 1349,
+      "url": "https://www.animez.com",
+      "title": "AnimeZ",
+      "description": "Anime streaming with large collection",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.074Z",
+      "featured": false
+    },
+    {
+      "id": 1350,
+      "url": "https://www.crunchyroll.com",
+      "title": "Crunchyroll",
+      "description": "Legal anime streaming service with free tier",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.078Z",
+      "featured": true
+    },
+    {
+      "id": 1351,
+      "url": "https://www.youtube.com",
+      "title": "YouTube",
+      "description": "Video platform with anime content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.086Z",
+      "featured": true
+    },
+    {
+      "id": 1352,
+      "url": "https://www.animestream.com",
+      "title": "AnimeStream",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.136Z",
+      "featured": false
+    },
+    {
+      "id": 1353,
+      "url": "https://www.kickassanime.com",
+      "title": "KickAssAnime",
+      "description": "Anime streaming with minimal ads",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.142Z",
+      "featured": false
+    },
+    {
+      "id": 1354,
+      "url": "https://www.animeowl.com",
+      "title": "AnimeOwl",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.146Z",
+      "featured": false
+    },
+    {
+      "id": 1355,
+      "url": "https://www.wco.tv",
+      "title": "WCO",
+      "description": "Watch Cartoon Online also has anime",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.152Z",
+      "featured": false
+    },
+    {
+      "id": 1356,
+      "url": "https://www.animegg.org",
+      "title": "ANIMEGG",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.157Z",
+      "featured": false
+    },
+    {
+      "id": 1357,
+      "url": "https://www.animenexus.com",
+      "title": "Anime Nexus",
+      "description": "Anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.162Z",
+      "featured": false
+    },
+    {
+      "id": 1358,
+      "url": "https://www.animeonsen.com",
+      "title": "AnimeOnsen",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.169Z",
+      "featured": false
+    },
+    {
+      "id": 1359,
+      "url": "https://www.animeheaven.eu",
+      "title": "AnimeHeaven",
+      "description": "Popular anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.175Z",
+      "featured": true
+    },
+    {
+      "id": 1360,
+      "url": "https://www.bilibili.com",
+      "title": "Bilibili",
+      "description": "Chinese video sharing platform with anime",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.182Z",
+      "featured": true
+    },
+    {
+      "id": 1361,
+      "url": "https://www.hikari.com",
+      "title": "Hikari",
+      "description": "Anime streaming website",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.190Z",
+      "featured": false
+    },
+    {
+      "id": 1362,
+      "url": "https://www.allanime.com",
+      "title": "AllAnime",
+      "description": "Comprehensive anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.196Z",
+      "featured": false
+    },
+    {
+      "id": 1363,
+      "url": "https://www.sudatchi.com",
+      "title": "Sudatchi",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.201Z",
+      "featured": false
+    },
+    {
+      "id": 1364,
+      "url": "https://www.animedefenders.com",
+      "title": "Anime defenders",
+      "description": "Anime streaming website",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.206Z",
+      "featured": false
+    },
+    {
+      "id": 1365,
+      "url": "https://www.anizone.com",
+      "title": "AniZone",
+      "description": "Free anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.212Z",
+      "featured": false
+    },
+    {
+      "id": 1366,
+      "url": "https://www.miruro.com",
+      "title": "Miruro MULT",
+      "description": "Multilanguage anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.219Z",
+      "featured": false
+    },
+    {
+      "id": 1367,
+      "url": "https://www.gojo.com",
+      "title": "Gojo MULT",
+      "description": "Multilanguage anime platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.223Z",
+      "featured": false
+    },
+    {
+      "id": 1368,
+      "url": "https://www.shiroko.com",
+      "title": "Shiroko MULT",
+      "description": "Multilanguage anime streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.229Z",
+      "featured": false
+    },
+    {
+      "id": 1369,
+      "url": "https://animixplay.name",
+      "title": "animixplay.name HIA",
+      "description": "High-quality anime streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.235Z",
+      "featured": false
+    },
+    {
+      "id": 1370,
+      "url": "https://www.animeparadise.com",
+      "title": "AnimeParadise HIA",
+      "description": "High-quality anime content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.240Z",
+      "featured": false
+    },
+    {
+      "id": 1371,
+      "url": "https://www.hidive.com",
+      "title": "HIDIVE",
+      "description": "Legal anime streaming service",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.245Z",
+      "featured": true
+    },
+    {
+      "id": 1372,
+      "url": "https://www.aniworld.com",
+      "title": "AniWorld",
+      "description": "Anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.249Z",
+      "featured": false
+    },
+    {
+      "id": 1373,
+      "url": "https://www.anify.com",
+      "title": "Anify",
+      "description": "Free anime streaming website",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.254Z",
+      "featured": false
+    },
+    {
+      "id": 1374,
+      "url": "https://www.kuudere.com",
+      "title": "Kuudere",
+      "description": "Anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.259Z",
+      "featured": false
+    },
+    {
+      "id": 1375,
+      "url": "https://www.animehub.com",
+      "title": "AnimeHub",
+      "description": "Free anime streaming platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.263Z",
+      "featured": false
+    },
+    {
+      "id": 1376,
+      "url": "https://www.kisskh.com",
+      "title": "Kisskh",
+      "description": "Anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.267Z",
+      "featured": false
+    },
+    {
+      "id": 1377,
+      "url": "https://www.kawaiifu.com",
+      "title": "Kawaiifu",
+      "description": "Free anime streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.272Z",
+      "featured": false
+    },
+    {
+      "id": 1378,
+      "url": "https://www.anime-stream.com",
+      "title": "Anime-Stream",
+      "description": "Anime streaming website",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.276Z",
+      "featured": false
+    },
+    {
+      "id": 1379,
+      "url": "https://www.aniplay.com",
+      "title": "AniPlay MULT",
+      "description": "Multilanguage anime streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.282Z",
+      "featured": false
+    },
+    {
+      "id": 1380,
+      "url": "https://www.animerealms.com",
+      "title": "Anime Realms MULT",
+      "description": "Multilanguage anime platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.286Z",
+      "featured": false
+    },
+    {
+      "id": 1381,
+      "url": "https://www.vumeto.com",
+      "title": "Vumeto MULT",
+      "description": "Multilanguage anime content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.292Z",
+      "featured": false
+    },
+    {
+      "id": 1382,
+      "url": "https://www.anikoto.com",
+      "title": "Anikoto MULT",
+      "description": "Multilanguage anime site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.296Z",
+      "featured": false
+    },
+    {
+      "id": 1383,
+      "url": "https://www.animelon.com",
+      "title": "Animelon",
+      "description": "Learn Japanese while watching anime",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.300Z",
+      "featured": false
+    },
+    {
+      "id": 1384,
+      "url": "https://www.otaku-streamers.com",
+      "title": "Otaku-Streamers LOGIN",
+      "description": "Anime streaming with login required",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.315Z",
+      "featured": false
+    },
+    {
+      "id": 1385,
+      "url": "https://www.animehi.com",
+      "title": "AnimeHi MULT",
+      "description": "Multilanguage anime platform",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.319Z",
+      "featured": false
+    },
+    {
+      "id": 1386,
+      "url": "https://www.animia.com",
+      "title": "Animia MULT",
+      "description": "Multilanguage anime site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.324Z",
+      "featured": false
+    },
+    {
+      "id": 1387,
+      "url": "https://www.aniversehd.com",
+      "title": "AniverseHD MULT",
+      "description": "HD multilanguage anime content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.328Z",
+      "featured": false
+    },
+    {
+      "id": 1388,
+      "url": "https://aniwave.lv",
+      "title": "aniwave.lv HIA",
+      "description": "High-quality anime streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.332Z",
+      "featured": true
+    },
+    {
+      "id": 1389,
+      "url": "https://www.freek.com",
+      "title": "Freek HIA",
+      "description": "Free anime streaming site",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.337Z",
+      "featured": false
+    },
+    {
+      "id": 1390,
+      "url": "https://hanime.tv",
+      "title": "Hanime.tv",
+      "description": "A popular streaming site offering high-quality hentai videos with a clean interface",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.343Z",
+      "featured": true
+    },
+    {
+      "id": 1391,
+      "url": "https://hentai.tv",
+      "title": "hentai.tv",
+      "description": "A platform focused on hentai streaming with a variety of animated content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.347Z",
+      "featured": false
+    },
+    {
+      "id": 1392,
+      "url": "https://hentaihaven.xxx",
+      "title": "hentaihaven",
+      "description": "A legendary name in free hentai streaming with classic and new titles",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.354Z",
+      "featured": true
+    },
+    {
+      "id": 1393,
+      "url": "https://hentaicity.com",
+      "title": "HentaiCity",
+      "description": "A hub for hentai videos and manga with a decent selection of episodes",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.358Z",
+      "featured": false
+    },
+    {
+      "id": 1394,
+      "url": "https://haho.moe",
+      "title": "haho.moe",
+      "description": "A site offering hentai streams and downloads with niche content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.362Z",
+      "featured": false
+    },
+    {
+      "id": 1395,
+      "url": "https://watchhentai.net",
+      "title": "WatchHentai",
+      "description": "A free streaming site with English-subtitled hentai clips and series",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.367Z",
+      "featured": false
+    },
+    {
+      "id": 1396,
+      "url": "https://hentaverse.net",
+      "title": "Hentaverse",
+      "description": "Known for extensive hentai video collection and community features",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.371Z",
+      "featured": false
+    },
+    {
+      "id": 1397,
+      "url": "https://underhentai.net",
+      "title": "UnderHentai DDL",
+      "description": "Specializes in direct download links alongside streaming options",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.375Z",
+      "featured": false
+    },
+    {
+      "id": 1398,
+      "url": "https://oppai.stream",
+      "title": "oppai.stream",
+      "description": "A streaming-focused site with an emphasis on high-quality hentai",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.379Z",
+      "featured": false
+    },
+    {
+      "id": 1399,
+      "url": "https://hstream.moe",
+      "title": "HStream.moe",
+      "description": "Offers ad-free 1080p streaming and downloads with some 4K upscales",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.386Z",
+      "featured": false
+    },
+    {
+      "id": 1400,
+      "url": "https://hentaistream.com",
+      "title": "HentaiStream",
+      "description": "A long-standing site for streaming hentai with download options",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.393Z",
+      "featured": false
+    },
+    {
+      "id": 1401,
+      "url": "https://hentaiplay.net",
+      "title": "HentaiPlay",
+      "description": "A free platform with uncensored hentai videos and manga",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.396Z",
+      "featured": false
+    },
+    {
+      "id": 1402,
+      "url": "https://hentaistream.me",
+      "title": "HentaiStream.me",
+      "description": "A reliable option for streaming enthusiasts with a varied library",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.400Z",
+      "featured": false
+    },
+    {
+      "id": 1403,
+      "url": "https://myhentaimovie.com",
+      "title": "MyHentaiMovie",
+      "description": "Focuses on full-length hentai movies rather than episodic content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.403Z",
+      "featured": false
+    },
+    {
+      "id": 1404,
+      "url": "https://onlyhentaistuff.com",
+      "title": "OnlyHentaiStuff",
+      "description": "A site curating exclusive hentai videos and images",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.408Z",
+      "featured": false
+    },
+    {
+      "id": 1405,
+      "url": "https://hentaiworld.tv",
+      "title": "HentaiWorld",
+      "description": "A free streaming site with robust collection optimized for high-quality playback",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.411Z",
+      "featured": true
+    },
+    {
+      "id": 1406,
+      "url": "https://hentai2w.com",
+      "title": "Hentai2W",
+      "description": "Combines streaming with community aspects and interactive features",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.417Z",
+      "featured": false
+    },
+    {
+      "id": 1407,
+      "url": "https://hentaimama.io",
+      "title": "HentaiMama",
+      "description": "A modern site with clean layout and calendar of upcoming releases",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.421Z",
+      "featured": false
+    },
+    {
+      "id": 1408,
+      "url": "https://hentai0.com",
+      "title": "Hentai0.com",
+      "description": "A newer platform providing streams and downloads with growing library",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.426Z",
+      "featured": false
+    },
+    {
+      "id": 1409,
+      "url": "https://iwara.tv",
+      "title": "Iwara",
+      "description": "A unique platform hosting user-uploaded 3D hentai animations",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.429Z",
+      "featured": true
+    },
+    {
+      "id": 1410,
+      "url": "https://hentaifox.tv",
+      "title": "HentaiFox.tv",
+      "description": "Offers hentai videos and manga with massive tag list for easy browsing",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.433Z",
+      "featured": true
+    },
+    {
+      "id": 1411,
+      "url": "https://hentaibros.net",
+      "title": "Hentaibros",
+      "description": "A free site with latest episodes and older classics",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.437Z",
+      "featured": false
+    },
+    {
+      "id": 1412,
+      "url": "https://aki-h.com",
+      "title": "Aki-H",
+      "description": "A niche site focusing on specific hentai genres or artists",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.441Z",
+      "featured": false
+    },
+    {
+      "id": 1413,
+      "url": "https://hentai-for.me",
+      "title": "hentai-for.me",
+      "description": "A straightforward streaming site for quick access",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.443Z",
+      "featured": false
+    },
+    {
+      "id": 1414,
+      "url": "https://eshentai.com",
+      "title": "ESHentai",
+      "description": "Offers a mix of manga and videos with focus on free, high-quality content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.448Z",
+      "featured": false
+    },
+    {
+      "id": 1415,
+      "url": "https://xanimeporn.com",
+      "title": "Xanimeporn",
+      "description": "A YouTube-like platform for hentai with subbed and dubbed options",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.452Z",
+      "featured": false
+    },
+    {
+      "id": 1416,
+      "url": "https://hentaini.com",
+      "title": "Hentaini",
+      "description": "Provides streaming and downloads with regular updates",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.458Z",
+      "featured": false
+    },
+    {
+      "id": 1417,
+      "url": "https://hentaifreak.org",
+      "title": "HentaiFreak",
+      "description": "Known for HD streams and diverse categories including unusual fetishes",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.461Z",
+      "featured": true
+    },
+    {
+      "id": 1418,
+      "url": "https://hanime1.me",
+      "title": "Hanime1.me",
+      "description": "An alternative to Hanime.tv with similar high-quality streaming",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.466Z",
+      "featured": true
+    },
+    {
+      "id": 1419,
+      "url": "https://hentaimoon.com",
+      "title": "HentaiMoon",
+      "description": "A free streaming site with Spanish-subbed options for broader appeal",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.469Z",
+      "featured": false
+    },
+    {
+      "id": 1420,
+      "url": "https://mitestream.com",
+      "title": "MiteStream",
+      "description": "A lesser-known site offering streams with focus on niche content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.474Z",
+      "featured": false
+    },
+    {
+      "id": 1421,
+      "url": "https://hentaiser.com",
+      "title": "hentaiser",
+      "description": "Streams hentai with a simple interface and navigation",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.479Z",
+      "featured": false
+    },
+    {
+      "id": 1422,
+      "url": "https://muchohentai.com",
+      "title": "MuchoHentai",
+      "description": "Features Spanish-subbed hentai alongside English with preview section",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.484Z",
+      "featured": false
+    },
+    {
+      "id": 1423,
+      "url": "https://hentaicloud.com",
+      "title": "HentaiCloud",
+      "description": "Offers free videos and manga with cloud-based streaming for fast loading",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.488Z",
+      "featured": false
+    },
+    {
+      "id": 1424,
+      "url": "https://hentaigasm.com",
+      "title": "Hentaigasm",
+      "description": "A vast library with genre-based navigation and straightforward design",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.492Z",
+      "featured": false
+    },
+    {
+      "id": 1425,
+      "url": "https://hentia.com",
+      "title": "Hentia",
+      "description": "Provides standard hentai streaming with basic setup",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.495Z",
+      "featured": false
+    },
+    {
+      "id": 1426,
+      "url": "https://hentaisea.com",
+      "title": "Hentaisea",
+      "description": "A free platform with streaming and downloadable content",
+      "category": "anime",
+      "tags": [
+        "anime",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.501Z",
+      "featured": false
+    },
+    {
+      "id": 1427,
+      "url": "https://nyaa.si",
+      "title": "Nyaa",
+      "description": "A popular BitTorrent community focused on East Asian media, including anime, manga, and games.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "manga",
+        "games"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.505Z",
+      "featured": true
+    },
+    {
+      "id": 1428,
+      "url": "https://animetosho.org",
+      "title": "AnimeTosho",
+      "description": "An automated service that mirrors torrents from Nyaa, providing direct download links and Usenet integration.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "usenet"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.509Z",
+      "featured": true
+    },
+    {
+      "id": 1429,
+      "url": "https://anidex.info",
+      "title": "AniDex",
+      "description": "A torrent tracker and indexer for anime-related content, supporting both torrents and XDCC downloads.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "xdcc"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.513Z",
+      "featured": false
+    },
+    {
+      "id": 1430,
+      "url": "https://subsplease.org",
+      "title": "SubsPlease",
+      "description": "Provides timely releases of anime episodes with English subtitles, offering both torrent and XDCC download options.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "subtitles",
+        "xdcc"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.517Z",
+      "featured": true
+    },
+    {
+      "id": 1431,
+      "url": "https://tokyotosho.info",
+      "title": "Tokyo Toshokan",
+      "description": "A BitTorrent library for Japanese media, including anime, manga, and music.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "manga",
+        "music"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.521Z",
+      "featured": true
+    },
+    {
+      "id": 1432,
+      "url": "https://www.cdjapan.co.jp",
+      "title": "CDJapan",
+      "description": "An online retailer offering physical copies of Japanese CDs, DVDs, Blu-rays, and other merchandise.",
+      "category": "downloads",
+      "tags": [
+        "official",
+        "physical",
+        "merchandise"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.524Z",
+      "featured": true
+    },
+    {
+      "id": 1433,
+      "url": "https://releases.moe",
+      "title": "SeaDex",
+      "description": "A torrent tracker dedicated to Southeast Asian media, including anime and drama series.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "drama"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.527Z",
+      "featured": false
+    },
+    {
+      "id": 1434,
+      "url": "https://sneedex.moe",
+      "title": "Sneedex",
+      "description": "A platform offering a variety of anime torrents for download.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.530Z",
+      "featured": false
+    },
+    {
+      "id": 1435,
+      "url": "https://tokyoinsider.com",
+      "title": "TokyoInsider",
+      "description": "Provides direct download links for various Japanese media, including anime and music.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "music"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.534Z",
+      "featured": false
+    },
+    {
+      "id": 1436,
+      "url": "https://mangazip.net",
+      "title": "MangaZip",
+      "description": "Offers raw (untranslated) manga for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "manga",
+        "raw"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.537Z",
+      "featured": false
+    },
+    {
+      "id": 1437,
+      "url": "https://dlraw.net",
+      "title": "DLRaw",
+      "description": "Provides raw manga scans and light novels for download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "manga",
+        "light novel",
+        "raw"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.539Z",
+      "featured": false
+    },
+    {
+      "id": 1438,
+      "url": "https://dl-raw.net",
+      "title": "DL-Raw",
+      "description": "Another source for downloading raw manga and light novels.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "manga",
+        "light novel",
+        "raw"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.543Z",
+      "featured": false
+    },
+    {
+      "id": 1439,
+      "url": "https://hi10anime.com",
+      "title": "Hi10Anime",
+      "description": "Specializes in high-quality, compressed anime releases in 10-bit color depth, requiring user registration for access.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "high quality"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.548Z",
+      "featured": true
+    },
+    {
+      "id": 1440,
+      "url": "https://animeout.xyz",
+      "title": "AnimeOut",
+      "description": "Offers direct downloads of anime series and movies in various resolutions, with registration required.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.551Z",
+      "featured": false
+    },
+    {
+      "id": 1441,
+      "url": "https://kayoanime.com",
+      "title": "KayoAnime",
+      "description": "Provides direct download links for anime series and movies.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.554Z",
+      "featured": false
+    },
+    {
+      "id": 1442,
+      "url": "https://mkvseries.com",
+      "title": "MKVseries",
+      "description": "Hosts a collection of anime series available for direct download in MKV format.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "mkv"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.557Z",
+      "featured": false
+    },
+    {
+      "id": 1443,
+      "url": "https://moriyashrine.org",
+      "title": "Moriya Shrine",
+      "description": "Dedicated to Touhou Project content, offering games, music, and related media for download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "games",
+        "touhou",
+        "music"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.560Z",
+      "featured": false
+    },
+    {
+      "id": 1444,
+      "url": "https://pandabackup.com",
+      "title": "Panda Backup",
+      "description": "Provides backup links for various anime series and movies.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "backup"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.563Z",
+      "featured": false
+    },
+    {
+      "id": 1445,
+      "url": "https://animk.info",
+      "title": "AniMK",
+      "description": "An XDCC bot offering anime series and movies for download via IRC.",
+      "category": "downloads",
+      "tags": [
+        "xdcc",
+        "irc",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.567Z",
+      "featured": false
+    },
+    {
+      "id": 1446,
+      "url": "https://nibl.co.uk",
+      "title": "nibl.co.uk",
+      "description": "Hosts XDCC bots providing anime downloads through IRC channels.",
+      "category": "downloads",
+      "tags": [
+        "xdcc",
+        "irc",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.570Z",
+      "featured": false
+    },
+    {
+      "id": 1447,
+      "url": "https://beatrice-raws.org",
+      "title": "Beatrice-Raws",
+      "description": "Offers raw (unsubtitled) anime releases via XDCC.",
+      "category": "downloads",
+      "tags": [
+        "xdcc",
+        "anime",
+        "raw"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.573Z",
+      "featured": false
+    },
+    {
+      "id": 1448,
+      "url": "https://shanaproject.com",
+      "title": "Shana Project",
+      "description": "Automates anime torrent downloads by allowing users to subscribe to their favorite series.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "subscription"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.576Z",
+      "featured": false
+    },
+    {
+      "id": 1449,
+      "url": "https://acgnx.se",
+      "title": "AcgnX",
+      "description": "A platform offering a variety of anime torrents.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.578Z",
+      "featured": false
+    },
+    {
+      "id": 1450,
+      "url": "https://sakuracircle.com",
+      "title": "SakuraCircle",
+      "description": "Provides direct download links for anime.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.582Z",
+      "featured": false
+    },
+    {
+      "id": 1451,
+      "url": "https://acg.rip",
+      "title": "ACG.RIP",
+      "description": "Hosts a collection of anime torrents for download.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.585Z",
+      "featured": false
+    },
+    {
+      "id": 1452,
+      "url": "https://anirena.com",
+      "title": "AniRena",
+      "description": "A torrent tracker focusing on anime series and movies.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.587Z",
+      "featured": false
+    },
+    {
+      "id": 1453,
+      "url": "https://bangumi.moe",
+      "title": "Bangumi.moe",
+      "description": "Offers a selection of anime torrents for download.",
+      "category": "downloads",
+      "tags": [
+        "torrent",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.591Z",
+      "featured": false
+    },
+    {
+      "id": 1454,
+      "url": "https://nipponsei.minglong.org",
+      "title": "Nipponsei",
+      "description": "Specializes in anime music releases available via XDCC.",
+      "category": "downloads",
+      "tags": [
+        "xdcc",
+        "anime",
+        "music"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.598Z",
+      "featured": false
+    },
+    {
+      "id": 1455,
+      "url": "https://dkb.io",
+      "title": "DKB",
+      "description": "Provides direct download links for various anime series.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.602Z",
+      "featured": false
+    },
+    {
+      "id": 1456,
+      "url": "https://flugelanime.com",
+      "title": "Flugel Anime",
+      "description": "Hosts a collection of anime series and movies available for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.604Z",
+      "featured": false
+    },
+    {
+      "id": 1457,
+      "url": "https://noobsubs.com",
+      "title": "NoobSubs",
+      "description": "Offers direct downloads of anime series with a focus on high-quality releases.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "high quality"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.618Z",
+      "featured": false
+    },
+    {
+      "id": 1458,
+      "url": "https://animekaizoku.com",
+      "title": "AnimeKaizoku",
+      "description": "Provides direct download links for anime series and movies.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.622Z",
+      "featured": false
+    },
+    {
+      "id": 1459,
+      "url": "https://toonworld4all.me",
+      "title": "ToonWorld4All",
+      "description": "Hosts a variety of animated series, including anime, available for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "cartoons"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.627Z",
+      "featured": false
+    },
+    {
+      "id": 1460,
+      "url": "https://cartoonsarea.com",
+      "title": "CartoonsArea",
+      "description": "Offers direct downloads of various animated series, including anime.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "cartoons"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.635Z",
+      "featured": false
+    },
+    {
+      "id": 1461,
+      "url": "https://toonshub.com",
+      "title": "ToonsHub",
+      "description": "Provides direct download links for anime and other animated series.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "cartoons"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.641Z",
+      "featured": false
+    },
+    {
+      "id": 1462,
+      "url": "https://coolsanime.me",
+      "title": "CoolsAnime",
+      "description": "Hosts a collection of anime series and movies available for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.646Z",
+      "featured": false
+    },
+    {
+      "id": 1463,
+      "url": "https://animerss.com",
+      "title": "AnimeRss",
+      "description": "Provides raw anime episodes for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "raw"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.650Z",
+      "featured": false
+    },
+    {
+      "id": 1464,
+      "url": "https://jpfiles.eu",
+      "title": "JPFiles",
+      "description": "Offers raw Japanese media files, including anime, for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "raw",
+        "japanese"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.654Z",
+      "featured": false
+    },
+    {
+      "id": 1465,
+      "url": "https://chauthanh.info",
+      "title": "Chauthanh",
+      "description": "Hosts a variety of anime series and movies available for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.658Z",
+      "featured": false
+    },
+    {
+      "id": 1466,
+      "url": "https://deadtoons.co",
+      "title": "DeadToons",
+      "description": "Provides direct download links for various animated series, including anime.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "cartoons"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.662Z",
+      "featured": false
+    },
+    {
+      "id": 1467,
+      "url": "https://anilot.org",
+      "title": "Anilot",
+      "description": "Offers direct downloads of anime series and movies.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime",
+        "movies"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.669Z",
+      "featured": false
+    },
+    {
+      "id": 1468,
+      "url": "https://anidl.org",
+      "title": "AniDL",
+      "description": "Hosts a collection of anime series available for direct download.",
+      "category": "downloads",
+      "tags": [
+        "direct download",
+        "anime"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.674Z",
+      "featured": false
+    },
+    {
+      "id": 1469,
+      "url": "https://animetime.pl",
+      "title": "Anime Time",
+      "description": "Provides a platform to watch anime series online.",
+      "category": "downloads",
+      "tags": [
+        "anime",
+        "streaming"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.679Z",
+      "featured": false
+    },
+    {
+      "id": 1470,
+      "url": "https://mangaplus.shueisha.co.jp",
+      "title": "Manga Plus",
+      "description": "Read manga officially from Shueisha",
+      "category": "manga",
+      "tags": [
+        "reading",
+        "official"
+      ],
+      "nsfw": false,
+      "createdAt": "2025-03-24T19:01:02.683Z",
+      "featured": true
+    },
+    {
+      "id": 1471,
+      "url": "https://nhentai.net",
+      "title": "nHentai",
+      "description": "Popular site for manga with adult content",
+      "category": "manga",
+      "tags": [
+        "manga",
+        "hentai",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.693Z",
+      "featured": true
+    },
+    {
+      "id": 1472,
+      "url": "https://e-hentai.org",
+      "title": "E-Hentai",
+      "description": "Large adult manga collection with a variety of categories",
+      "category": "manga",
+      "tags": [
+        "manga",
+        "hentai",
+        "doujinshi",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.697Z",
+      "featured": true
+    },
+    {
+      "id": 1473,
+      "url": "https://hentaifox.com",
+      "title": "HentaiFox",
+      "description": "Popular doujinshi and manga site with adult content",
+      "category": "manga",
+      "tags": [
+        "manga",
+        "doujinshi",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.702Z",
+      "featured": false
+    },
+    {
+      "id": 1474,
+      "url": "https://hitomi.la",
+      "title": "Hitomi.la",
+      "description": "Adult manga and doujinshi repository",
+      "category": "manga",
+      "tags": [
+        "manga",
+        "doujinshi",
+        "nsfw"
+      ],
+      "nsfw": true,
+      "createdAt": "2025-03-24T19:01:02.707Z",
+      "featured": false
     }
   ],
   "users": [],
