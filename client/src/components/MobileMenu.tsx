@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { X, Home, Info, Settings, Mail } from "lucide-react";
+import { X, Home, Info, Settings, Mail, History } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
@@ -73,6 +73,19 @@ export function MobileMenu({
             >
               <Mail className="mr-2 h-5 w-5" />
               <span>Contact</span>
+            </a>
+
+            <a
+              href="/history"
+              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/history';
+                onClose();
+              }}
+            >
+              <History className="mr-2 h-5 w-5" />
+              <span>History</span>
             </a>
             
             {openSettings && (
