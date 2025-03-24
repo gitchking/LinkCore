@@ -28,17 +28,17 @@ export default function Home() {
 
   // Filter links by search query and NSFW settings
   const filteredLinks = useMemo(() => {
-    let result = links;
+    let result = links as any[];
     
     // First filter by NSFW setting
     if (!showNSFW) {
-      result = (result as any[]).filter(link => !link.nsfw);
+      result = result.filter(link => !link.nsfw);
     }
     
     // Then filter by search query if present
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      result = (result as any[]).filter(link => 
+      result = result.filter(link => 
         link.title.toLowerCase().includes(query) || 
         (link.description && link.description.toLowerCase().includes(query)) || 
         link.url.toLowerCase().includes(query) ||
