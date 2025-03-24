@@ -1,6 +1,5 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Search, X, Home, Info, Settings } from "lucide-react";
+import { X, Home, Info, Settings } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
@@ -35,20 +34,6 @@ export function MobileMenu({
         </SheetHeader>
         
         <div className="p-4">
-          {/* Mobile Search */}
-          <div className="mb-4">
-            <div className="relative">
-              <Input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search across all categories..."
-                className="w-full py-2 pl-10 pr-4 rounded-full"
-              />
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            </div>
-          </div>
-          
           {/* Theme Toggle */}
           <div className="mb-4 flex items-center justify-between px-3 py-2">
             <span className="text-foreground">Theme</span>
