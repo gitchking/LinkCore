@@ -10,9 +10,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API for links
   app.get("/api/links", async (req, res) => {
     try {
+      console.log("GET /api/links - Fetching all links");
       const links = await storage.getAllLinks();
+      console.log(`GET /api/links - Retrieved ${links.length} links`);
+      
+      // Debug: count links by category
+      const categories: Record<string, number> = {};
+      links.forEach(link => {
+        categories[link.category] = (categories[link.category] || 0) + 1;
+      });
+      console.log("Links by category:", categories);
+      
       res.json(links);
     } catch (error) {
+      console.error("Error getting all links:", error);
       res.status(500).json({ message: "Failed to fetch links" });
     }
   });
@@ -143,9 +154,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/categories/:category/links", async (req, res) => {
     try {
       const { category } = req.params;
+      console.log(`GET /api/categories/${category}/links - Fetching links for category: ${category}`);
+      
       const links = await storage.getLinksByCategory(category);
+      console.log(`GET /api/categories/${category}/links - Retrieved ${links.length} links`);
+      
+      // Debug: log first 3 links if available
+      if (links.length > 0) {
+        console.log(`First ${Math.min(3, links.length)} links in ${category} category:`, 
+          links.slice(0, 3).map(l => ({ id: l.id, title: l.title })));
+      }
+      
       res.json(links);
     } catch (error) {
+      console.error(`Error getting links for category ${req.params.category}:`, error);
       res.status(500).json({ message: "Failed to fetch links for category" });
     }
   });

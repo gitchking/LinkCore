@@ -492,6 +492,13 @@ const useFirebase = process.env.USE_FIREBASE === 'true';
 // Create in-memory storage regardless
 const memStorage = new MemStorage();
 
+// Let's immediately check what links are available in memory storage
+memStorage.getAllLinks().then(links => {
+  console.log(`Memory Storage initialized with ${links.length} links`);
+  const animeLinks = links.filter(link => link.category === 'anime');
+  console.log(`Memory Storage has ${animeLinks.length} anime links`);
+});
+
 if (useFirebase) {
   try {
     console.log('Setting up resilient storage with Firebase primary and in-memory fallback');
