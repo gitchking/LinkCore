@@ -257,180 +257,167 @@ import { FirebaseStorage } from './firebaseStorage';
 class ResilientStorage implements IStorage {
   private primaryStorage: IStorage;
   private fallbackStorage: IStorage;
-  private usesFallback: boolean = false;
 
   constructor(primary: IStorage, fallback: IStorage) {
     this.primaryStorage = primary;
     this.fallbackStorage = fallback;
+    console.log('ResilientStorage initialized with primary and fallback storage');
   }
 
-  private async withFallback<T>(operation: () => Promise<T>): Promise<T> {
+  // Generic method to handle all operations with fallback support
+  private async withFallback<T>(operation: () => Promise<T>, fallbackOperation: () => Promise<T>, methodName: string): Promise<T> {
     try {
+      // First attempt with primary storage
       return await operation();
     } catch (error) {
-      if (!this.usesFallback) {
-        console.error('Firebase operation failed, switching to in-memory fallback:', error);
-        this.usesFallback = true;
+      // Log the error and try the fallback
+      console.error(`Error in ${methodName}, using fallback:`, error);
+      try {
+        return await fallbackOperation();
+      } catch (fallbackError) {
+        console.error(`Fallback also failed in ${methodName}:`, fallbackError);
+        throw fallbackError; // If both fail, propagate the fallback error
       }
-      // Re-throw specific errors that are not related to Firebase connection
-      throw error;
     }
   }
 
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    try {
-      return await this.primaryStorage.getUser(id);
-    } catch (error) {
-      console.error('Error in getUser, using fallback:', error);
-      return this.fallbackStorage.getUser(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getUser(id),
+      () => this.fallbackStorage.getUser(id),
+      'getUser'
+    );
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    try {
-      return await this.primaryStorage.getUserByUsername(username);
-    } catch (error) {
-      console.error('Error in getUserByUsername, using fallback:', error);
-      return this.fallbackStorage.getUserByUsername(username);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getUserByUsername(username),
+      () => this.fallbackStorage.getUserByUsername(username),
+      'getUserByUsername'
+    );
   }
 
   async createUser(user: InsertUser): Promise<User> {
-    try {
-      return await this.primaryStorage.createUser(user);
-    } catch (error) {
-      console.error('Error in createUser, using fallback:', error);
-      return this.fallbackStorage.createUser(user);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.createUser(user),
+      () => this.fallbackStorage.createUser(user),
+      'createUser'
+    );
   }
 
   // Link methods
   async getAllLinks(): Promise<Link[]> {
-    try {
-      return await this.primaryStorage.getAllLinks();
-    } catch (error) {
-      console.error('Error in getAllLinks, using fallback:', error);
-      return this.fallbackStorage.getAllLinks();
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getAllLinks(),
+      () => this.fallbackStorage.getAllLinks(),
+      'getAllLinks'
+    );
   }
 
   async getLink(id: number): Promise<Link | undefined> {
-    try {
-      return await this.primaryStorage.getLink(id);
-    } catch (error) {
-      console.error('Error in getLink, using fallback:', error);
-      return this.fallbackStorage.getLink(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getLink(id),
+      () => this.fallbackStorage.getLink(id),
+      'getLink'
+    );
   }
 
   async createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
-    try {
-      return await this.primaryStorage.createLink(link);
-    } catch (error) {
-      console.error('Error in createLink, using fallback:', error);
-      return this.fallbackStorage.createLink(link);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.createLink(link),
+      () => this.fallbackStorage.createLink(link),
+      'createLink'
+    );
   }
 
   async updateLink(link: Link): Promise<Link> {
-    try {
-      return await this.primaryStorage.updateLink(link);
-    } catch (error) {
-      console.error('Error in updateLink, using fallback:', error);
-      return this.fallbackStorage.updateLink(link);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.updateLink(link),
+      () => this.fallbackStorage.updateLink(link),
+      'updateLink'
+    );
   }
 
   async updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined> {
-    try {
-      return await this.primaryStorage.updateLinkFeatured(id, featured);
-    } catch (error) {
-      console.error('Error in updateLinkFeatured, using fallback:', error);
-      return this.fallbackStorage.updateLinkFeatured(id, featured);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.updateLinkFeatured(id, featured),
+      () => this.fallbackStorage.updateLinkFeatured(id, featured),
+      'updateLinkFeatured'
+    );
   }
 
   async deleteLink(id: number): Promise<boolean> {
-    try {
-      return await this.primaryStorage.deleteLink(id);
-    } catch (error) {
-      console.error('Error in deleteLink, using fallback:', error);
-      return this.fallbackStorage.deleteLink(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.deleteLink(id),
+      () => this.fallbackStorage.deleteLink(id),
+      'deleteLink'
+    );
   }
 
   async getFeaturedLinks(): Promise<Link[]> {
-    try {
-      return await this.primaryStorage.getFeaturedLinks();
-    } catch (error) {
-      console.error('Error in getFeaturedLinks, using fallback:', error);
-      return this.fallbackStorage.getFeaturedLinks();
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getFeaturedLinks(),
+      () => this.fallbackStorage.getFeaturedLinks(),
+      'getFeaturedLinks'
+    );
   }
 
   async getLinksByCategory(category: string): Promise<Link[]> {
-    try {
-      return await this.primaryStorage.getLinksByCategory(category);
-    } catch (error) {
-      console.error('Error in getLinksByCategory, using fallback:', error);
-      return this.fallbackStorage.getLinksByCategory(category);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getLinksByCategory(category),
+      () => this.fallbackStorage.getLinksByCategory(category),
+      'getLinksByCategory'
+    );
   }
 
   async searchLinks(query: string): Promise<Link[]> {
-    try {
-      return await this.primaryStorage.searchLinks(query);
-    } catch (error) {
-      console.error('Error in searchLinks, using fallback:', error);
-      return this.fallbackStorage.searchLinks(query);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.searchLinks(query),
+      () => this.fallbackStorage.searchLinks(query),
+      'searchLinks'
+    );
   }
 
   // Contact message methods
   async getAllContactMessages(): Promise<ContactMessage[]> {
-    try {
-      return await this.primaryStorage.getAllContactMessages();
-    } catch (error) {
-      console.error('Error in getAllContactMessages, using fallback:', error);
-      return this.fallbackStorage.getAllContactMessages();
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getAllContactMessages(),
+      () => this.fallbackStorage.getAllContactMessages(),
+      'getAllContactMessages'
+    );
   }
 
   async getContactMessage(id: number): Promise<ContactMessage | undefined> {
-    try {
-      return await this.primaryStorage.getContactMessage(id);
-    } catch (error) {
-      console.error('Error in getContactMessage, using fallback:', error);
-      return this.fallbackStorage.getContactMessage(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.getContactMessage(id),
+      () => this.fallbackStorage.getContactMessage(id),
+      'getContactMessage'
+    );
   }
 
   async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
-    try {
-      return await this.primaryStorage.createContactMessage(message);
-    } catch (error) {
-      console.error('Error in createContactMessage, using fallback:', error);
-      return this.fallbackStorage.createContactMessage(message);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.createContactMessage(message),
+      () => this.fallbackStorage.createContactMessage(message),
+      'createContactMessage'
+    );
   }
 
   async markContactMessageAsRead(id: number): Promise<ContactMessage | undefined> {
-    try {
-      return await this.primaryStorage.markContactMessageAsRead(id);
-    } catch (error) {
-      console.error('Error in markContactMessageAsRead, using fallback:', error);
-      return this.fallbackStorage.markContactMessageAsRead(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.markContactMessageAsRead(id),
+      () => this.fallbackStorage.markContactMessageAsRead(id),
+      'markContactMessageAsRead'
+    );
   }
 
   async deleteContactMessage(id: number): Promise<boolean> {
-    try {
-      return await this.primaryStorage.deleteContactMessage(id);
-    } catch (error) {
-      console.error('Error in deleteContactMessage, using fallback:', error);
-      return this.fallbackStorage.deleteContactMessage(id);
-    }
+    return this.withFallback(
+      () => this.primaryStorage.deleteContactMessage(id),
+      () => this.fallbackStorage.deleteContactMessage(id),
+      'deleteContactMessage'
+    );
   }
 }
 
