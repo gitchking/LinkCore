@@ -4,12 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Trash2, Edit, Eye, EyeOff, Mail, CheckCircle2, XCircle } from "lucide-react";
+import { Trash2, Edit, Eye, EyeOff, Mail, CheckCircle2 } from "lucide-react";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { CATEGORIES } from "@/lib/icons";
@@ -113,7 +112,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
       });
       setIsEditing(false);
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: "Error",
         description: "Failed to update the link.",
@@ -135,7 +134,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
       });
       resetForm();
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: "Error",
         description: "Failed to delete the link.",
@@ -156,7 +155,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
         description: "The link's featured status has been updated.",
       });
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: "Error",
         description: "Failed to update the link's featured status.",
@@ -164,54 +163,6 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
       });
     }
   });
-  
-  // Handle form input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-  
-  // Handle checkbox changes
-  const handleCheckboxChange = (name: string, checked: boolean) => {
-    setFormData(prev => ({ ...prev, [name]: checked }));
-  };
-  
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!selectedLink) return;
-    
-    const updatedLink = {
-      id: selectedLink.id,
-      url: formData.url,
-      title: formData.title,
-      description: formData.description,
-      category: formData.category,
-      tags: formData.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== ""),
-      featured: formData.featured,
-      nsfw: formData.nsfw
-    };
-    
-    updateLinkMutation.mutate(updatedLink);
-  };
-  
-  // Handle delete
-  const handleDelete = () => {
-    if (selectedLinkId) {
-      deleteLinkMutation.mutate(selectedLinkId);
-    }
-  };
-  
-  // Handle toggling featured status
-  const handleToggleFeatured = () => {
-    if (selectedLinkId && selectedLink) {
-      toggleFeaturedMutation.mutate({ 
-        id: selectedLinkId, 
-        featured: !selectedLink.featured 
-      });
-    }
-  };
   
   // Fetch contact messages
   const [selectedContactId, setSelectedContactId] = useState<number | null>(null);
@@ -288,6 +239,54 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
     }
   };
   
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
+  // Handle checkbox changes
+  const handleCheckboxChange = (name: string, checked: boolean) => {
+    setFormData(prev => ({ ...prev, [name]: checked }));
+  };
+  
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!selectedLink) return;
+    
+    const updatedLink = {
+      id: selectedLink.id,
+      url: formData.url,
+      title: formData.title,
+      description: formData.description,
+      category: formData.category,
+      tags: formData.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== ""),
+      featured: formData.featured,
+      nsfw: formData.nsfw
+    };
+    
+    updateLinkMutation.mutate(updatedLink);
+  };
+  
+  // Handle delete
+  const handleDelete = () => {
+    if (selectedLinkId) {
+      deleteLinkMutation.mutate(selectedLinkId);
+    }
+  };
+  
+  // Handle toggling featured status
+  const handleToggleFeatured = () => {
+    if (selectedLinkId && selectedLink) {
+      toggleFeaturedMutation.mutate({ 
+        id: selectedLinkId, 
+        featured: !selectedLink.featured 
+      });
+    }
+  };
+  
   return (
     <Dialog open={isOpen} onOpenChange={(open) => {
       if (!open) {
@@ -339,216 +338,216 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
                   </SelectContent>
                 </Select>
               </div>
-          
-          {selectedLink && (
-            <>
-              {!isEditing ? (
-                /* View mode */
-                <div className="space-y-4 border rounded-md p-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">{selectedLink.title}</h3>
-                      <a href={selectedLink.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                        {selectedLink.url}
-                      </a>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        onClick={() => setIsEditing(true)}
-                      >
-                        <Edit className="h-4 w-4 mr-1" /> Edit
-                      </Button>
-                      <Button 
-                        variant={selectedLink.featured ? "default" : "outline"} 
-                        size="sm" 
-                        onClick={handleToggleFeatured}
-                      >
-                        {selectedLink.featured ? (
-                          <>
-                            <Eye className="h-4 w-4 mr-1" /> Featured
-                          </>
-                        ) : (
-                          <>
-                            <EyeOff className="h-4 w-4 mr-1" /> Not Featured
-                          </>
-                        )}
-                      </Button>
-                      <Button 
-                        variant="destructive" 
-                        size="sm" 
-                        onClick={() => setConfirmDelete(true)}
-                      >
-                        <Trash2 className="h-4 w-4 mr-1" /> Delete
-                      </Button>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">Description:</p>
-                    <p className="text-sm">{selectedLink.description}</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Category:</p>
-                      <p className="text-sm font-medium">
-                        {CATEGORIES[selectedLink.category]?.name || selectedLink.category}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">NSFW:</p>
-                      <p className="text-sm">{selectedLink.nsfw ? "Yes" : "No"}</p>
-                    </div>
-                  </div>
-                  
-                  {selectedLink.tags && selectedLink.tags.length > 0 && (
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Tags:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {selectedLink.tags.map((tag, index) => (
-                          <span 
-                            key={index} 
-                            className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full"
+              
+              {selectedLink && (
+                <>
+                  {!isEditing ? (
+                    /* View mode */
+                    <div className="space-y-4 border rounded-md p-4">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-lg font-semibold">{selectedLink.title}</h3>
+                          <a href={selectedLink.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                            {selectedLink.url}
+                          </a>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={() => setIsEditing(true)}
                           >
-                            {tag}
-                          </span>
-                        ))}
+                            <Edit className="h-4 w-4 mr-1" /> Edit
+                          </Button>
+                          <Button 
+                            variant={selectedLink.featured ? "default" : "outline"} 
+                            size="sm" 
+                            onClick={handleToggleFeatured}
+                          >
+                            {selectedLink.featured ? (
+                              <>
+                                <Eye className="h-4 w-4 mr-1" /> Featured
+                              </>
+                            ) : (
+                              <>
+                                <EyeOff className="h-4 w-4 mr-1" /> Not Featured
+                              </>
+                            )}
+                          </Button>
+                          <Button 
+                            variant="destructive" 
+                            size="sm" 
+                            onClick={() => setConfirmDelete(true)}
+                          >
+                            <Trash2 className="h-4 w-4 mr-1" /> Delete
+                          </Button>
+                        </div>
                       </div>
+                      
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-2">Description:</p>
+                        <p className="text-sm">{selectedLink.description}</p>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-1">Category:</p>
+                          <p className="text-sm font-medium">
+                            {CATEGORIES[selectedLink.category]?.name || selectedLink.category}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-1">NSFW:</p>
+                          <p className="text-sm">{selectedLink.nsfw ? "Yes" : "No"}</p>
+                        </div>
+                      </div>
+                      
+                      {selectedLink.tags && selectedLink.tags.length > 0 && (
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-1">Tags:</p>
+                          <div className="flex flex-wrap gap-1">
+                            {selectedLink.tags.map((tag, index) => (
+                              <span 
+                                key={index} 
+                                className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Confirmation for delete */}
+                      {confirmDelete && (
+                        <div className="mt-4 p-4 border border-destructive rounded-md bg-destructive/10">
+                          <p className="text-sm font-medium text-destructive mb-2">
+                            Are you sure you want to delete this link?
+                          </p>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={handleDelete}
+                            >
+                              Yes, Delete
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => setConfirmDelete(false)}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                  
-                  {/* Confirmation for delete */}
-                  {confirmDelete && (
-                    <div className="mt-4 p-4 border border-destructive rounded-md bg-destructive/10">
-                      <p className="text-sm font-medium text-destructive mb-2">
-                        Are you sure you want to delete this link?
-                      </p>
-                      <div className="flex gap-2">
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={handleDelete}
+                  ) : (
+                    /* Edit mode */
+                    <form onSubmit={handleSubmit} className="space-y-4 border rounded-md p-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="title">Title</Label>
+                        <Input
+                          id="title"
+                          name="title"
+                          value={formData.title}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="url">URL</Label>
+                        <Input
+                          id="url"
+                          name="url"
+                          value={formData.url}
+                          onChange={handleInputChange}
+                          type="url"
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="description">Description</Label>
+                        <Textarea
+                          id="description"
+                          name="description"
+                          value={formData.description}
+                          onChange={handleInputChange}
+                          rows={3}
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="category">Category</Label>
+                        <Select 
+                          value={formData.category} 
+                          onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
                         >
-                          Yes, Delete
-                        </Button>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {Object.keys(CATEGORIES).filter(cat => cat !== 'featured').map((cat) => (
+                              <SelectItem key={cat} value={cat}>
+                                {CATEGORIES[cat].name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="tags">Tags (comma separated)</Label>
+                        <Input
+                          id="tags"
+                          name="tags"
+                          value={formData.tags}
+                          onChange={handleInputChange}
+                          placeholder="anime, manga, free, etc."
+                        />
+                      </div>
+                      
+                      <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="featured"
+                            checked={formData.featured}
+                            onCheckedChange={(checked) => 
+                              handleCheckboxChange("featured", checked === true)
+                            }
+                          />
+                          <Label htmlFor="featured">Featured</Label>
+                        </div>
+                        
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="nsfw"
+                            checked={formData.nsfw}
+                            onCheckedChange={(checked) => 
+                              handleCheckboxChange("nsfw", checked === true)
+                            }
+                          />
+                          <Label htmlFor="nsfw">NSFW</Label>
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-end gap-2 pt-4">
                         <Button
+                          type="button"
                           variant="outline"
-                          size="sm"
-                          onClick={() => setConfirmDelete(false)}
+                          onClick={() => setIsEditing(false)}
                         >
                           Cancel
                         </Button>
+                        <Button type="submit">Save Changes</Button>
                       </div>
-                    </div>
+                    </form>
                   )}
-                </div>
-              ) : (
-                /* Edit mode */
-                <form onSubmit={handleSubmit} className="space-y-4 border rounded-md p-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="title">Title</Label>
-                    <Input
-                      id="title"
-                      name="title"
-                      value={formData.title}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="url">URL</Label>
-                    <Input
-                      id="url"
-                      name="url"
-                      value={formData.url}
-                      onChange={handleInputChange}
-                      type="url"
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="description">Description</Label>
-                    <Textarea
-                      id="description"
-                      name="description"
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      rows={3}
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Category</Label>
-                    <Select 
-                      value={formData.category} 
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Object.keys(CATEGORIES).filter(cat => cat !== 'featured').map((cat) => (
-                          <SelectItem key={cat} value={cat}>
-                            {CATEGORIES[cat].name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="tags">Tags (comma separated)</Label>
-                    <Input
-                      id="tags"
-                      name="tags"
-                      value={formData.tags}
-                      onChange={handleInputChange}
-                      placeholder="anime, manga, free, etc."
-                    />
-                  </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="featured"
-                        checked={formData.featured}
-                        onCheckedChange={(checked) => 
-                          handleCheckboxChange("featured", checked === true)
-                        }
-                      />
-                      <Label htmlFor="featured">Featured</Label>
-                    </div>
-                    
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="nsfw"
-                        checked={formData.nsfw}
-                        onCheckedChange={(checked) => 
-                          handleCheckboxChange("nsfw", checked === true)
-                        }
-                      />
-                      <Label htmlFor="nsfw">NSFW</Label>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end gap-2 pt-4">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setIsEditing(false)}
-                    >
-                      Cancel
-                    </Button>
-                    <Button type="submit">Save Changes</Button>
-                  </div>
-                </form>
+                </>
               )}
-            </>
-          )}
             </div>
           </TabsContent>
           

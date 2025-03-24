@@ -68,7 +68,7 @@ export function SettingsDialog({
             Settings
           </DialogTitle>
           <DialogDescription>
-            Customize your LinkHub experience
+            Customize your Animatrix experience
           </DialogDescription>
         </DialogHeader>
         
