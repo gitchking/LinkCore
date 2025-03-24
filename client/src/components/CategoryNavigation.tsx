@@ -25,8 +25,8 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
     }
   }, [setActiveCategory]);
   
-  // Display first 9 categories and add "More" option
-  const visibleCategories = Object.keys(CATEGORIES).slice(0, 9);
+  // Get all categories
+  const allCategories = Object.keys(CATEGORIES);
   
   return (
     <div className="pt-16 bg-white shadow-sm sticky top-16 z-40">
@@ -46,8 +46,8 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
               {CATEGORIES['featured'].icon} Featured
             </a>
             
-            {/* Regular category tabs */}
-            {visibleCategories.map(categoryId => (
+            {/* All category tabs */}
+            {allCategories.map(categoryId => (
               categoryId !== 'featured' && (
                 <a 
                   key={categoryId}
@@ -63,14 +63,6 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
                 </a>
               )
             ))}
-            
-            {/* More dropdown */}
-            <a 
-              href="#more" 
-              className="px-4 py-2 text-sm font-medium rounded-md text-neutral-600 hover:text-primary hover:bg-primary/10 whitespace-nowrap"
-            >
-              <i className="fas fa-ellipsis-h mr-1"></i> More
-            </a>
           </nav>
         </div>
       </div>
