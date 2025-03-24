@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { LinkIcon, PlusCircle, Menu, Search, Settings } from "lucide-react";
+import { LinkIcon, PlusCircle, Menu, Search } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderProps {
   openNewLinkModal: () => void;
@@ -13,14 +14,14 @@ interface HeaderProps {
 
 export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQuery, setSearchQuery }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <header className="fixed top-0 left-0 right-0 bg-background border-b shadow-sm z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
               <LinkIcon className="text-primary h-5 w-5" />
-              <h1 className="text-xl font-bold font-montserrat text-neutral-800">
+              <h1 className="text-xl font-bold text-foreground">
                 Link<span className="text-primary">Hub</span>
               </h1>
             </div>
@@ -41,7 +42,8 @@ export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQ
           </div>
           
           {/* Account/Actions */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
             <Button 
               onClick={openNewLinkModal}
               className="flex"

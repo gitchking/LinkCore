@@ -28,11 +28,11 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
   return (
     <section id={category} className={`mb-8 ${!isFeatured ? 'h-full' : ''}`}>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold font-montserrat text-neutral-800 flex items-center">
+        <h2 className="text-lg font-bold text-foreground flex items-center">
           <span className="mr-2">{categoryInfo.icon}</span>
           {categoryInfo.name}
           {!isFeatured && (
-            <span className="ml-2 text-xs font-normal bg-neutral-100 px-2 py-0.5 rounded-full text-neutral-600">
+            <span className="ml-2 text-xs font-normal bg-muted px-2 py-0.5 rounded-full text-muted-foreground">
               {links.length}
             </span>
           )}
@@ -69,20 +69,20 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
           links.map(link => (
             <div 
               key={link.id}
-              className="bg-white rounded-md shadow-sm border border-neutral-200 p-4 hover:shadow-md transition-shadow"
+              className="bg-card rounded-md shadow-sm border border-border p-4 hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-start">
                 <div className="flex-1">
-                  <h3 className="font-medium text-base text-neutral-900 line-clamp-2">{link.title}</h3>
+                  <h3 className="font-medium text-base text-card-foreground line-clamp-2">{link.title}</h3>
                   <ContentRatingBadge isNSFW={link.nsfw} className="mt-1" />
                 </div>
                 <div className="flex-shrink-0 ml-2">
                   {CATEGORIES[link.category] && CATEGORIES[link.category].icon}
                 </div>
               </div>
-              <p className="text-neutral-500 text-sm mt-2 line-clamp-2">{link.description}</p>
+              <p className="text-muted-foreground text-sm mt-2 line-clamp-2">{link.description}</p>
               <div className="flex items-center mt-3">
-                <Link className="h-4 w-4 mr-1 text-neutral-400" />
+                <Link className="h-4 w-4 mr-1 text-muted-foreground" />
                 <a 
                   href={link.url} 
                   target="_blank" 
@@ -97,7 +97,7 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
                   {link.tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="text-xs bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-full"
+                      className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full"
                     >
                       {tag}
                     </span>
