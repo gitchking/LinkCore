@@ -132,13 +132,6 @@ export default function Home() {
         openSettings={() => setSettingsOpen(true)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        toggleDevMode={() => {
-          setIsDevMode(!isDevMode);
-          if (isDevMode) {
-            setPostManagementOpen(false);
-          }
-        }}
-        isDevMode={isDevMode}
       />
       
       <CategoryNavigation 

@@ -92,7 +92,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
   // Update link mutation
   const updateLinkMutation = useMutation({
     mutationFn: async (updatedLink: any) => {
-      return apiRequest(`/api/links/${updatedLink.id}`, "PATCH", updatedLink);
+      return apiRequest("PATCH", `/api/links/${updatedLink.id}`, updatedLink);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/links'] });
@@ -114,7 +114,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
   // Delete link mutation
   const deleteLinkMutation = useMutation({
     mutationFn: async (id: number) => {
-      return apiRequest(`/api/links/${id}`, "DELETE");
+      return apiRequest("DELETE", `/api/links/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/links'] });
@@ -136,7 +136,7 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
   // Toggle featured mutation
   const toggleFeaturedMutation = useMutation({
     mutationFn: async ({ id, featured }: { id: number, featured: boolean }) => {
-      return apiRequest(`/api/links/${id}/featured`, "PATCH", { featured });
+      return apiRequest("PATCH", `/api/links/${id}/featured`, { featured });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/links'] });

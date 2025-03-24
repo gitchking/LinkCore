@@ -108,6 +108,19 @@ export class MemStorage implements IStorage {
 
   async createLink(insertLink: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
     const id = this.linkId++;
+    
+    // Type assertion to properly define the structure of insertLink
+    const typedLink = insertLink as unknown as {
+      url: string;
+      title: string;
+      description: string;
+      category: string;
+      tags: string[];
+      nsfw: boolean;
+      createdAt: string;
+      featured: boolean;
+    };
+    
     // Extract all the properties we need to create a valid Link object
     const {
       url,
@@ -118,7 +131,7 @@ export class MemStorage implements IStorage {
       nsfw = false, // Default to false if undefined
       createdAt,
       featured
-    } = insertLink as InsertLink & { createdAt: string, featured: boolean };
+    } = typedLink;
     
     // Create the complete link object
     const link: Link = {
