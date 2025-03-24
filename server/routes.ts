@@ -193,13 +193,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } catch (storageError) {
         console.error("Storage error creating contact message:", storageError);
         
-        // Explicitly try the in-memory fallback as a last resort
-        console.log("Explicitly trying in-memory storage as fallback...");
-        const memStorage = new MemStorage();
-        const createdMessage = await memStorage.createContactMessage(messageData);
-        console.log("Successfully created contact message with fallback storage:", createdMessage);
-        
-        return res.status(201).json(createdMessage);
+        try {
+          // Explicitly try the in-memory fallback as a last resort
+          console.log("Explicitly trying in-memory storage as fallback...");
+          const memStorage = getMemoryStorageInstance();
+          const createdMessage = await memStorage.createContactMessage(messageData);
+          console.log("Successfully created contact message with fallback storage:", createdMessage);
+          
+          return res.status(201).json(createdMessage);
+        } catch (fallbackError) {
+          console.error("Even fallback storage failed:", fallbackError);
+          throw storageError; // Re-throw the original error
+        }
       }
     } catch (error) {
       console.error("Error details:", error);
