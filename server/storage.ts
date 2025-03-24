@@ -10,7 +10,9 @@ export interface IStorage {
   getAllLinks(): Promise<Link[]>;
   getLink(id: number): Promise<Link | undefined>;
   createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link>;
+  updateLink(link: Link): Promise<Link>;
   updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined>;
+  deleteLink(id: number): Promise<boolean>;
   getFeaturedLinks(): Promise<Link[]>;
   getLinksByCategory(category: string): Promise<Link[]>;
   searchLinks(query: string): Promise<Link[]>;
@@ -135,6 +137,17 @@ export class MemStorage implements IStorage {
     return link;
   }
 
+  async updateLink(link: Link): Promise<Link> {
+    // Ensure the link exists
+    if (!this.links.has(link.id)) {
+      throw new Error(`Link with ID ${link.id} not found`);
+    }
+    
+    // Update the link in storage
+    this.links.set(link.id, link);
+    return link;
+  }
+  
   async updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined> {
     const link = this.links.get(id);
     if (!link) return undefined;
@@ -142,6 +155,14 @@ export class MemStorage implements IStorage {
     const updatedLink = { ...link, featured };
     this.links.set(id, updatedLink);
     return updatedLink;
+  }
+  
+  async deleteLink(id: number): Promise<boolean> {
+    if (!this.links.has(id)) {
+      return false;
+    }
+    
+    return this.links.delete(id);
   }
 
   async getFeaturedLinks(): Promise<Link[]> {

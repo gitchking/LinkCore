@@ -58,7 +58,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API to feature/unfeature a link
-  app.patch("/api/links/:id/feature", async (req, res) => {
+  app.patch("/api/links/:id/featured", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -79,6 +79,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: validationError.message });
       }
       res.status(500).json({ message: "Failed to update link" });
+    }
+  });
+  
+  // API to update link
+  app.patch("/api/links/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid ID format" });
+      }
+
+      const linkData = insertLinkSchema.partial().parse(req.body);
+      
+      // Add ID to the data for the storage method
+      const updatedLinkData = {
+        ...linkData,
+        id
+      };
+      
+      const existingLink = await storage.getLink(id);
+      if (!existingLink) {
+        return res.status(404).json({ message: "Link not found" });
+      }
+      
+      // Create updated link combining existing data with new data
+      const updatedLink = {
+        ...existingLink,
+        ...updatedLinkData
+      };
+      
+      const result = await storage.updateLink(updatedLink);
+      res.json(result);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const validationError = fromZodError(error);
+        return res.status(400).json({ message: validationError.message });
+      }
+      res.status(500).json({ message: "Failed to update link" });
+    }
+  });
+  
+  // API to delete link
+  app.delete("/api/links/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid ID format" });
+      }
+      
+      const success = await storage.deleteLink(id);
+      if (!success) {
+        return res.status(404).json({ message: "Link not found" });
+      }
+      
+      res.status(204).end();
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete link" });
     }
   });
 
