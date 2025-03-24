@@ -152,8 +152,9 @@ export default function Home() {
       <div className="fixed bottom-6 right-6 md:hidden flex flex-col space-y-4">
         <Button
           onClick={() => setSettingsOpen(true)}
-          className="w-14 h-14 rounded-full shadow-lg bg-neutral-800 hover:bg-neutral-700"
+          className="w-14 h-14 rounded-full shadow-lg bg-muted text-muted-foreground hover:bg-muted/80"
           size="icon"
+          variant="outline"
         >
           <Settings className="h-6 w-6" />
         </Button>

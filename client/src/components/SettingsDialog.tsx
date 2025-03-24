@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Settings, Shield } from "lucide-react";
+import { Settings, Shield, Moon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface SettingsDialogProps {
   isOpen: boolean;
@@ -22,21 +23,40 @@ export function SettingsDialog({ isOpen, onClose, showNSFW, setShowNSFW }: Setti
             Settings
           </DialogTitle>
           <DialogDescription>
-            Customize your Animatrix experience
+            Customize your LinkHub experience
           </DialogDescription>
         </DialogHeader>
         
         <div className="py-6 space-y-6">
+          {/* Theme Settings */}
           <div className="space-y-4">
-            <h3 className="text-lg font-medium flex items-center">
-              <Shield className="mr-2 h-5 w-5 text-neutral-600" />
+            <h3 className="text-lg font-medium flex items-center text-foreground">
+              <Moon className="mr-2 h-5 w-5 text-muted-foreground" />
+              Theme
+            </h3>
+            
+            <div className="flex items-center justify-between">
+              <div>
+                <Label className="text-base">Appearance</Label>
+                <p className="text-sm text-muted-foreground">
+                  Toggle between light and dark mode
+                </p>
+              </div>
+              <ThemeToggle showLabel={true} />
+            </div>
+          </div>
+          
+          {/* Content Filter Settings */}
+          <div className="space-y-4 pt-4 border-t">
+            <h3 className="text-lg font-medium flex items-center text-foreground">
+              <Shield className="mr-2 h-5 w-5 text-muted-foreground" />
               Content Filters
             </h3>
             
             <div className="flex items-center justify-between">
               <div>
                 <Label className="text-base">Show NSFW Content</Label>
-                <p className="text-sm text-neutral-500">
+                <p className="text-sm text-muted-foreground">
                   Toggle to show or hide mature content
                 </p>
               </div>
