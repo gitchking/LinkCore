@@ -176,130 +176,165 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
           </DialogDescription>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4 py-2">
-          {/* URL Field */}
-          <div className="space-y-1">
-            <Label htmlFor="linkUrl">
-              URL <span className="text-red-500">*</span>
-            </Label>
-            <Input
-              id="linkUrl"
-              name="url"
-              type="text"
-              placeholder="https://example.com"
-              value={formData.url}
-              onChange={handleChange}
-              className={errors.url ? "border-red-500" : ""}
-            />
-            {errors.url && (
-              <p className="text-xs text-red-500">{errors.url}</p>
-            )}
-          </div>
-          
-          {/* Title Field */}
-          <div className="space-y-1">
-            <Label htmlFor="linkTitle">
-              Title <span className="text-red-500">*</span>
-            </Label>
-            <Input
-              id="linkTitle"
-              name="title"
-              type="text"
-              placeholder="Enter a descriptive title"
-              value={formData.title}
-              onChange={handleChange}
-              className={errors.title ? "border-red-500" : ""}
-            />
-            {errors.title && (
-              <p className="text-xs text-red-500">{errors.title}</p>
-            )}
-          </div>
-          
-          {/* Description Field */}
-          <div className="space-y-1">
-            <Label htmlFor="linkDescription">
-              Description
-            </Label>
-            <Textarea
-              id="linkDescription"
-              name="description"
-              placeholder="Brief description of this link (optional)"
-              rows={3}
-              value={formData.description}
-              onChange={handleChange}
-            />
-          </div>
-          
-          {/* Category Field */}
-          <div className="space-y-1">
-            <Label htmlFor="linkCategory">
-              Category <span className="text-red-500">*</span>
-            </Label>
-            <Select
-              value={formData.category}
-              onValueChange={handleSelectChange}
-            >
-              <SelectTrigger 
-                id="linkCategory"
-                className={errors.category ? "border-red-500" : ""}
-              >
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(CATEGORIES).map(([id, { name }]) => (
-                  id !== 'featured' && (
-                    <SelectItem key={id} value={id}>
-                      {name}
-                    </SelectItem>
-                  )
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.category && (
-              <p className="text-xs text-red-500">{errors.category}</p>
-            )}
-          </div>
-          
-          {/* Tags Field */}
-          <div className="space-y-1">
-            <Label htmlFor="linkTags">
-              Tags
-            </Label>
-            <Input
-              id="linkTags"
-              name="tags"
-              type="text"
-              placeholder="Comma-separated tags (e.g., official, free, resource)"
-              value={formData.tags}
-              onChange={handleChange}
-            />
-            <p className="mt-1 text-xs text-muted-foreground">
-              Add relevant tags to make your link easier to find
+        {showPasswordPrompt ? (
+          <div className="py-4 space-y-4">
+            <div className="flex items-center space-x-2 text-amber-600">
+              <Lock className="h-5 w-5" />
+              <h3 className="font-medium">Authentication Required</h3>
+            </div>
+            
+            <p className="text-sm text-muted-foreground">
+              Please enter the administrator password to add a new link.
             </p>
-          </div>
-          
-          {/* NSFW Toggle */}
-          <div className="space-y-1">
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Content Rating</Label>
-                <p className="text-xs text-muted-foreground">Indicate whether this link contains mature content</p>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className={`flex items-center space-x-1 ${!formData.nsfw ? 'text-green-600 font-semibold' : 'text-muted-foreground'}`}>
-                  <span>SFW</span>
-                </div>
-                <Switch 
-                  checked={formData.nsfw}
-                  onCheckedChange={handleSwitchChange}
+            
+            <div className="space-y-2">
+              <div className="flex space-x-2">
+                <Input
+                  type="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={passwordError ? "border-red-500" : ""}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      verifyPassword();
+                    }
+                  }}
                 />
-                <div className={`flex items-center space-x-1 ${formData.nsfw ? 'text-red-600 font-semibold' : 'text-muted-foreground'}`}>
-                  <span>NSFW</span>
+                <Button onClick={verifyPassword}>Submit</Button>
+              </div>
+              {passwordError && (
+                <p className="text-xs text-red-500">{passwordError}</p>
+              )}
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4 py-2">
+            {/* URL Field */}
+            <div className="space-y-1">
+              <Label htmlFor="linkUrl">
+                URL <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="linkUrl"
+                name="url"
+                type="text"
+                placeholder="https://example.com"
+                value={formData.url}
+                onChange={handleChange}
+                className={errors.url ? "border-red-500" : ""}
+              />
+              {errors.url && (
+                <p className="text-xs text-red-500">{errors.url}</p>
+              )}
+            </div>
+            
+            {/* Title Field */}
+            <div className="space-y-1">
+              <Label htmlFor="linkTitle">
+                Title <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="linkTitle"
+                name="title"
+                type="text"
+                placeholder="Enter a descriptive title"
+                value={formData.title}
+                onChange={handleChange}
+                className={errors.title ? "border-red-500" : ""}
+              />
+              {errors.title && (
+                <p className="text-xs text-red-500">{errors.title}</p>
+              )}
+            </div>
+            
+            {/* Description Field */}
+            <div className="space-y-1">
+              <Label htmlFor="linkDescription">
+                Description
+              </Label>
+              <Textarea
+                id="linkDescription"
+                name="description"
+                placeholder="Brief description of this link (optional)"
+                rows={3}
+                value={formData.description}
+                onChange={handleChange}
+              />
+            </div>
+            
+            {/* Category Field */}
+            <div className="space-y-1">
+              <Label htmlFor="linkCategory">
+                Category <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                value={formData.category}
+                onValueChange={handleSelectChange}
+              >
+                <SelectTrigger 
+                  id="linkCategory"
+                  className={errors.category ? "border-red-500" : ""}
+                >
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(CATEGORIES).map(([id, { name }]) => (
+                    id !== 'featured' && (
+                      <SelectItem key={id} value={id}>
+                        {name}
+                      </SelectItem>
+                    )
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.category && (
+                <p className="text-xs text-red-500">{errors.category}</p>
+              )}
+            </div>
+            
+            {/* Tags Field */}
+            <div className="space-y-1">
+              <Label htmlFor="linkTags">
+                Tags
+              </Label>
+              <Input
+                id="linkTags"
+                name="tags"
+                type="text"
+                placeholder="Comma-separated tags (e.g., official, free, resource)"
+                value={formData.tags}
+                onChange={handleChange}
+              />
+              <p className="mt-1 text-xs text-muted-foreground">
+                Add relevant tags to make your link easier to find
+              </p>
+            </div>
+            
+            {/* NSFW Toggle */}
+            <div className="space-y-1">
+              <div className="flex items-center justify-between">
+                <div>
+                  <Label>Content Rating</Label>
+                  <p className="text-xs text-muted-foreground">Indicate whether this link contains mature content</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className={`flex items-center space-x-1 ${!formData.nsfw ? 'text-green-600 font-semibold' : 'text-muted-foreground'}`}>
+                    <span>SFW</span>
+                  </div>
+                  <Switch 
+                    checked={formData.nsfw}
+                    onCheckedChange={handleSwitchChange}
+                  />
+                  <div className={`flex items-center space-x-1 ${formData.nsfw ? 'text-red-600 font-semibold' : 'text-muted-foreground'}`}>
+                    <span>NSFW</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        )}
         
         <DialogFooter className="flex justify-end gap-3 pt-4">
           <Button
@@ -309,13 +344,15 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
           >
             Cancel
           </Button>
-          <Button
-            type="submit"
-            onClick={handleSubmit}
-            disabled={createLinkMutation.isPending}
-          >
-            {createLinkMutation.isPending ? "Submitting..." : "Submit Link"}
-          </Button>
+          {!showPasswordPrompt && (
+            <Button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={createLinkMutation.isPending}
+            >
+              {createLinkMutation.isPending ? "Submitting..." : "Submit Link"}
+            </Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

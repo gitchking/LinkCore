@@ -36,7 +36,7 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
               }`}
               onClick={(e) => handleCategoryClick(e, 'featured')}
             >
-              <span className="mr-1.5">{CATEGORIES['featured'].icon}</span> Featured
+              <span className="mr-1.5 flex items-center">{CATEGORIES['featured'].icon}</span> Featured
             </a>
             
             {/* All category tabs */}
@@ -52,7 +52,7 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
                   }`}
                   onClick={(e) => handleCategoryClick(e, categoryId)}
                 >
-                  <span className="mr-1.5">{CATEGORIES[categoryId].icon}</span> {CATEGORIES[categoryId].name}
+                  <span className="mr-1.5 flex items-center">{CATEGORIES[categoryId].icon}</span> {CATEGORIES[categoryId].name}
                 </a>
               )
             ))}
