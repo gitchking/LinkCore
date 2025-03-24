@@ -21,7 +21,7 @@ export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQ
             <div className="flex items-center space-x-2 cursor-pointer">
               <LinkIcon className="text-primary h-5 w-5" />
               <h1 className="text-xl font-bold text-foreground">
-                Link<span className="text-primary">Hub</span>
+                Animatrix
               </h1>
             </div>
           </Link>

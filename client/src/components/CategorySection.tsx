@@ -3,6 +3,7 @@ import { EmptyState } from "./EmptyState";
 import { Link } from "lucide-react";
 import { CATEGORIES } from "@/lib/icons";
 import { ContentRatingBadge } from "./ContentRatingBadge";
+import { WebsiteIcon } from "./WebsiteIcon";
 
 interface Link {
   id: number;
@@ -72,9 +73,12 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
               className="bg-card rounded-md shadow-sm border border-border p-4 hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-start">
-                <div className="flex-1">
-                  <h3 className="font-medium text-base text-card-foreground line-clamp-2">{link.title}</h3>
-                  <ContentRatingBadge isNSFW={link.nsfw} className="mt-1" />
+                <div className="flex flex-1 items-center">
+                  <WebsiteIcon url={link.url} size="sm" className="mr-3" />
+                  <div>
+                    <h3 className="font-medium text-base text-card-foreground line-clamp-2">{link.title}</h3>
+                    <ContentRatingBadge isNSFW={link.nsfw} className="mt-1" />
+                  </div>
                 </div>
                 <div className="flex-shrink-0 ml-2">
                   {CATEGORIES[link.category] && CATEGORIES[link.category].icon}
