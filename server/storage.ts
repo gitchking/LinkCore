@@ -104,6 +104,84 @@ class MemStorage implements IStorage {
       } as InsertLink & { createdAt: string, featured: boolean });
     }
     
+    // Add download sites
+    const downloadSites = [
+      {
+        url: "https://nyaa.si",
+        title: "Nyaa",
+        description: "A popular BitTorrent community focused on East Asian media, including anime, manga, and games.",
+        tags: ["torrent", "anime", "manga", "games"]
+      },
+      {
+        url: "https://animetosho.org",
+        title: "AnimeTosho",
+        description: "An automated service that mirrors torrents from Nyaa, providing direct download links and Usenet integration.",
+        tags: ["torrent", "anime", "usenet"]
+      },
+      {
+        url: "https://anidex.info",
+        title: "AniDex",
+        description: "A torrent tracker and indexer for anime-related content, supporting both torrents and XDCC downloads.",
+        tags: ["torrent", "anime", "xdcc"]
+      },
+      {
+        url: "https://subsplease.org",
+        title: "SubsPlease",
+        description: "Provides timely releases of anime episodes with English subtitles, offering both torrent and XDCC download options.",
+        tags: ["torrent", "anime", "subtitles", "xdcc"]
+      },
+      {
+        url: "https://tokyotosho.info",
+        title: "Tokyo Toshokan",
+        description: "A BitTorrent library for Japanese media, including anime, manga, and music.",
+        tags: ["torrent", "anime", "manga", "music"]
+      },
+      {
+        url: "https://hi10anime.com",
+        title: "Hi10Anime",
+        description: "Specializes in high-quality, compressed anime releases in 10-bit color depth, requiring user registration for access.",
+        tags: ["direct download", "anime", "high quality"]
+      },
+      {
+        url: "https://animeout.xyz",
+        title: "AnimeOut",
+        description: "Offers direct downloads of anime series and movies in various resolutions, with registration required.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://kayoanime.com",
+        title: "KayoAnime",
+        description: "Provides direct download links for anime series and movies.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://animk.info",
+        title: "AniMK",
+        description: "An XDCC bot offering anime series and movies for download via IRC.",
+        tags: ["xdcc", "irc", "anime"]
+      },
+      {
+        url: "https://nibl.co.uk",
+        title: "nibl.co.uk",
+        description: "Hosts XDCC bots providing anime downloads through IRC channels.",
+        tags: ["xdcc", "irc", "anime"]
+      }
+    ];
+    
+    // Add download links
+    for (const site of downloadSites) {
+      this.createLink({
+        url: site.url,
+        title: site.title,
+        description: site.description,
+        category: "download",
+        tags: site.tags,
+        nsfw: false,
+        createdAt: new Date().toISOString(),
+        featured: false
+      } as InsertLink & { createdAt: string, featured: boolean });
+    }
+    
     // Add a featured anime site
     this.createLink({
       url: "https://www.crunchyroll.com",
