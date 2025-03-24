@@ -17,8 +17,20 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Define link type
+  interface Link {
+    id: number;
+    title: string;
+    url: string;
+    description: string | null;
+    category: string;
+    tags: string[] | null;
+    featured: boolean;
+    createdAt: string | null;
+  }
+
   // Fetch links
-  const { data: links = [] } = useQuery({
+  const { data: links = [] } = useQuery<Link[]>({
     queryKey: ['/api/links'],
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
@@ -28,17 +40,17 @@ export default function Home() {
     if (!searchQuery.trim()) return links;
     
     const query = searchQuery.toLowerCase();
-    return links.filter((link: any) => 
+    return links.filter((link) => 
       link.title.toLowerCase().includes(query) || 
-      link.description.toLowerCase().includes(query) || 
+      (link.description && link.description.toLowerCase().includes(query)) || 
       link.url.toLowerCase().includes(query) ||
-      (link.tags && link.tags.some((tag: string) => tag.toLowerCase().includes(query)))
+      (link.tags && link.tags.some((tag) => tag.toLowerCase().includes(query)))
     );
   }, [links, searchQuery]);
 
   // Group links by category
   const linksByCategory = useMemo(() => {
-    const result: Record<string, any[]> = {};
+    const result: Record<string, Link[]> = {};
     
     // Initialize all categories with empty arrays
     Object.keys(CATEGORIES).forEach(category => {
@@ -46,7 +58,7 @@ export default function Home() {
     });
     
     // Populate with links
-    filteredLinks.forEach((link: any) => {
+    filteredLinks.forEach((link) => {
       // Add to appropriate category
       if (result[link.category]) {
         result[link.category].push(link);
@@ -126,18 +138,21 @@ export default function Home() {
           openNewLinkModal={openNewLinkModal}
         />
         
-        {/* Regular category sections */}
-        {Object.keys(CATEGORIES)
-          .filter(id => id !== 'featured')
-          .map(categoryId => (
-            <CategorySection
-              key={categoryId}
-              category={categoryId}
-              links={linksByCategory[categoryId] || []}
-              openNewLinkModal={openNewLinkModal}
-            />
-          ))
-        }
+        {/* Regular category sections in horizontal layout */}
+        <div className="flex overflow-x-auto pb-4 scrollbar-hide space-x-6">
+          {Object.keys(CATEGORIES)
+            .filter(id => id !== 'featured')
+            .map(categoryId => (
+              <div key={categoryId} className="min-w-[300px] max-w-[400px] w-full flex-shrink-0">
+                <CategorySection
+                  category={categoryId}
+                  links={linksByCategory[categoryId] || []}
+                  openNewLinkModal={openNewLinkModal}
+                />
+              </div>
+            ))
+          }
+        </div>
       </main>
       
       {/* Floating Action Button for mobile */}
