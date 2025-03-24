@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { PlusCircle, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
@@ -25,7 +26,8 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
     title: "",
     description: "",
     category: initialCategory,
-    tags: ""
+    tags: "",
+    nsfw: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -37,7 +39,8 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
         title: "",
         description: "",
         category: initialCategory,
-        tags: ""
+        tags: "",
+        nsfw: false
       });
       setErrors({});
     }
@@ -135,6 +138,10 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
         return newErrors;
       });
     }
+  };
+  
+  const handleSwitchChange = (checked: boolean) => {
+    setFormData(prev => ({ ...prev, nsfw: checked }));
   };
 
   return (
@@ -250,6 +257,28 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
             <p className="mt-1 text-xs text-neutral-500">
               Add relevant tags to make your link easier to find
             </p>
+          </div>
+          
+          {/* NSFW Toggle */}
+          <div className="space-y-1">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label>Content Rating</Label>
+                <p className="text-xs text-neutral-500">Indicate whether this link contains mature content</p>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className={`flex items-center space-x-1 ${!formData.nsfw ? 'text-green-600 font-semibold' : 'text-neutral-500'}`}>
+                  <span>SFW</span>
+                </div>
+                <Switch 
+                  checked={formData.nsfw}
+                  onCheckedChange={handleSwitchChange}
+                />
+                <div className={`flex items-center space-x-1 ${formData.nsfw ? 'text-red-600 font-semibold' : 'text-neutral-500'}`}>
+                  <span>NSFW</span>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
         

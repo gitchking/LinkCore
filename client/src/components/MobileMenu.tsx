@@ -88,8 +88,60 @@ export function MobileMenu({
               </a>
             ))}
             
-            {/* All Categories link */}
-            <div className="pt-2 border-t mt-2">
+            {/* Additional Menu Items */}
+            <div className="pt-2 border-t mt-2 space-y-1">
+              <a
+                href="/"
+                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = '/';
+                  onClose();
+                }}
+              >
+                <i className="fas fa-home w-6"></i>
+                <span>Home</span>
+              </a>
+              
+              <a
+                href="/about"
+                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = '/about';
+                  onClose();
+                }}
+              >
+                <i className="fas fa-info-circle w-6"></i>
+                <span>About</span>
+              </a>
+              
+              <a
+                href="/history"
+                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = '/history';
+                  onClose();
+                }}
+              >
+                <i className="fas fa-history w-6"></i>
+                <span>History</span>
+              </a>
+              
+              <a
+                href="/settings"
+                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = '/settings';
+                  onClose();
+                }}
+              >
+                <i className="fas fa-cog w-6"></i>
+                <span>Settings</span>
+              </a>
+              
               <a
                 href="#allcategories"
                 className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"

@@ -16,6 +16,7 @@ export const links = pgTable("links", {
   category: text("category").notNull(),
   tags: text("tags").array(),
   featured: boolean("featured").default(false),
+  nsfw: boolean("nsfw").default(false),
   createdAt: text("created_at"), // storing as ISO string for simplicity
 });
 
