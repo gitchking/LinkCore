@@ -20,6 +20,15 @@ export const links = pgTable("links", {
   createdAt: text("created_at"), // storing as ISO string for simplicity
 });
 
+export const contactMessages = pgTable("contact_messages", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+  createdAt: text("created_at").notNull(), // storing as ISO string
+  read: boolean("read").default(false),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -32,7 +41,13 @@ export const insertLinkSchema = createInsertSchema(links).pick({
   category: true,
   tags: true,
   nsfw: true,
-}).omit({ id: true, createdAt: true, featured: true });
+});
+
+export const insertContactMessageSchema = createInsertSchema(contactMessages).pick({
+  name: true,
+  email: true,
+  message: true,
+});
 
 // Export schema types
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -40,3 +55,6 @@ export type User = typeof users.$inferSelect;
 
 export type InsertLink = z.infer<typeof insertLinkSchema>;
 export type Link = typeof links.$inferSelect;
+
+export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
+export type ContactMessage = typeof contactMessages.$inferSelect;

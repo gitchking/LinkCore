@@ -1,4 +1,4 @@
-import { Link, InsertLink, links, type User, type InsertUser, users } from "@shared/schema";
+import { Link, InsertLink, links, type User, type InsertUser, users, type ContactMessage, type InsertContactMessage, contactMessages } from "@shared/schema";
 
 // Interface with all the CRUD methods we need
 export interface IStorage {
@@ -16,19 +16,30 @@ export interface IStorage {
   getFeaturedLinks(): Promise<Link[]>;
   getLinksByCategory(category: string): Promise<Link[]>;
   searchLinks(query: string): Promise<Link[]>;
+  
+  // Contact message methods
+  getAllContactMessages(): Promise<ContactMessage[]>;
+  getContactMessage(id: number): Promise<ContactMessage | undefined>;
+  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  markContactMessageAsRead(id: number): Promise<ContactMessage | undefined>;
+  deleteContactMessage(id: number): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private links: Map<number, Link>;
+  private contactMessages: Map<number, ContactMessage>;
   private userId: number;
   private linkId: number;
+  private contactMessageId: number;
 
   constructor() {
     this.users = new Map();
     this.links = new Map();
+    this.contactMessages = new Map();
     this.userId = 1;
     this.linkId = 1;
+    this.contactMessageId = 1;
     
     // Add some test data
     // SFW links
@@ -194,6 +205,49 @@ export class MemStorage implements IStorage {
       link.url.toLowerCase().includes(lowerQuery) ||
       (link.tags && link.tags.some(tag => tag.toLowerCase().includes(lowerQuery)))
     );
+  }
+  
+  // Contact message methods
+  async getAllContactMessages(): Promise<ContactMessage[]> {
+    return Array.from(this.contactMessages.values());
+  }
+  
+  async getContactMessage(id: number): Promise<ContactMessage | undefined> {
+    return this.contactMessages.get(id);
+  }
+  
+  async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
+    const id = this.contactMessageId++;
+    const now = new Date().toISOString();
+    
+    const message: ContactMessage = {
+      id,
+      name: insertMessage.name,
+      email: insertMessage.email,
+      message: insertMessage.message,
+      createdAt: now,
+      read: false
+    };
+    
+    this.contactMessages.set(id, message);
+    return message;
+  }
+  
+  async markContactMessageAsRead(id: number): Promise<ContactMessage | undefined> {
+    const message = this.contactMessages.get(id);
+    if (!message) return undefined;
+    
+    const updatedMessage = { ...message, read: true };
+    this.contactMessages.set(id, updatedMessage);
+    return updatedMessage;
+  }
+  
+  async deleteContactMessage(id: number): Promise<boolean> {
+    if (!this.contactMessages.has(id)) {
+      return false;
+    }
+    
+    return this.contactMessages.delete(id);
   }
 }
 
