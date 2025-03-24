@@ -1,0 +1,49 @@
+Here’s your list with categories like "Wiki / Guides" removed, along with links and brief context for each website. These platforms focus on anime statistics, popularity rankings, and guides for fans, covering tracking, trending, and informational resources. Descriptions are based on their general purpose and reputation as of March 24, 2025.
+
+### Anime Statistics and Rankings
+1. **Anime Stats** - [https://www.anime-stats.net](https://www.anime-stats.net)  
+   A site offering detailed statistics on anime viewership, ratings, and trends, often pulling data from platforms like MyAnimeList to analyze popularity and demographics.
+
+2. **AnimeKarmaList** - [https://animekarmalist.com](https://animekarmalist.com)  
+   An interactive chart tracking the most popular anime based on Reddit’s r/anime community votes and discussions, updated weekly to reflect current karma rankings.
+
+3. **Anime Trending** - [https://www.anitrendz.com](https://www.anitrendz.com)  
+   A site providing weekly and seasonal top anime charts, based on community votes and trends, with a focus on what’s hot in the anime world right now.
+
+4. **AnimeCorner** - [https://animecorner.me](https://animecorner.me)  
+   Features weekly and seasonal anime polls, ranking the best series, characters, and voice actors based on fan votes, alongside news and reviews.
+
+5. **Kitsu Season Trends** - [https://kitsu.io/trending/anime](https://kitsu.io/trending/anime)  
+   Part of the Kitsu platform, this section tracks trending anime by season, using user activity and ratings to highlight what’s popular among its community.
+
+### Guides and Resources
+6. **Japanese with Anime** - [https://www.japanesewithanime.com](https://www.japanesewithanime.com)  
+   A blog teaching Japanese language concepts through anime examples, explaining grammar, vocabulary, and cultural nuances for learners.
+
+7. **Wotaku** - [https://wotaku.moe](https://wotaku.moe)  
+   A guide site offering insights into anime terminology, tropes, and culture, aimed at both newbies and seasoned otaku, with a focus on educational content.
+
+8. **AnimeFillerList** - [https://www.animefillerlist.com](https://www.animefillerlist.com)  
+   A resource listing filler episodes for popular anime series, helping viewers skip non-canon content and stick to the main storyline.
+
+9. **AnimeFillerGuide** - [https://www.animefillerguide.com](https://www.animefillerguide.com)  
+   Similar to AnimeFillerList, this site provides detailed guides on filler episodes and arcs across various anime, with episode-by-episode breakdowns.
+
+10. **Tag Search Blogs** - [https://tagsearchblogs.neocities.org](https://tagsearchblogs.neocities.org)  
+    A directory of anime blogs searchable by tags (e.g., genres, themes), linking to fan reviews, analyses, and niche discussions.
+
+11. **Touhou Wiki** - [https://en.touhouwiki.net](https://en.touhouwiki.net)  
+    A comprehensive wiki for the Touhou Project, covering its games, characters, music, and anime-style fan works, maintained by an active community.
+
+12. **Certain Fansubber's Index** - (No official site; likely refers to scattered fan projects, e.g., [https://fansubindex.neocities.org](https://fansubindex.neocities.org))  
+    A conceptual or informal index of fansub groups, possibly hosted on personal sites or forums, cataloging active and historical subbers with release details.
+
+13. **RecommendMeAnime** - [https://recommendmeanime.com](https://recommendmeanime.com)  
+    A blog offering anime recommendations based on genres, themes, or similar series, with detailed write-ups to help fans discover new titles.
+
+### Notes
+- **Anime Stats and Rankings**: These sites (Anime Stats, AnimeKarmaList, Anime Trending, AnimeCorner, Kitsu Season Trends) focus on data-driven insights or community voting, making them great for tracking what’s popular or statistically significant in anime culture.
+- **Guides and Resources**: The second group provides practical tools (e.g., filler lists) or educational content (e.g., Japanese with Anime, Wotaku), with Touhou Wiki standing out for its niche focus and Certain Fansubber’s Index being less formalized.
+- **Certain Fansubber's Index**: Without a clear, centralized site, it might refer to fan-made lists on platforms like Reddit or Neocities; the link provided is speculative based on similar projects.
+
+Let me know if you’d like more details or additional sites to expand this list! Links are based on their most commonly associated domains as of today.
