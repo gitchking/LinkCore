@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -145,6 +145,9 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
             <PlusCircle className="text-primary mr-2 h-5 w-5" />
             Add New Link
           </DialogTitle>
+          <DialogDescription>
+            Add a new link to share with the community
+          </DialogDescription>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4 py-2">

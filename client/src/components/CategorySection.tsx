@@ -71,7 +71,9 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
             >
               <div className="flex justify-between items-start">
                 <h3 className="font-medium text-lg text-neutral-900 line-clamp-2">{link.title}</h3>
-                {categoryInfo.icon}
+                <div className="flex-shrink-0">
+                  {CATEGORIES[link.category] && CATEGORIES[link.category].icon}
+                </div>
               </div>
               <p className="text-neutral-500 text-sm mt-2 line-clamp-2">{link.description}</p>
               <div className="flex items-center mt-4">
