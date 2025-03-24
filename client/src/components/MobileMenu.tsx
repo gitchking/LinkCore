@@ -34,12 +34,6 @@ export function MobileMenu({
         </SheetHeader>
         
         <div className="p-4">
-          {/* Theme Toggle */}
-          <div className="mb-4 flex items-center justify-between px-3 py-2">
-            <span className="text-foreground">Theme</span>
-            <ThemeToggle />
-          </div>
-          
           {/* Main Menu Items */}
           <nav className="space-y-1">
             <a
@@ -65,7 +59,7 @@ export function MobileMenu({
               }}
             >
               <Info className="mr-2 h-5 w-5" />
-              <span>About</span>
+              <span>About Info</span>
             </a>
             
             {openSettings && (
