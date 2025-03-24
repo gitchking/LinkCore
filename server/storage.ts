@@ -25,7 +25,7 @@ export interface IStorage {
   deleteContactMessage(id: number): Promise<boolean>;
 }
 
-export class MemStorage implements IStorage {
+class MemStorage implements IStorage {
   private users: Map<number, User>;
   private links: Map<number, Link>;
   private contactMessages: Map<number, ContactMessage>;
@@ -457,6 +457,11 @@ if (useFirebase) {
 } else {
   console.log('Using in-memory storage (by configuration)');
   storage = memStorage;
+}
+
+// Export a function to get a new memory storage instance when needed
+export function getMemoryStorageInstance() {
+  return new MemStorage();
 }
 
 export { storage };

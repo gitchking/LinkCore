@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage, MemStorage } from "./storage";
+import { storage, getMemoryStorageInstance } from "./storage";
 import { z } from "zod";
 import { insertLinkSchema, insertContactMessageSchema } from "@shared/schema";
 import { ZodError } from "zod";
