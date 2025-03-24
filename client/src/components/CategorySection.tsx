@@ -60,7 +60,7 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
       </div>
 
       {/* Link Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 max-w-[1400px] mx-auto">
         {links.length === 0 ? (
           <EmptyState 
             category={category}
@@ -70,7 +70,7 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
           links.map(link => (
             <div 
               key={link.id}
-              className="bg-card rounded-md shadow-sm border border-border p-3 hover:shadow-md transition-shadow"
+              className="bg-card rounded-md shadow-sm border border-border p-2 hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-start">
                 <div className="flex flex-1 items-center">

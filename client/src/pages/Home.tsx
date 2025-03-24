@@ -20,7 +20,12 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [showNSFW, setShowNSFW] = useState(true); // Default to showing NSFW content
+  // Default to showing NSFW content and use localStorage to persist the setting
+  const [showNSFW, setShowNSFW] = useState(() => {
+    // Check localStorage first, if not found, default to true
+    const savedPreference = localStorage.getItem('showNSFW');
+    return savedPreference !== null ? savedPreference === 'true' : true;
+  });
   const [isDevMode, setIsDevMode] = useState(false);
   const [postManagementOpen, setPostManagementOpen] = useState(false);
   
@@ -139,7 +144,7 @@ export default function Home() {
         setActiveCategory={setActiveCategory}
       />
       
-      <main className="container mx-auto px-4 py-6 mb-24">
+      <main className="w-full max-w-[1500px] mx-auto px-4 py-6 mb-24">
         {activeCategory === 'featured' ? (
           <CategorySection 
             category="featured"
@@ -204,7 +209,10 @@ export default function Home() {
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}
         showNSFW={showNSFW}
-        setShowNSFW={setShowNSFW}
+        setShowNSFW={(value) => {
+          setShowNSFW(value);
+          localStorage.setItem('showNSFW', String(value));
+        }}
         isDevMode={isDevMode}
         toggleDevMode={() => {
           setIsDevMode(!isDevMode);
