@@ -90,6 +90,18 @@ class MemStorage implements IStorage {
       { url: "https://www.freek.com", title: "Freek HIA", description: "Free anime streaming site" }
     ];
     
+    // List of popular anime sites to feature
+    const popularAnimeSites = [
+      "https://www.crunchyroll.com",
+      "https://www.bilibili.com",
+      "https://www.youtube.com",
+      "https://www.hidive.com",
+      "https://animepahe.com",
+      "https://www.animeheaven.eu",
+      "https://animestream.name",
+      "https://aniwave.lv"
+    ];
+
     // Add all anime links
     for (const link of animeLinks) {
       this.createLink({
@@ -100,7 +112,7 @@ class MemStorage implements IStorage {
         tags: ["anime", "streaming"],
         nsfw: false,
         createdAt: new Date().toISOString(),
-        featured: false
+        featured: popularAnimeSites.includes(link.url) // Mark popular sites as featured
       } as InsertLink & { createdAt: string, featured: boolean });
     }
     
@@ -145,6 +157,17 @@ class MemStorage implements IStorage {
       { url: "https://hentaisea.com", title: "Hentaisea", description: "A free platform with streaming and downloadable content" }
     ];
     
+    // List of popular hentai sites to feature
+    const popularHentaiSites = [
+      "https://hanime.tv",
+      "https://hentaihaven.xxx",
+      "https://hentaiworld.tv",
+      "https://iwara.tv",
+      "https://hentaifox.tv",
+      "https://hentaifreak.org",
+      "https://hanime1.me"
+    ];
+    
     // Add all hentai websites
     for (const site of hentaiWebsites) {
       this.createLink({
@@ -155,7 +178,7 @@ class MemStorage implements IStorage {
         tags: ["anime", "hentai", "nsfw"],
         nsfw: true,
         createdAt: new Date().toISOString(),
-        featured: false
+        featured: popularHentaiSites.includes(site.url) // Mark popular sites as featured
       } as InsertLink & { createdAt: string, featured: boolean });
     }
     
@@ -421,6 +444,16 @@ class MemStorage implements IStorage {
       }
     ];
     
+    // List of popular download sites to feature
+    const popularDownloadSites = [
+      "https://nyaa.si",
+      "https://animetosho.org",
+      "https://subsplease.org",
+      "https://tokyotosho.info",
+      "https://www.cdjapan.co.jp",
+      "https://hi10anime.com"
+    ];
+    
     // Add download links
     for (const site of downloadSites) {
       this.createLink({
@@ -431,34 +464,11 @@ class MemStorage implements IStorage {
         tags: site.tags,
         nsfw: false,
         createdAt: new Date().toISOString(),
-        featured: false
+        featured: popularDownloadSites.includes(site.url) // Mark popular sites as featured
       } as InsertLink & { createdAt: string, featured: boolean });
     }
     
-    // Add a featured anime site
-    this.createLink({
-      url: "https://www.crunchyroll.com",
-      title: "Crunchyroll",
-      description: "Premium anime streaming service with free tier",
-      category: "anime",
-      tags: ["streaming", "official"],
-      nsfw: false,
-      createdAt: new Date().toISOString(),
-      featured: true
-    } as InsertLink & { createdAt: string, featured: boolean });
-    
-    // Add a featured downloads site
-    this.createLink({
-      url: "https://nyaa.si",
-      title: "Nyaa",
-      description: "A popular BitTorrent community focused on East Asian media, including anime, manga, and games.",
-      category: "downloads",
-      tags: ["torrent", "anime", "manga", "games"],
-      nsfw: false,
-      createdAt: new Date().toISOString(),
-      featured: true
-    } as InsertLink & { createdAt: string, featured: boolean });
-    
+    // Add manga site with featured status
     this.createLink({
       url: "https://mangaplus.shueisha.co.jp",
       title: "Manga Plus",
@@ -467,32 +477,41 @@ class MemStorage implements IStorage {
       tags: ["reading", "official"],
       nsfw: false,
       createdAt: new Date().toISOString(),
-      featured: false
+      featured: true
     } as InsertLink & { createdAt: string, featured: boolean });
     
-    // NSFW link
+    // Add NSFW manga site
     this.createLink({
-      url: "https://example-nsfw-anime.com",
-      title: "Adult Anime Content",
-      description: "Site with adult-oriented anime content",
-      category: "anime",
-      tags: ["adult", "18+"],
-      nsfw: true,
-      createdAt: new Date().toISOString(),
-      featured: false
-    } as InsertLink & { createdAt: string, featured: boolean });
-    
-    // Another NSFW link
-    this.createLink({
-      url: "https://example-nsfw-manga.com",
-      title: "Adult Manga",
-      description: "Adult manga collection",
+      url: "https://nhentai.net",
+      title: "nHentai",
+      description: "Popular site for manga with adult content",
       category: "manga",
-      tags: ["adult", "mature"],
+      tags: ["manga", "hentai", "nsfw"],
       nsfw: true,
       createdAt: new Date().toISOString(),
-      featured: false
+      featured: true
     } as InsertLink & { createdAt: string, featured: boolean });
+    
+    // NSFW manga sites
+    const nsfwMangaSites = [
+      { url: "https://e-hentai.org", title: "E-Hentai", description: "Large adult manga collection with a variety of categories", tags: ["manga", "hentai", "doujinshi", "nsfw"] },
+      { url: "https://hentaifox.com", title: "HentaiFox", description: "Popular doujinshi and manga site with adult content", tags: ["manga", "doujinshi", "nsfw"] },
+      { url: "https://hitomi.la", title: "Hitomi.la", description: "Adult manga and doujinshi repository", tags: ["manga", "doujinshi", "nsfw"] }
+    ];
+    
+    // Add NSFW manga sites
+    for (const site of nsfwMangaSites) {
+      this.createLink({
+        url: site.url,
+        title: site.title,
+        description: site.description,
+        category: "manga",
+        tags: site.tags,
+        nsfw: true,
+        createdAt: new Date().toISOString(),
+        featured: site.url === "https://e-hentai.org" // Feature E-Hentai as a popular site
+      } as InsertLink & { createdAt: string, featured: boolean });
+    }
   }
 
   // User methods
