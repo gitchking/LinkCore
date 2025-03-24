@@ -31,6 +31,7 @@ export const insertLinkSchema = createInsertSchema(links).pick({
   description: true,
   category: true,
   tags: true,
+  nsfw: true,
 }).omit({ id: true, createdAt: true, featured: true });
 
 // Export schema types

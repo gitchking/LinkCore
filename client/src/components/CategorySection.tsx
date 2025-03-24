@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "./EmptyState";
 import { Link } from "lucide-react";
 import { CATEGORIES } from "@/lib/icons";
+import { ContentRatingBadge } from "./ContentRatingBadge";
 
 interface Link {
   id: number;
@@ -11,6 +12,7 @@ interface Link {
   category: string;
   tags: string[];
   featured: boolean;
+  nsfw: boolean;
 }
 
 interface CategorySectionProps {
@@ -70,7 +72,10 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
               className="bg-white rounded-lg shadow-sm border border-neutral-200 p-5 hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-start">
-                <h3 className="font-medium text-lg text-neutral-900 line-clamp-2">{link.title}</h3>
+                <div>
+                  <h3 className="font-medium text-lg text-neutral-900 line-clamp-2">{link.title}</h3>
+                  <ContentRatingBadge isNSFW={link.nsfw} className="mt-1" />
+                </div>
                 <div className="flex-shrink-0">
                   {CATEGORIES[link.category] && CATEGORIES[link.category].icon}
                 </div>
