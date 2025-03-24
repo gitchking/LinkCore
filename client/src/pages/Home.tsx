@@ -186,6 +186,7 @@ export default function Home() {
         setActiveCategory={setActiveCategory}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        openSettings={() => setSettingsOpen(true)}
       />
       
       <SettingsDialog

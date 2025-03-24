@@ -1,7 +1,6 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { Search, X } from "lucide-react";
-import { CATEGORIES } from "@/lib/icons";
+import { Search, X, Home, Info, Settings } from "lucide-react";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -10,43 +9,22 @@ interface MobileMenuProps {
   setActiveCategory: (category: string) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  openSettings?: () => void;
 }
 
 export function MobileMenu({ 
   isOpen, 
   onClose, 
-  activeCategory, 
-  setActiveCategory, 
   searchQuery, 
-  setSearchQuery 
+  setSearchQuery,
+  openSettings
 }: MobileMenuProps) {
-  
-  const handleCategoryClick = (e: React.MouseEvent<HTMLAnchorElement>, categoryId: string) => {
-    e.preventDefault();
-    setActiveCategory(categoryId);
-    onClose();
-    
-    // Smooth scroll to the section
-    setTimeout(() => {
-      const element = document.getElementById(categoryId);
-      if (element) {
-        const headerHeight = 120;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
-  };
   
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent side="right" className="w-3/4 max-w-xs p-0">
         <SheetHeader className="p-4 border-b">
-          <SheetTitle className="font-montserrat font-semibold">Categories</SheetTitle>
+          <SheetTitle className="font-montserrat font-semibold">Menu</SheetTitle>
           <button 
             className="absolute right-4 top-4 text-neutral-500"
             onClick={onClose}
@@ -70,86 +48,48 @@ export function MobileMenu({
             </div>
           </div>
           
-          {/* Category List */}
+          {/* Main Menu Items */}
           <nav className="space-y-1">
-            {Object.entries(CATEGORIES).map(([id, { icon, name }]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className={`flex items-center px-3 py-2 rounded-md ${
-                  activeCategory === id 
-                    ? 'text-primary bg-primary/10' 
-                    : 'text-neutral-600 hover:text-primary hover:bg-primary/10'
-                }`}
-                onClick={(e) => handleCategoryClick(e, id)}
-              >
-                <span className="w-6">{icon}</span>
-                <span>{name}</span>
-              </a>
-            ))}
+            <a
+              href="/"
+              className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/';
+                onClose();
+              }}
+            >
+              <Home className="mr-2 h-5 w-5" />
+              <span>Home</span>
+            </a>
             
-            {/* Additional Menu Items */}
-            <div className="pt-2 border-t mt-2 space-y-1">
+            <a
+              href="/about"
+              className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/about';
+                onClose();
+              }}
+            >
+              <Info className="mr-2 h-5 w-5" />
+              <span>About</span>
+            </a>
+            
+            {openSettings && (
               <a
-                href="/"
+                href="#"
                 className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = '/';
+                  openSettings();
                   onClose();
                 }}
               >
-                <i className="fas fa-home w-6"></i>
-                <span>Home</span>
-              </a>
-              
-              <a
-                href="/about"
-                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = '/about';
-                  onClose();
-                }}
-              >
-                <i className="fas fa-info-circle w-6"></i>
-                <span>About</span>
-              </a>
-              
-              <a
-                href="/history"
-                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = '/history';
-                  onClose();
-                }}
-              >
-                <i className="fas fa-history w-6"></i>
-                <span>History</span>
-              </a>
-              
-              <a
-                href="/settings"
-                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = '/settings';
-                  onClose();
-                }}
-              >
-                <i className="fas fa-cog w-6"></i>
+                <Settings className="mr-2 h-5 w-5" />
                 <span>Settings</span>
               </a>
-              
-              <a
-                href="#allcategories"
-                className="flex items-center px-3 py-2 text-neutral-600 hover:text-primary hover:bg-primary/10 rounded-md"
-              >
-                <i className="fas fa-th-list w-6"></i>
-                <span>All Categories</span>
-              </a>
-            </div>
+            )}
           </nav>
         </div>
       </SheetContent>

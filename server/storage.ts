@@ -39,7 +39,7 @@ export class MemStorage implements IStorage {
       nsfw: false,
       createdAt: new Date().toISOString(),
       featured: true
-    });
+    } as InsertLink & { createdAt: string, featured: boolean });
     
     this.createLink({
       url: "https://mangaplus.shueisha.co.jp",
@@ -50,7 +50,7 @@ export class MemStorage implements IStorage {
       nsfw: false,
       createdAt: new Date().toISOString(),
       featured: false
-    });
+    } as InsertLink & { createdAt: string, featured: boolean });
     
     // NSFW link
     this.createLink({
@@ -62,7 +62,7 @@ export class MemStorage implements IStorage {
       nsfw: true,
       createdAt: new Date().toISOString(),
       featured: false
-    });
+    } as InsertLink & { createdAt: string, featured: boolean });
     
     // Another NSFW link
     this.createLink({
@@ -74,7 +74,7 @@ export class MemStorage implements IStorage {
       nsfw: true,
       createdAt: new Date().toISOString(),
       featured: false
-    });
+    } as InsertLink & { createdAt: string, featured: boolean });
   }
 
   // User methods
@@ -116,7 +116,7 @@ export class MemStorage implements IStorage {
       nsfw = false, // Default to false if undefined
       createdAt,
       featured
-    } = insertLink;
+    } = insertLink as InsertLink & { createdAt: string, featured: boolean };
     
     // Create the complete link object
     const link: Link = {
