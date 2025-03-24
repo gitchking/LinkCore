@@ -178,10 +178,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Contact Message APIs
   app.post("/api/contact", async (req, res) => {
     try {
+      console.log("Received contact form submission:", req.body);
+      
       const messageData = insertContactMessageSchema.parse(req.body);
+      console.log("Validated contact form data:", messageData);
+      
       const createdMessage = await storage.createContactMessage(messageData);
+      console.log("Successfully created contact message:", createdMessage);
+      
       res.status(201).json(createdMessage);
     } catch (error) {
+      console.error("Error details:", error);
+      
       if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         return res.status(400).json({ message: validationError.message });

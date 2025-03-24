@@ -141,27 +141,45 @@ export class FirebaseStorage implements IStorage {
   }
 
   async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
-    // Get the next ID
-    const counterRef = db.collection('counters').doc('contactMessages');
-    const counterDoc = await counterRef.get();
-    
-    let id = 1;
-    if (counterDoc.exists) {
-      const counter = counterDoc.data();
-      id = (counter?.value || 0) + 1;
-      await counterRef.update({ value: id });
-    } else {
-      await counterRef.set({ value: id });
+    try {
+      console.log("FirebaseStorage: Creating contact message with data:", message);
+      
+      // Get the next ID
+      const counterRef = db.collection('counters').doc('contactMessages');
+      console.log("FirebaseStorage: Getting counter document reference");
+      
+      const counterDoc = await counterRef.get();
+      console.log("FirebaseStorage: Counter document exists?", counterDoc.exists);
+      
+      let id = 1;
+      if (counterDoc.exists) {
+        const counter = counterDoc.data();
+        console.log("FirebaseStorage: Counter data:", counter);
+        id = (counter?.value || 0) + 1;
+        console.log("FirebaseStorage: New ID will be:", id);
+        await counterRef.update({ value: id });
+        console.log("FirebaseStorage: Counter updated");
+      } else {
+        console.log("FirebaseStorage: Creating new counter with initial value 1");
+        await counterRef.set({ value: id });
+      }
+      
+      const newMessage: ContactMessage = { 
+        ...message, 
+        id, 
+        createdAt: new Date().toISOString(),
+        read: false
+      };
+      
+      console.log("FirebaseStorage: Saving new contact message:", newMessage);
+      await db.collection('contactMessages').doc(id.toString()).set(newMessage);
+      console.log("FirebaseStorage: Contact message saved successfully");
+      
+      return newMessage;
+    } catch (error) {
+      console.error("FirebaseStorage: Error creating contact message:", error);
+      throw error; // Re-throw to propagate error
     }
-    
-    const newMessage: ContactMessage = { 
-      ...message, 
-      id, 
-      createdAt: new Date().toISOString(),
-      read: false
-    };
-    await db.collection('contactMessages').doc(id.toString()).set(newMessage);
-    return newMessage;
   }
 
   async markContactMessageAsRead(id: number): Promise<ContactMessage | undefined> {
