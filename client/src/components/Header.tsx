@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { LinkIcon, PlusCircle, Menu, Search, Settings as SettingsIcon } from "lucide-react";
+import { LinkIcon, PlusCircle, Menu, Search, Settings as SettingsIcon, Contact as ContactIcon, Mail } from "lucide-react";
 
 interface HeaderProps {
   openNewLinkModal: () => void;
@@ -48,6 +48,16 @@ export function Header({
           
           {/* Account/Actions */}
           <div className="flex items-center space-x-2">
+            <Link href="/contact" className="hidden md:block">
+              <Button 
+                variant="ghost"
+                size="sm"
+                className="flex"
+              >
+                <Mail className="mr-1 h-4 w-4" /> Contact
+              </Button>
+            </Link>
+            
             <Button 
               onClick={openNewLinkModal}
               className="flex"

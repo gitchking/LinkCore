@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { X, Home, Info, Settings } from "lucide-react";
+import { X, Home, Info, Settings, Mail } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
@@ -60,6 +60,19 @@ export function MobileMenu({
             >
               <Info className="mr-2 h-5 w-5" />
               <span>About Info</span>
+            </a>
+            
+            <a
+              href="/contact"
+              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/contact';
+                onClose();
+              }}
+            >
+              <Mail className="mr-2 h-5 w-5" />
+              <span>Contact</span>
             </a>
             
             {openSettings && (

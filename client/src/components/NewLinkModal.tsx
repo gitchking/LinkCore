@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { PlusCircle, X, Lock } from "lucide-react";
+import { PlusCircle, X, Lock, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -187,7 +187,13 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
               Please enter the administrator password to add a new link.
             </p>
             
-            <div className="space-y-2">
+            <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-950 rounded-md border border-blue-200 dark:border-blue-800">
+              <p className="text-sm text-blue-700 dark:text-blue-400">
+                <span className="font-medium">Tip:</span> If you want to add your link, navigate to the <span className="inline-flex items-center text-primary font-medium"><Mail className="h-3 w-3 mr-1" /> Contact</span> option in the menu bar to request access.
+              </p>
+            </div>
+            
+            <div className="space-y-2 mt-3">
               <div className="flex space-x-2">
                 <Input
                   type="password"
