@@ -144,7 +144,7 @@ export default function Home() {
         setActiveCategory={setActiveCategory}
       />
       
-      <main className="w-full max-w-[1500px] mx-auto px-4 py-6 mb-24">
+      <main className="w-full max-w-[1500px] mx-auto px-0 py-6 mb-24">
         {activeCategory === 'featured' ? (
           <CategorySection 
             category="featured"
