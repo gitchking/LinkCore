@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -15,23 +17,48 @@ export default function Contact() {
     linkURL: ""
   });
   
+  // Create a mutation for sending contact messages
+  const contactMutation = useMutation({
+    mutationFn: async (data: { name: string; email: string; message: string }) => {
+      return apiRequest("POST", "/api/contact", data);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent",
+        description: "Thanks for reaching out! We'll review your submission and get back to you soon.",
+        variant: "default",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        linkURL: ""
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again later.",
+        variant: "destructive",
+      });
+    }
+  });
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send this to your backend
-    // For now, we'll just show a success toast
-    toast({
-      title: "Message Sent",
-      description: "Thanks for reaching out! We'll review your submission and get back to you soon.",
-      variant: "default",
-    });
+    // Format message to include the link URL if provided
+    const messageWithLink = formData.linkURL 
+      ? `${formData.message}\n\nRequested Link: ${formData.linkURL}`
+      : formData.message;
     
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-      linkURL: ""
+    // Send to the API
+    contactMutation.mutate({
+      name: formData.name,
+      email: formData.email,
+      message: messageWithLink
     });
   };
   
@@ -108,9 +135,22 @@ export default function Contact() {
             />
           </div>
           
-          <Button type="submit" className="w-full">
-            <Send className="mr-2 h-4 w-4" />
-            Send Message
+          <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={contactMutation.isPending}
+          >
+            {contactMutation.isPending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="mr-2 h-4 w-4" />
+                Send Message
+              </>
+            )}
           </Button>
         </form>
       </div>
