@@ -253,18 +253,210 @@ export class MemStorage implements IStorage {
 
 import { FirebaseStorage } from './firebaseStorage';
 
+// Create a resilient storage class that wraps FirebaseStorage and falls back to MemStorage
+class ResilientStorage implements IStorage {
+  private primaryStorage: IStorage;
+  private fallbackStorage: IStorage;
+  private usesFallback: boolean = false;
+
+  constructor(primary: IStorage, fallback: IStorage) {
+    this.primaryStorage = primary;
+    this.fallbackStorage = fallback;
+  }
+
+  private async withFallback<T>(operation: () => Promise<T>): Promise<T> {
+    try {
+      return await operation();
+    } catch (error) {
+      if (!this.usesFallback) {
+        console.error('Firebase operation failed, switching to in-memory fallback:', error);
+        this.usesFallback = true;
+      }
+      // Re-throw specific errors that are not related to Firebase connection
+      throw error;
+    }
+  }
+
+  // User methods
+  async getUser(id: number): Promise<User | undefined> {
+    try {
+      return await this.primaryStorage.getUser(id);
+    } catch (error) {
+      console.error('Error in getUser, using fallback:', error);
+      return this.fallbackStorage.getUser(id);
+    }
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    try {
+      return await this.primaryStorage.getUserByUsername(username);
+    } catch (error) {
+      console.error('Error in getUserByUsername, using fallback:', error);
+      return this.fallbackStorage.getUserByUsername(username);
+    }
+  }
+
+  async createUser(user: InsertUser): Promise<User> {
+    try {
+      return await this.primaryStorage.createUser(user);
+    } catch (error) {
+      console.error('Error in createUser, using fallback:', error);
+      return this.fallbackStorage.createUser(user);
+    }
+  }
+
+  // Link methods
+  async getAllLinks(): Promise<Link[]> {
+    try {
+      return await this.primaryStorage.getAllLinks();
+    } catch (error) {
+      console.error('Error in getAllLinks, using fallback:', error);
+      return this.fallbackStorage.getAllLinks();
+    }
+  }
+
+  async getLink(id: number): Promise<Link | undefined> {
+    try {
+      return await this.primaryStorage.getLink(id);
+    } catch (error) {
+      console.error('Error in getLink, using fallback:', error);
+      return this.fallbackStorage.getLink(id);
+    }
+  }
+
+  async createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
+    try {
+      return await this.primaryStorage.createLink(link);
+    } catch (error) {
+      console.error('Error in createLink, using fallback:', error);
+      return this.fallbackStorage.createLink(link);
+    }
+  }
+
+  async updateLink(link: Link): Promise<Link> {
+    try {
+      return await this.primaryStorage.updateLink(link);
+    } catch (error) {
+      console.error('Error in updateLink, using fallback:', error);
+      return this.fallbackStorage.updateLink(link);
+    }
+  }
+
+  async updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined> {
+    try {
+      return await this.primaryStorage.updateLinkFeatured(id, featured);
+    } catch (error) {
+      console.error('Error in updateLinkFeatured, using fallback:', error);
+      return this.fallbackStorage.updateLinkFeatured(id, featured);
+    }
+  }
+
+  async deleteLink(id: number): Promise<boolean> {
+    try {
+      return await this.primaryStorage.deleteLink(id);
+    } catch (error) {
+      console.error('Error in deleteLink, using fallback:', error);
+      return this.fallbackStorage.deleteLink(id);
+    }
+  }
+
+  async getFeaturedLinks(): Promise<Link[]> {
+    try {
+      return await this.primaryStorage.getFeaturedLinks();
+    } catch (error) {
+      console.error('Error in getFeaturedLinks, using fallback:', error);
+      return this.fallbackStorage.getFeaturedLinks();
+    }
+  }
+
+  async getLinksByCategory(category: string): Promise<Link[]> {
+    try {
+      return await this.primaryStorage.getLinksByCategory(category);
+    } catch (error) {
+      console.error('Error in getLinksByCategory, using fallback:', error);
+      return this.fallbackStorage.getLinksByCategory(category);
+    }
+  }
+
+  async searchLinks(query: string): Promise<Link[]> {
+    try {
+      return await this.primaryStorage.searchLinks(query);
+    } catch (error) {
+      console.error('Error in searchLinks, using fallback:', error);
+      return this.fallbackStorage.searchLinks(query);
+    }
+  }
+
+  // Contact message methods
+  async getAllContactMessages(): Promise<ContactMessage[]> {
+    try {
+      return await this.primaryStorage.getAllContactMessages();
+    } catch (error) {
+      console.error('Error in getAllContactMessages, using fallback:', error);
+      return this.fallbackStorage.getAllContactMessages();
+    }
+  }
+
+  async getContactMessage(id: number): Promise<ContactMessage | undefined> {
+    try {
+      return await this.primaryStorage.getContactMessage(id);
+    } catch (error) {
+      console.error('Error in getContactMessage, using fallback:', error);
+      return this.fallbackStorage.getContactMessage(id);
+    }
+  }
+
+  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
+    try {
+      return await this.primaryStorage.createContactMessage(message);
+    } catch (error) {
+      console.error('Error in createContactMessage, using fallback:', error);
+      return this.fallbackStorage.createContactMessage(message);
+    }
+  }
+
+  async markContactMessageAsRead(id: number): Promise<ContactMessage | undefined> {
+    try {
+      return await this.primaryStorage.markContactMessageAsRead(id);
+    } catch (error) {
+      console.error('Error in markContactMessageAsRead, using fallback:', error);
+      return this.fallbackStorage.markContactMessageAsRead(id);
+    }
+  }
+
+  async deleteContactMessage(id: number): Promise<boolean> {
+    try {
+      return await this.primaryStorage.deleteContactMessage(id);
+    } catch (error) {
+      console.error('Error in deleteContactMessage, using fallback:', error);
+      return this.fallbackStorage.deleteContactMessage(id);
+    }
+  }
+}
+
 // Create the appropriate storage implementation
 let storage: IStorage;
 
 // Check for environment variable to determine which storage to use
 const useFirebase = process.env.USE_FIREBASE === 'true';
 
+// Create in-memory storage regardless
+const memStorage = new MemStorage();
+
 if (useFirebase) {
-  console.log('Using Firebase storage');
-  storage = new FirebaseStorage();
+  try {
+    console.log('Setting up resilient storage with Firebase primary and in-memory fallback');
+    const firebaseStorage = new FirebaseStorage();
+    // Create a resilient storage that will gracefully fall back to in-memory if Firebase fails
+    storage = new ResilientStorage(firebaseStorage, memStorage);
+  } catch (error) {
+    console.error('Error initializing Firebase storage:', error);
+    console.log('Using in-memory storage due to Firebase initialization failure');
+    storage = memStorage;
+  }
 } else {
-  console.log('Using in-memory storage');
-  storage = new MemStorage();
+  console.log('Using in-memory storage (by configuration)');
+  storage = memStorage;
 }
 
 export { storage };
