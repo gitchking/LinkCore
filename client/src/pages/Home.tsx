@@ -105,58 +105,40 @@ export default function Home() {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex justify-between items-center p-4 border-b bg-white">
-        <h1 className="text-2xl font-bold">Home</h1>
-        <div className="flex items-center space-x-2">
-          <div className="relative max-w-md">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search across all categories..."
-              className="w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-          </div>
-          <Button 
-            onClick={() => openNewLinkModal()}
-            size="sm"
-          >
-            <Plus className="mr-1 h-4 w-4" /> New Link
-          </Button>
-        </div>
-      </div>
+    <>
+      <Header 
+        openNewLinkModal={() => openNewLinkModal()} 
+        openMobileMenu={openMobileMenu}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       
-      <div className="flex">
-        <div className="hidden md:block w-64 p-4 bg-gray-50">
-          <CategoryNavigation 
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
-        </div>
+      <CategoryNavigation 
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
+      
+      <main className="container mx-auto px-4 py-6 mb-24">
+        {/* Featured section */}
+        <CategorySection 
+          category="featured"
+          links={linksByCategory.featured || []}
+          openNewLinkModal={openNewLinkModal}
+        />
         
-        <main className="flex-1 p-6 mb-24">
-          {/* Featured section */}
-          <CategorySection 
-            category="featured"
-            links={linksByCategory.featured || []}
-            openNewLinkModal={openNewLinkModal}
-          />
-          
-          {/* Regular category sections */}
-          {Object.keys(CATEGORIES)
-            .filter(id => id !== 'featured')
-            .map(categoryId => (
-              <CategorySection
-                key={categoryId}
-                category={categoryId}
-                links={linksByCategory[categoryId] || []}
-                openNewLinkModal={openNewLinkModal}
-              />
-            ))
-          }
-        </main>
-      </div>
+        {/* Regular category sections */}
+        {Object.keys(CATEGORIES)
+          .filter(id => id !== 'featured')
+          .map(categoryId => (
+            <CategorySection
+              key={categoryId}
+              category={categoryId}
+              links={linksByCategory[categoryId] || []}
+              openNewLinkModal={openNewLinkModal}
+            />
+          ))
+        }
+      </main>
       
       {/* Floating Action Button for mobile */}
       <div className="fixed bottom-6 right-6 md:hidden">
@@ -184,6 +166,6 @@ export default function Home() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-    </div>
+    </>
   );
 }
