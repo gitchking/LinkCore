@@ -27,6 +27,54 @@ export class MemStorage implements IStorage {
     this.links = new Map();
     this.userId = 1;
     this.linkId = 1;
+    
+    // Add some test data
+    // SFW links
+    this.createLink({
+      url: "https://crunchyroll.com",
+      title: "Crunchyroll",
+      description: "Stream anime online",
+      category: "anime",
+      tags: ["streaming", "official"],
+      nsfw: false,
+      createdAt: new Date().toISOString(),
+      featured: true
+    });
+    
+    this.createLink({
+      url: "https://mangaplus.shueisha.co.jp",
+      title: "Manga Plus",
+      description: "Read manga officially from Shueisha",
+      category: "manga",
+      tags: ["reading", "official"],
+      nsfw: false,
+      createdAt: new Date().toISOString(),
+      featured: false
+    });
+    
+    // NSFW link
+    this.createLink({
+      url: "https://example-nsfw-anime.com",
+      title: "Adult Anime Content",
+      description: "Site with adult-oriented anime content",
+      category: "anime",
+      tags: ["adult", "18+"],
+      nsfw: true,
+      createdAt: new Date().toISOString(),
+      featured: false
+    });
+    
+    // Another NSFW link
+    this.createLink({
+      url: "https://example-nsfw-manga.com",
+      title: "Adult Manga",
+      description: "Adult manga collection",
+      category: "manga",
+      tags: ["adult", "mature"],
+      nsfw: true,
+      createdAt: new Date().toISOString(),
+      featured: false
+    });
   }
 
   // User methods
