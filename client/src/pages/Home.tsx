@@ -133,25 +133,27 @@ export default function Home() {
       />
       
       <main className="container mx-auto px-4 py-6 mb-24">
-        {/* Featured section */}
+        {/* Featured section at the top */}
         <CategorySection 
           category="featured"
           links={linksByCategory.featured || []}
           openNewLinkModal={openNewLinkModal}
         />
         
-        {/* Regular category sections */}
-        {Object.keys(CATEGORIES)
-          .filter(id => id !== 'featured')
-          .map(categoryId => (
-            <CategorySection
-              key={categoryId}
-              category={categoryId}
-              links={linksByCategory[categoryId] || []}
-              openNewLinkModal={openNewLinkModal}
-            />
-          ))
-        }
+        {/* Grid layout for category sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {Object.keys(CATEGORIES)
+            .filter(id => id !== 'featured')
+            .map(categoryId => (
+              <CategorySection
+                key={categoryId}
+                category={categoryId}
+                links={linksByCategory[categoryId] || []}
+                openNewLinkModal={openNewLinkModal}
+              />
+            ))
+          }
+        </div>
       </main>
       
       {/* Floating Action Buttons for mobile */}

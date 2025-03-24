@@ -44,27 +44,10 @@ export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQ
           <div className="flex items-center space-x-3">
             <Button 
               onClick={openNewLinkModal}
-              className="hidden sm:flex"
+              className="flex"
               size="sm"
             >
-              <PlusCircle className="mr-1 h-4 w-4" /> New Link
-            </Button>
-            {openSettings && (
-              <Button
-                onClick={openSettings}
-                variant="outline"
-                className="hidden sm:flex"
-                size="sm"
-              >
-                <Settings className="mr-1 h-4 w-4" /> Settings
-              </Button>
-            )}
-            <Button
-              onClick={openNewLinkModal}
-              className="sm:hidden w-10 h-10 p-0 rounded-full"
-              size="icon"
-            >
-              <PlusCircle className="h-5 w-5" />
+              <PlusCircle className="mr-1 h-4 w-4" /> Add Link
             </Button>
             <Button
               onClick={openMobileMenu}
