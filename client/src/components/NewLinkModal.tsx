@@ -79,8 +79,13 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
     
     if (!formData.url) {
       newErrors.url = "URL is required";
-    } else if (!/^https?:\/\/.+\..+/.test(formData.url)) {
-      newErrors.url = "Please enter a valid URL";
+    } else {
+      try {
+        // Use URL constructor for validation - more flexible and correct
+        new URL(formData.url);
+      } catch (e) {
+        newErrors.url = "Please enter a valid URL";
+      }
     }
     
     if (!formData.title.trim()) {
@@ -140,14 +145,6 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
             <PlusCircle className="text-primary mr-2 h-5 w-5" />
             Add New Link
           </DialogTitle>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute right-4 top-4" 
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4 py-2">
