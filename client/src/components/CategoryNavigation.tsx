@@ -11,18 +11,11 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
     e.preventDefault();
     setActiveCategory(categoryId);
     
-    // Smooth scroll to the section
-    const element = document.getElementById(categoryId);
-    if (element) {
-      const headerHeight = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+    // Scroll to top of content when changing categories
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }, [setActiveCategory]);
   
   // Get all categories
