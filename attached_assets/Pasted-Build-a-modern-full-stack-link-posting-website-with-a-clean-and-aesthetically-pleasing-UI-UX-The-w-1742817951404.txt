@@ -1,0 +1,81 @@
+Build a modern, full-stack link posting website with a clean and aesthetically pleasing UI/UX. The website should allow users to post links under various categories. Each category (Anime, Manga, Novels, Dramas, Games, Apps, Downloads, Music, Schedules, Databases, Tools, Quizzes, Trends, Guides, Imageboards, VTubers, AMVs, Forums) must have its own dedicated section with a consistent design. The website should include essential functionalities such as user link submissions, form validation, category navigation, and optional features (like search, trending posts, or modal pop-ups) to enhance the user experience.
+
+Tech Stack:
+
+Frontend:
+
+HTML5 for semantic structure
+
+CSS3 (or SCSS/SASS) for styling
+
+JavaScript for interactive features (optionally, you may use a framework like React for component-based development)
+
+Aesthetic fonts and icons: Use Google Fonts (e.g., Montserrat, Roboto) and an icon library such as Font Awesome or Material Icons.
+
+Backend:
+
+Node.js with Express or Python with Flask/Django for RESTful API endpoints
+
+Use a lightweight database (e.g., SQLite or MongoDB) for storing link submissions (the website should start empty, ready for data insertion).
+
+Required Features:
+
+Navigation & Layout:
+
+A top navigation bar listing all categories. When a category is selected, the view should scroll to or display the corresponding section.
+
+Each category section should have a header with the category name, an area for posting new links, and a display area for existing posts (initially empty).
+
+Link Submission:
+
+A form that allows users to submit a link along with optional metadata (e.g., title, description, tags).
+
+Form validation to ensure that the link and required fields are properly filled out.
+
+A clean, minimalist design with clear call-to-action buttons.
+
+Aesthetic Design:
+
+Use modern, responsive design principles.
+
+Incorporate aesthetic fonts from Google Fonts.
+
+Use aesthetically pleasing icons to represent categories and functionalities.
+
+Maintain a consistent color scheme and spacing to ensure the website looks professional and attractive.
+
+Additional Functionalities:
+
+Search Bar: Allow users to search for links across categories.
+
+Trending/Featured Section: Highlight trending or featured posts (this can be a placeholder feature).
+
+Responsive Design: Ensure the website works across desktop, tablet, and mobile devices.
+
+Optional Enhancements: Consider adding modal dialogs for posting links or for user notifications (e.g., success messages, error alerts).
+
+Empty Website State:
+
+The website should load with no pre-existing link data, ready for users to submit their own content.
+
+Error Handling:
+
+Ensure that the code is free of errors and warnings.
+
+Include client-side and server-side validations to prevent errors during link submissions.
+
+Code Structure and Comments:
+
+Write clean, modular, and well-documented code.
+
+Use comments to explain sections of the code, especially for major functionalities.
+
+Organize files logically (e.g., separate directories for frontend assets like HTML, CSS, and JavaScript, and backend logic).
+
+Final Deliverables:
+
+A fully functional codebase that can be run locally (instructions for setup and installation should be included).
+
+An organized file structure with clear separation between frontend and backend components.
+
+A README file that explains the project overview, tech stack, setup instructions, and any optional features implemented.
