@@ -137,6 +137,48 @@ class MemStorage implements IStorage {
         tags: ["torrent", "anime", "manga", "music"]
       },
       {
+        url: "https://www.cdjapan.co.jp",
+        title: "CDJapan",
+        description: "An online retailer offering physical copies of Japanese CDs, DVDs, Blu-rays, and other merchandise.",
+        tags: ["official", "physical", "merchandise"]
+      },
+      {
+        url: "https://releases.moe",
+        title: "SeaDex",
+        description: "A torrent tracker dedicated to Southeast Asian media, including anime and drama series.",
+        tags: ["torrent", "anime", "drama"]
+      },
+      {
+        url: "https://sneedex.moe",
+        title: "Sneedex",
+        description: "A platform offering a variety of anime torrents for download.",
+        tags: ["torrent", "anime"]
+      },
+      {
+        url: "https://tokyoinsider.com",
+        title: "TokyoInsider",
+        description: "Provides direct download links for various Japanese media, including anime and music.",
+        tags: ["direct download", "anime", "music"]
+      },
+      {
+        url: "https://mangazip.net",
+        title: "MangaZip",
+        description: "Offers raw (untranslated) manga for direct download.",
+        tags: ["direct download", "manga", "raw"]
+      },
+      {
+        url: "https://dlraw.net",
+        title: "DLRaw",
+        description: "Provides raw manga scans and light novels for download.",
+        tags: ["direct download", "manga", "light novel", "raw"]
+      },
+      {
+        url: "https://dl-raw.net",
+        title: "DL-Raw",
+        description: "Another source for downloading raw manga and light novels.",
+        tags: ["direct download", "manga", "light novel", "raw"]
+      },
+      {
         url: "https://hi10anime.com",
         title: "Hi10Anime",
         description: "Specializes in high-quality, compressed anime releases in 10-bit color depth, requiring user registration for access.",
@@ -155,6 +197,24 @@ class MemStorage implements IStorage {
         tags: ["direct download", "anime", "movies"]
       },
       {
+        url: "https://mkvseries.com",
+        title: "MKVseries",
+        description: "Hosts a collection of anime series available for direct download in MKV format.",
+        tags: ["direct download", "anime", "mkv"]
+      },
+      {
+        url: "https://moriyashrine.org",
+        title: "Moriya Shrine",
+        description: "Dedicated to Touhou Project content, offering games, music, and related media for download.",
+        tags: ["direct download", "games", "touhou", "music"]
+      },
+      {
+        url: "https://pandabackup.com",
+        title: "Panda Backup",
+        description: "Provides backup links for various anime series and movies.",
+        tags: ["direct download", "anime", "backup"]
+      },
+      {
         url: "https://animk.info",
         title: "AniMK",
         description: "An XDCC bot offering anime series and movies for download via IRC.",
@@ -165,6 +225,144 @@ class MemStorage implements IStorage {
         title: "nibl.co.uk",
         description: "Hosts XDCC bots providing anime downloads through IRC channels.",
         tags: ["xdcc", "irc", "anime"]
+      },
+      {
+        url: "https://beatrice-raws.org",
+        title: "Beatrice-Raws",
+        description: "Offers raw (unsubtitled) anime releases via XDCC.",
+        tags: ["xdcc", "anime", "raw"]
+      },
+      {
+        url: "https://shanaproject.com",
+        title: "Shana Project",
+        description: "Automates anime torrent downloads by allowing users to subscribe to their favorite series.",
+        tags: ["torrent", "anime", "subscription"]
+      },
+      {
+        url: "https://acgnx.se",
+        title: "AcgnX",
+        description: "A platform offering a variety of anime torrents.",
+        tags: ["torrent", "anime"]
+      },
+      {
+        url: "https://sakuracircle.com",
+        title: "SakuraCircle",
+        description: "Provides direct download links for anime.",
+        tags: ["direct download", "anime"]
+      },
+      {
+        url: "https://acg.rip",
+        title: "ACG.RIP",
+        description: "Hosts a collection of anime torrents for download.",
+        tags: ["torrent", "anime"]
+      },
+      {
+        url: "https://anirena.com",
+        title: "AniRena",
+        description: "A torrent tracker focusing on anime series and movies.",
+        tags: ["torrent", "anime", "movies"]
+      },
+      {
+        url: "https://bangumi.moe",
+        title: "Bangumi.moe",
+        description: "Offers a selection of anime torrents for download.",
+        tags: ["torrent", "anime"]
+      },
+      {
+        url: "https://nipponsei.minglong.org",
+        title: "Nipponsei",
+        description: "Specializes in anime music releases available via XDCC.",
+        tags: ["xdcc", "anime", "music"]
+      },
+      {
+        url: "https://dkb.io",
+        title: "DKB",
+        description: "Provides direct download links for various anime series.",
+        tags: ["direct download", "anime"]
+      },
+      {
+        url: "https://flugelanime.com",
+        title: "Flugel Anime",
+        description: "Hosts a collection of anime series and movies available for direct download.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://noobsubs.com",
+        title: "NoobSubs",
+        description: "Offers direct downloads of anime series with a focus on high-quality releases.",
+        tags: ["direct download", "anime", "high quality"]
+      },
+      {
+        url: "https://animekaizoku.com",
+        title: "AnimeKaizoku",
+        description: "Provides direct download links for anime series and movies.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://toonworld4all.me",
+        title: "ToonWorld4All",
+        description: "Hosts a variety of animated series, including anime, available for direct download.",
+        tags: ["direct download", "anime", "cartoons"]
+      },
+      {
+        url: "https://cartoonsarea.com",
+        title: "CartoonsArea",
+        description: "Offers direct downloads of various animated series, including anime.",
+        tags: ["direct download", "anime", "cartoons"]
+      },
+      {
+        url: "https://toonshub.com",
+        title: "ToonsHub",
+        description: "Provides direct download links for anime and other animated series.",
+        tags: ["direct download", "anime", "cartoons"]
+      },
+      {
+        url: "https://coolsanime.me",
+        title: "CoolsAnime",
+        description: "Hosts a collection of anime series and movies available for direct download.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://animerss.com",
+        title: "AnimeRss",
+        description: "Provides raw anime episodes for direct download.",
+        tags: ["direct download", "anime", "raw"]
+      },
+      {
+        url: "https://jpfiles.eu",
+        title: "JPFiles",
+        description: "Offers raw Japanese media files, including anime, for direct download.",
+        tags: ["direct download", "anime", "raw", "japanese"]
+      },
+      {
+        url: "https://chauthanh.info",
+        title: "Chauthanh",
+        description: "Hosts a variety of anime series and movies available for direct download.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://deadtoons.co",
+        title: "DeadToons",
+        description: "Provides direct download links for various animated series, including anime.",
+        tags: ["direct download", "anime", "cartoons"]
+      },
+      {
+        url: "https://anilot.org",
+        title: "Anilot",
+        description: "Offers direct downloads of anime series and movies.",
+        tags: ["direct download", "anime", "movies"]
+      },
+      {
+        url: "https://anidl.org",
+        title: "AniDL",
+        description: "Hosts a collection of anime series available for direct download.",
+        tags: ["direct download", "anime"]
+      },
+      {
+        url: "https://animetime.pl",
+        title: "Anime Time",
+        description: "Provides a platform to watch anime series online.",
+        tags: ["anime", "streaming"]
       }
     ];
     
