@@ -7,11 +7,13 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Trash2, Edit, Eye, EyeOff } from "lucide-react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Trash2, Edit, Eye, EyeOff, Mail, CheckCircle2, XCircle } from "lucide-react";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { CATEGORIES } from "@/lib/icons";
+import { format } from "date-fns";
 
 interface Link {
   id: number;
@@ -22,6 +24,15 @@ interface Link {
   tags: string[];
   featured: boolean;
   nsfw: boolean;
+}
+
+interface ContactMessage {
+  id: number;
+  name: string;
+  email: string;
+  message: string;
+  createdAt: string;
+  read: boolean;
 }
 
 interface PostManagementDialogProps {
@@ -202,6 +213,81 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
     }
   };
   
+  // Fetch contact messages
+  const [selectedContactId, setSelectedContactId] = useState<number | null>(null);
+  const [confirmDeleteMessage, setConfirmDeleteMessage] = useState(false);
+  
+  // Contact message query
+  const {
+    data: contactMessages = [],
+    isLoading: isLoadingMessages,
+    isError: isErrorMessages,
+  } = useQuery<ContactMessage[]>({
+    queryKey: ['/api/contact'],
+    refetchOnWindowFocus: false,
+  });
+  
+  // Get selected message
+  const selectedMessage = contactMessages.find(msg => msg.id === selectedContactId);
+  
+  // Mark message as read mutation
+  const markAsReadMutation = useMutation({
+    mutationFn: async (id: number) => {
+      return apiRequest("PATCH", `/api/contact/${id}/read`, {});
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/contact'] });
+      toast({
+        title: "Message updated",
+        description: "The message has been marked as read.",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to mark message as read.",
+        variant: "destructive",
+      });
+    }
+  });
+  
+  // Delete message mutation
+  const deleteMessageMutation = useMutation({
+    mutationFn: async (id: number) => {
+      return apiRequest("DELETE", `/api/contact/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/contact'] });
+      toast({
+        title: "Message deleted",
+        description: "The message has been successfully deleted.",
+      });
+      setSelectedContactId(null);
+      setConfirmDeleteMessage(false);
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to delete the message.",
+        variant: "destructive",
+      });
+    }
+  });
+  
+  // Handle mark as read
+  const handleMarkAsRead = () => {
+    if (selectedContactId) {
+      markAsReadMutation.mutate(selectedContactId);
+    }
+  };
+  
+  // Handle delete message
+  const handleDeleteMessage = () => {
+    if (selectedContactId) {
+      deleteMessageMutation.mutate(selectedContactId);
+    }
+  };
+  
   return (
     <Dialog open={isOpen} onOpenChange={(open) => {
       if (!open) {
@@ -211,34 +297,48 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
     }}>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Post Management</DialogTitle>
+          <DialogTitle>Management Dashboard</DialogTitle>
           <DialogDescription>
-            Manage your links in Animatrix - edit, delete, or change visibility.
+            Manage your content in Animatrix - links, contact messages, and more.
           </DialogDescription>
         </DialogHeader>
         
-        <div className="grid gap-4 py-4">
-          {/* Link selection */}
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="linkSelect">Select a link to manage</Label>
-            <Select 
-              value={selectedLinkId?.toString() || ""} 
-              onValueChange={(value) => handleSelectLink(Number(value))}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select a link" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {links.map((link) => (
-                    <SelectItem key={link.id} value={link.id.toString()}>
-                      {link.title}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
+        <Tabs defaultValue="links" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="links">Links</TabsTrigger>
+            <TabsTrigger value="messages">
+              Contact Messages 
+              {contactMessages.filter(msg => !msg.read).length > 0 && (
+                <span className="ml-1.5 rounded-full bg-primary text-primary-foreground text-xs px-2 py-0.5">
+                  {contactMessages.filter(msg => !msg.read).length}
+                </span>
+              )}
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="links" className="pt-4">
+            <div className="grid gap-4">
+              {/* Link selection */}
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="linkSelect">Select a link to manage</Label>
+                <Select 
+                  value={selectedLinkId?.toString() || ""} 
+                  onValueChange={(value) => handleSelectLink(Number(value))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a link" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {links.map((link) => (
+                        <SelectItem key={link.id} value={link.id.toString()}>
+                          {link.title}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
           
           {selectedLink && (
             <>
@@ -449,7 +549,130 @@ export function PostManagementDialog({ isOpen, onClose, links }: PostManagementD
               )}
             </>
           )}
-        </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="messages" className="pt-4">
+            <div className="grid gap-4">
+              {isLoadingMessages ? (
+                <div className="flex justify-center items-center py-8">
+                  <p className="text-muted-foreground">Loading messages...</p>
+                </div>
+              ) : isErrorMessages ? (
+                <div className="flex justify-center items-center py-8">
+                  <p className="text-destructive">Error loading messages</p>
+                </div>
+              ) : contactMessages.length === 0 ? (
+                <div className="flex flex-col justify-center items-center py-12 border rounded-md p-4 text-center">
+                  <Mail className="h-12 w-12 text-muted-foreground mb-2" />
+                  <h3 className="text-lg font-medium">No messages yet</h3>
+                  <p className="text-muted-foreground">
+                    When users send messages through the contact form, they'll appear here.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Message selection */}
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="messageSelect">Select a message to view</Label>
+                    <Select 
+                      value={selectedContactId?.toString() || ""} 
+                      onValueChange={(value) => setSelectedContactId(Number(value))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a message" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {contactMessages.map((msg) => (
+                            <SelectItem key={msg.id} value={msg.id.toString()}>
+                              <div className="flex items-center">
+                                {!msg.read && (
+                                  <div className="w-2 h-2 bg-primary rounded-full mr-2" />
+                                )}
+                                {msg.name} - {msg.createdAt ? format(new Date(msg.createdAt), 'MMM d, yyyy') : 'No date'}
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  {selectedMessage && (
+                    <div className="border rounded-md p-4 space-y-4">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-lg font-semibold">
+                            {selectedMessage.name}
+                            {!selectedMessage.read && (
+                              <span className="ml-2 text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
+                                New
+                              </span>
+                            )}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {selectedMessage.email}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {selectedMessage.createdAt ? format(new Date(selectedMessage.createdAt), 'MMMM d, yyyy - h:mm a') : 'No date'}
+                          </p>
+                        </div>
+                        <div className="flex gap-2">
+                          {!selectedMessage.read && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              onClick={handleMarkAsRead}
+                            >
+                              <CheckCircle2 className="h-4 w-4 mr-1" /> Mark as Read
+                            </Button>
+                          )}
+                          <Button 
+                            variant="destructive" 
+                            size="sm" 
+                            onClick={() => setConfirmDeleteMessage(true)}
+                          >
+                            <Trash2 className="h-4 w-4 mr-1" /> Delete
+                          </Button>
+                        </div>
+                      </div>
+                      
+                      <div className="pt-2 border-t">
+                        <p className="text-sm whitespace-pre-wrap">{selectedMessage.message}</p>
+                      </div>
+                      
+                      {/* Confirmation for delete */}
+                      {confirmDeleteMessage && (
+                        <div className="mt-4 p-4 border border-destructive rounded-md bg-destructive/10">
+                          <p className="text-sm font-medium text-destructive mb-2">
+                            Are you sure you want to delete this message?
+                          </p>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={handleDeleteMessage}
+                            >
+                              Yes, Delete
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => setConfirmDeleteMessage(false)}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </TabsContent>
+        </Tabs>
       </DialogContent>
     </Dialog>
   );
