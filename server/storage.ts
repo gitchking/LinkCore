@@ -319,15 +319,36 @@ import { FirebaseStorage } from './firebaseStorage';
 class ResilientStorage implements IStorage {
   private primaryStorage: IStorage;
   private fallbackStorage: IStorage;
+  private useFallbackOnly: boolean = false;
 
   constructor(primary: IStorage, fallback: IStorage) {
     this.primaryStorage = primary;
     this.fallbackStorage = fallback;
     console.log('ResilientStorage initialized with primary and fallback storage');
+    
+    // Check if Firebase credentials are missing - if so, use fallback only
+    const firebaseCredentialsMissing = !process.env.FIREBASE_PROJECT_ID || 
+                                      !process.env.FIREBASE_CLIENT_EMAIL || 
+                                      !process.env.FIREBASE_PRIVATE_KEY;
+    if (firebaseCredentialsMissing) {
+      this.useFallbackOnly = true;
+      console.log('Firebase credentials are missing, using fallback storage directly');
+    }
   }
 
   // Generic method to handle all operations with fallback support
   private async withFallback<T>(operation: () => Promise<T>, fallbackOperation: () => Promise<T>, methodName: string): Promise<T> {
+    // If we've determined Firebase is not usable, go straight to fallback
+    if (this.useFallbackOnly) {
+      try {
+        console.log(`Using fallback directly for ${methodName}`);
+        return await fallbackOperation();
+      } catch (fallbackError) {
+        console.error(`Fallback storage failed in ${methodName}:`, fallbackError);
+        throw fallbackError;
+      }
+    }
+    
     try {
       // First attempt with primary storage
       return await operation();
@@ -515,9 +536,10 @@ if (useFirebase) {
   storage = memStorage;
 }
 
-// Export a function to get a new memory storage instance when needed
+// Export a function to get the memory storage instance when needed
 export function getMemoryStorageInstance() {
-  return new MemStorage();
+  // Return the already initialized memStorage instead of creating a new one
+  return memStorage;
 }
 
 export { storage };
