@@ -6,11 +6,12 @@ import { LinkIcon, PlusCircle, Menu, Search, Settings } from "lucide-react";
 interface HeaderProps {
   openNewLinkModal: () => void;
   openMobileMenu: () => void;
+  openSettings?: () => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
 }
 
-export function Header({ openNewLinkModal, openMobileMenu, searchQuery, setSearchQuery }: HeaderProps) {
+export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQuery, setSearchQuery }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <div className="container mx-auto px-4">
@@ -48,6 +49,16 @@ export function Header({ openNewLinkModal, openMobileMenu, searchQuery, setSearc
             >
               <PlusCircle className="mr-1 h-4 w-4" /> New Link
             </Button>
+            {openSettings && (
+              <Button
+                onClick={openSettings}
+                variant="outline"
+                className="hidden sm:flex"
+                size="sm"
+              >
+                <Settings className="mr-1 h-4 w-4" /> Settings
+              </Button>
+            )}
             <Button
               onClick={openNewLinkModal}
               className="sm:hidden w-10 h-10 p-0 rounded-full"

@@ -122,6 +122,7 @@ export default function Home() {
       <Header 
         openNewLinkModal={() => openNewLinkModal()} 
         openMobileMenu={openMobileMenu}
+        openSettings={() => setSettingsOpen(true)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
