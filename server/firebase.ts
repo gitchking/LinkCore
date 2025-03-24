@@ -16,7 +16,7 @@ let firebaseApp;
 try {
   firebaseApp = initializeApp(firebaseConfig);
 } catch (error: any) {
-  if (!/already exists/u.test(error.message)) {
+  if (!error.message || error.message.indexOf('already exists') === -1) {
     console.error('Firebase admin initialization error', error.stack);
     throw error;
   }
