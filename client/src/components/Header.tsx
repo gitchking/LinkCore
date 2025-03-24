@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { LinkIcon, PlusCircle, Menu, Search } from "lucide-react";
+import { LinkIcon, PlusCircle, Menu, Search, Settings as SettingsIcon } from "lucide-react";
 
 interface HeaderProps {
   openNewLinkModal: () => void;
@@ -9,9 +9,19 @@ interface HeaderProps {
   openSettings?: () => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  toggleDevMode?: () => void;
+  isDevMode?: boolean;
 }
 
-export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQuery, setSearchQuery }: HeaderProps) {
+export function Header({ 
+  openNewLinkModal, 
+  openMobileMenu, 
+  openSettings, 
+  searchQuery, 
+  setSearchQuery,
+  toggleDevMode,
+  isDevMode = false
+}: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 bg-background border-b shadow-sm z-50">
       <div className="container mx-auto px-4">
@@ -49,6 +59,17 @@ export function Header({ openNewLinkModal, openMobileMenu, openSettings, searchQ
             >
               <PlusCircle className="mr-1 h-4 w-4" /> Add Link
             </Button>
+            {toggleDevMode && (
+              <Button
+                onClick={toggleDevMode}
+                variant={isDevMode ? "default" : "outline"}
+                size="sm"
+                className="hidden md:flex items-center"
+              >
+                <SettingsIcon className="mr-1 h-4 w-4" /> 
+                {isDevMode ? "Dev Mode: ON" : "Dev Mode"}
+              </Button>
+            )}
             <Button
               onClick={openMobileMenu}
               variant="outline"

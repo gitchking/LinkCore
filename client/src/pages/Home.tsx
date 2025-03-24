@@ -1,14 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { CategoryNavigation } from "@/components/CategoryNavigation";
 import { CategorySection } from "@/components/CategorySection";
 import { NewLinkModal } from "@/components/NewLinkModal";
 import { MobileMenu } from "@/components/MobileMenu";
 import { SettingsDialog } from "@/components/SettingsDialog";
+import { PostManagementDialog } from "@/components/PostManagementDialog";
 import { Button } from "@/components/ui/button";
-import { Plus, Settings } from "lucide-react";
+import { Plus, Settings, Wrench } from "lucide-react";
 import { CATEGORIES } from "@/lib/icons";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function Home() {
   // State
@@ -19,6 +21,11 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [showNSFW, setShowNSFW] = useState(false); // Default to not showing NSFW content
+  const [isDevMode, setIsDevMode] = useState(false);
+  const [postManagementOpen, setPostManagementOpen] = useState(false);
+  
+  // Query client for mutations
+  const queryClient = useQueryClient();
 
   // Fetch links
   const { data: links = [] } = useQuery({
@@ -125,6 +132,13 @@ export default function Home() {
         openSettings={() => setSettingsOpen(true)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        toggleDevMode={() => {
+          setIsDevMode(!isDevMode);
+          if (isDevMode) {
+            setPostManagementOpen(false);
+          }
+        }}
+        isDevMode={isDevMode}
       />
       
       <CategoryNavigation 
@@ -158,6 +172,15 @@ export default function Home() {
         >
           <Settings className="h-6 w-6" />
         </Button>
+        {isDevMode && (
+          <Button
+            onClick={() => setPostManagementOpen(true)}
+            className="w-14 h-14 rounded-full shadow-lg bg-yellow-500 hover:bg-yellow-600"
+            size="icon"
+          >
+            <Wrench className="h-6 w-6" />
+          </Button>
+        )}
         <Button
           onClick={() => openNewLinkModal()}
           className="w-14 h-14 rounded-full shadow-lg"
@@ -190,6 +213,14 @@ export default function Home() {
         showNSFW={showNSFW}
         setShowNSFW={setShowNSFW}
       />
+      
+      {isDevMode && (
+        <PostManagementDialog 
+          isOpen={postManagementOpen}
+          onClose={() => setPostManagementOpen(false)}
+          links={links as any[]}
+        />
+      )}
     </>
   );
 }
