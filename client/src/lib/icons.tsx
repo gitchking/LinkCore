@@ -1,5 +1,5 @@
 import { Star, Tv, Book, BookOpen, Film, Gamepad, Smartphone, Music, 
-  Download, Database, Wrench, HelpCircle, TrendingUp, FileText, 
+  Download, Database, Wrench, Headphones, TrendingUp, FileText, 
   Image, Video, MessageSquare, Link } from "lucide-react";
 
 export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color: string }> = {
@@ -60,8 +60,8 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
   },
   ASMR: {
     name: 'ASMR',
-    icon: <HelpCircle className="text-yellow-500 mr-2 h-5 w-5" />,
-    color: 'yellow'
+    icon: <Headphones className="text-purple-500 mr-2 h-5 w-5" />,
+    color: 'purple'
   },
   trends: {
     name: 'Trends',
