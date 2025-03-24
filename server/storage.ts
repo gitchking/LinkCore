@@ -251,4 +251,20 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+import { FirebaseStorage } from './firebaseStorage';
+
+// Create the appropriate storage implementation
+let storage: IStorage;
+
+// Check for environment variable to determine which storage to use
+const useFirebase = process.env.USE_FIREBASE === 'true';
+
+if (useFirebase) {
+  console.log('Using Firebase storage');
+  storage = new FirebaseStorage();
+} else {
+  console.log('Using in-memory storage');
+  storage = new MemStorage();
+}
+
+export { storage };
