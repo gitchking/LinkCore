@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { LinkIcon, PlusCircle, Menu, Search } from "lucide-react";
+import { LinkIcon, PlusCircle, Menu, Search, Settings } from "lucide-react";
 
 interface HeaderProps {
   openNewLinkModal: () => void;

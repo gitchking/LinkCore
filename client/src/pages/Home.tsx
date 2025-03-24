@@ -5,8 +5,9 @@ import { CategoryNavigation } from "@/components/CategoryNavigation";
 import { CategorySection } from "@/components/CategorySection";
 import { NewLinkModal } from "@/components/NewLinkModal";
 import { MobileMenu } from "@/components/MobileMenu";
+import { SettingsDialog } from "@/components/SettingsDialog";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Settings } from "lucide-react";
 import { CATEGORIES } from "@/lib/icons";
 
 export default function Home() {
@@ -16,6 +17,8 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [showNSFW, setShowNSFW] = useState(false); // Default to not showing NSFW content
 
   // Fetch links
   const { data: links = [] } = useQuery({
@@ -23,18 +26,28 @@ export default function Home() {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Filter links by search query
+  // Filter links by search query and NSFW settings
   const filteredLinks = useMemo(() => {
-    if (!searchQuery.trim()) return links;
+    let result = links;
     
-    const query = searchQuery.toLowerCase();
-    return links.filter((link: any) => 
-      link.title.toLowerCase().includes(query) || 
-      link.description.toLowerCase().includes(query) || 
-      link.url.toLowerCase().includes(query) ||
-      (link.tags && link.tags.some((tag: string) => tag.toLowerCase().includes(query)))
-    );
-  }, [links, searchQuery]);
+    // First filter by NSFW setting
+    if (!showNSFW) {
+      result = (result as any[]).filter(link => !link.nsfw);
+    }
+    
+    // Then filter by search query if present
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      result = (result as any[]).filter(link => 
+        link.title.toLowerCase().includes(query) || 
+        (link.description && link.description.toLowerCase().includes(query)) || 
+        link.url.toLowerCase().includes(query) ||
+        (link.tags && link.tags.some((tag: string) => tag.toLowerCase().includes(query)))
+      );
+    }
+    
+    return result;
+  }, [links, searchQuery, showNSFW]);
 
   // Group links by category
   const linksByCategory = useMemo(() => {
@@ -140,8 +153,15 @@ export default function Home() {
         }
       </main>
       
-      {/* Floating Action Button for mobile */}
-      <div className="fixed bottom-6 right-6 md:hidden">
+      {/* Floating Action Buttons for mobile */}
+      <div className="fixed bottom-6 right-6 md:hidden flex flex-col space-y-4">
+        <Button
+          onClick={() => setSettingsOpen(true)}
+          className="w-14 h-14 rounded-full shadow-lg bg-neutral-800 hover:bg-neutral-700"
+          size="icon"
+        >
+          <Settings className="h-6 w-6" />
+        </Button>
         <Button
           onClick={() => openNewLinkModal()}
           className="w-14 h-14 rounded-full shadow-lg"
@@ -165,6 +185,13 @@ export default function Home() {
         setActiveCategory={setActiveCategory}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+      />
+      
+      <SettingsDialog
+        isOpen={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+        showNSFW={showNSFW}
+        setShowNSFW={setShowNSFW}
       />
     </>
   );

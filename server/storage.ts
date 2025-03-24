@@ -58,9 +58,31 @@ export class MemStorage implements IStorage {
 
   async createLink(insertLink: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
     const id = this.linkId++;
-    // Convert undefined nsfw to false as default
-    const nsfw = insertLink.nsfw === undefined ? false : insertLink.nsfw;
-    const link: Link = { ...insertLink, id, nsfw };
+    // Extract all the properties we need to create a valid Link object
+    const {
+      url,
+      title,
+      description,
+      category,
+      tags,
+      nsfw = false, // Default to false if undefined
+      createdAt,
+      featured
+    } = insertLink;
+    
+    // Create the complete link object
+    const link: Link = {
+      id,
+      url,
+      title,
+      description,
+      category,
+      tags,
+      nsfw,
+      createdAt,
+      featured
+    };
+    
     this.links.set(id, link);
     return link;
   }
