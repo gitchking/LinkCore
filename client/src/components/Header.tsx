@@ -9,8 +9,6 @@ interface HeaderProps {
   openSettings?: () => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  toggleDevMode?: () => void;
-  isDevMode?: boolean;
 }
 
 export function Header({ 
@@ -18,9 +16,7 @@ export function Header({
   openMobileMenu, 
   openSettings, 
   searchQuery, 
-  setSearchQuery,
-  toggleDevMode,
-  isDevMode = false
+  setSearchQuery
 }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 bg-background border-b shadow-sm z-50">
@@ -59,17 +55,7 @@ export function Header({
             >
               <PlusCircle className="mr-1 h-4 w-4" /> Add Link
             </Button>
-            {toggleDevMode && (
-              <Button
-                onClick={toggleDevMode}
-                variant={isDevMode ? "default" : "outline"}
-                size="sm"
-                className="hidden md:flex items-center"
-              >
-                <SettingsIcon className="mr-1 h-4 w-4" /> 
-                {isDevMode ? "Dev Mode: ON" : "Dev Mode"}
-              </Button>
-            )}
+
             <Button
               onClick={openMobileMenu}
               variant="outline"

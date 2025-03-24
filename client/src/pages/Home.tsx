@@ -212,15 +212,21 @@ export default function Home() {
         onClose={() => setSettingsOpen(false)}
         showNSFW={showNSFW}
         setShowNSFW={setShowNSFW}
+        isDevMode={isDevMode}
+        toggleDevMode={() => {
+          setIsDevMode(!isDevMode);
+          if (isDevMode) {
+            setPostManagementOpen(false);
+          }
+        }}
+        openPostManagement={() => setPostManagementOpen(true)}
       />
       
-      {isDevMode && (
-        <PostManagementDialog 
-          isOpen={postManagementOpen}
-          onClose={() => setPostManagementOpen(false)}
-          links={links as any[]}
-        />
-      )}
+      <PostManagementDialog 
+        isOpen={postManagementOpen}
+        onClose={() => setPostManagementOpen(false)}
+        links={links as any[]}
+      />
     </>
   );
 }
