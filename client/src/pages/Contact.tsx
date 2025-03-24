@@ -49,9 +49,17 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Prepare the URL for inclusion, ensuring it has a protocol
+    let formattedURL = formData.linkURL.trim();
+    
+    // If there's a URL and it doesn't have a protocol, add https://
+    if (formattedURL && !formattedURL.match(/^https?:\/\//i)) {
+      formattedURL = `https://${formattedURL}`;
+    }
+    
     // Format message to include the link URL if provided
-    const messageWithLink = formData.linkURL 
-      ? `${formData.message}\n\nRequested Link: ${formData.linkURL}`
+    const messageWithLink = formattedURL 
+      ? `${formData.message}\n\nRequested Link: ${formattedURL}`
       : formData.message;
     
     // Send to the API
@@ -112,13 +120,12 @@ export default function Contact() {
             <Input
               id="linkURL"
               name="linkURL"
-              type="url"
               value={formData.linkURL}
               onChange={handleChange}
               placeholder="https://example.com"
             />
             <p className="text-xs text-muted-foreground">
-              If you have a specific link you'd like to submit, paste the URL here
+              If you have a specific link you'd like to submit, paste the URL here (include https:// or http://)
             </p>
           </div>
           
