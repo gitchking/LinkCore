@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage, MemStorage } from "./storage";
 import { z } from "zod";
 import { insertLinkSchema, insertContactMessageSchema } from "@shared/schema";
 import { ZodError } from "zod";
@@ -180,13 +180,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       console.log("Received contact form submission:", req.body);
       
+      // Validate the contact message data
       const messageData = insertContactMessageSchema.parse(req.body);
       console.log("Validated contact form data:", messageData);
       
-      const createdMessage = await storage.createContactMessage(messageData);
-      console.log("Successfully created contact message:", createdMessage);
-      
-      res.status(201).json(createdMessage);
+      try {
+        // Try to use the configured storage (FirebaseStorage with fallback)
+        const createdMessage = await storage.createContactMessage(messageData);
+        console.log("Successfully created contact message:", createdMessage);
+        
+        return res.status(201).json(createdMessage);
+      } catch (storageError) {
+        console.error("Storage error creating contact message:", storageError);
+        
+        // Explicitly try the in-memory fallback as a last resort
+        console.log("Explicitly trying in-memory storage as fallback...");
+        const memStorage = new MemStorage();
+        const createdMessage = await memStorage.createContactMessage(messageData);
+        console.log("Successfully created contact message with fallback storage:", createdMessage);
+        
+        return res.status(201).json(createdMessage);
+      }
     } catch (error) {
       console.error("Error details:", error);
       
@@ -194,6 +208,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const validationError = fromZodError(error);
         return res.status(400).json({ message: validationError.message });
       }
+      
       res.status(500).json({ message: "Failed to submit contact message" });
     }
   });

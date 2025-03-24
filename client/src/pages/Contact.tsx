@@ -20,7 +20,14 @@ export default function Contact() {
   // Create a mutation for sending contact messages
   const contactMutation = useMutation({
     mutationFn: async (data: { name: string; email: string; message: string }) => {
-      return apiRequest("POST", "/api/contact", data);
+      try {
+        const response = await apiRequest("POST", "/api/contact", data);
+        console.log("Contact form submission successful:", response);
+        return response;
+      } catch (error) {
+        console.error("Contact form submission error:", error);
+        throw error; // Re-throw to trigger onError
+      }
     },
     onSuccess: () => {
       toast({
@@ -37,10 +44,21 @@ export default function Contact() {
         linkURL: ""
       });
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error("Contact mutation error:", error);
+      
+      // Try to extract a more specific error message if available
+      let errorMessage = "Failed to send your message. Please try again later.";
+      
+      if (error?.message) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send your message. Please try again later.",
+        description: errorMessage,
         variant: "destructive",
       });
     }
