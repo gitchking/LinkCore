@@ -58,8 +58,8 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
     icon: <Wrench className="text-teal-500 mr-2 h-5 w-5" />,
     color: 'teal'
   },
-  quizzes: {
-    name: 'Quizzes',
+  ASMR: {
+    name: 'ASMR',
     icon: <HelpCircle className="text-yellow-500 mr-2 h-5 w-5" />,
     color: 'yellow'
   },
