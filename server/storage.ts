@@ -25,6 +25,34 @@ export interface IStorage {
   deleteContactMessage(id: number): Promise<boolean>;
 }
 
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Define the file path for data persistence
+const DATA_FILE = path.join(process.cwd(), 'links.json');
+
+// Helper function to save data to file
+function saveToFile(data: any) {
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error saving data to file:', error);
+  }
+}
+
+// Helper function to load data from file
+function loadFromFile(): any {
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      const data = fs.readFileSync(DATA_FILE, 'utf8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error('Error loading data from file:', error);
+  }
+  return null;
+}
+
 class MemStorage implements IStorage {
   private users: Map<number, User>;
   private links: Map<number, Link>;
@@ -34,12 +62,45 @@ class MemStorage implements IStorage {
   private contactMessageId: number;
 
   constructor() {
+    // Initialize with empty maps
     this.users = new Map();
     this.links = new Map();
     this.contactMessages = new Map();
     this.userId = 1;
     this.linkId = 1;
     this.contactMessageId = 1;
+    
+    // Try to load data from file
+    const savedData = loadFromFile();
+    if (savedData) {
+      if (savedData.links) {
+        savedData.links.forEach((link: Link) => {
+          this.links.set(link.id, link);
+          if (link.id >= this.linkId) {
+            this.linkId = link.id + 1;
+          }
+        });
+        console.log(`Loaded ${this.links.size} links from file storage`);
+      }
+      
+      if (savedData.users) {
+        savedData.users.forEach((user: User) => {
+          this.users.set(user.id, user);
+          if (user.id >= this.userId) {
+            this.userId = user.id + 1;
+          }
+        });
+      }
+      
+      if (savedData.contactMessages) {
+        savedData.contactMessages.forEach((message: ContactMessage) => {
+          this.contactMessages.set(message.id, message);
+          if (message.id >= this.contactMessageId) {
+            this.contactMessageId = message.id + 1;
+          }
+        });
+      }
+    }
     
     // Initialize with links for Anime category
     // Add all anime websites to the initial data
@@ -582,7 +643,21 @@ class MemStorage implements IStorage {
     };
     
     this.links.set(id, link);
+    
+    // Save to file to persist data
+    this.saveData();
+    
     return link;
+  }
+  
+  // Helper method to save all data to file
+  private saveData() {
+    const data = {
+      links: Array.from(this.links.values()),
+      users: Array.from(this.users.values()),
+      contactMessages: Array.from(this.contactMessages.values())
+    };
+    saveToFile(data);
   }
 
   async updateLink(link: Link): Promise<Link> {
@@ -593,6 +668,10 @@ class MemStorage implements IStorage {
     
     // Update the link in storage
     this.links.set(link.id, link);
+    
+    // Save to file to persist data
+    this.saveData();
+    
     return link;
   }
   
