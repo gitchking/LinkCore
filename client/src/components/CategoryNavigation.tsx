@@ -29,14 +29,14 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
             {/* Featured tab */}
             <a 
               href="#featured" 
-              className={`px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap flex items-center ${
                 activeCategory === 'featured' 
                   ? 'text-primary bg-primary/10'
                   : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
               }`}
               onClick={(e) => handleCategoryClick(e, 'featured')}
             >
-              {CATEGORIES['featured'].icon} Featured
+              <span className="mr-1.5">{CATEGORIES['featured'].icon}</span> Featured
             </a>
             
             {/* All category tabs */}
@@ -45,14 +45,14 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
                 <a 
                   key={categoryId}
                   href={`#${categoryId}`} 
-                  className={`px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap ${
+                  className={`px-4 py-2 text-sm font-medium rounded-md whitespace-nowrap flex items-center ${
                     activeCategory === categoryId 
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                   }`}
                   onClick={(e) => handleCategoryClick(e, categoryId)}
                 >
-                  {CATEGORIES[categoryId].icon} {CATEGORIES[categoryId].name}
+                  <span className="mr-1.5">{CATEGORIES[categoryId].icon}</span> {CATEGORIES[categoryId].name}
                 </a>
               )
             ))}

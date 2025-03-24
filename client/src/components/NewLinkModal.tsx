@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { PlusCircle, X } from "lucide-react";
+import { PlusCircle, X, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -30,6 +30,11 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
     nsfw: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  
+  // Password protection
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(true);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   // Reset form when modal opens or initialCategory changes
   useEffect(() => {
@@ -43,8 +48,22 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
         nsfw: false
       });
       setErrors({});
+      // Reset password state
+      setShowPasswordPrompt(true);
+      setPassword('');
+      setPasswordError('');
     }
   }, [isOpen, initialCategory]);
+  
+  // Handle password verification
+  const verifyPassword = () => {
+    if (password === 'Proxima.Dev') {
+      setShowPasswordPrompt(false);
+      setPasswordError('');
+    } else {
+      setPasswordError('Invalid password. Please try again.');
+    }
+  };
 
   const createLinkMutation = useMutation({
     mutationFn: (data: typeof formData) => {
