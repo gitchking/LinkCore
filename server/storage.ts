@@ -174,7 +174,7 @@ class MemStorage implements IStorage {
         url: site.url,
         title: site.title,
         description: site.description,
-        category: "download",
+        category: "downloads",
         tags: site.tags,
         nsfw: false,
         createdAt: new Date().toISOString(),
@@ -189,6 +189,18 @@ class MemStorage implements IStorage {
       description: "Premium anime streaming service with free tier",
       category: "anime",
       tags: ["streaming", "official"],
+      nsfw: false,
+      createdAt: new Date().toISOString(),
+      featured: true
+    } as InsertLink & { createdAt: string, featured: boolean });
+    
+    // Add a featured downloads site
+    this.createLink({
+      url: "https://nyaa.si",
+      title: "Nyaa",
+      description: "A popular BitTorrent community focused on East Asian media, including anime, manga, and games.",
+      category: "downloads",
+      tags: ["torrent", "anime", "manga", "games"],
       nsfw: false,
       createdAt: new Date().toISOString(),
       featured: true
