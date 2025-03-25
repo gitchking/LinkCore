@@ -13,6 +13,17 @@ import { apiRequest } from "@/lib/queryClient";
 import { queryClient } from "@/lib/queryClient";
 import { CATEGORIES } from "@/lib/icons";
 
+// Define form data interface with alternative domains
+interface LinkFormData {
+  url: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string;
+  nsfw: boolean;
+  altDomains: string;
+}
+
 interface NewLinkModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -21,13 +32,14 @@ interface NewLinkModalProps {
 
 export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkModalProps) {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<LinkFormData>({
     url: "",
     title: "",
     description: "",
     category: initialCategory,
     tags: "",
-    nsfw: false
+    nsfw: false,
+    altDomains: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   
@@ -45,7 +57,8 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
         description: "",
         category: initialCategory,
         tags: "",
-        nsfw: false
+        nsfw: false,
+        altDomains: ""
       });
       setErrors({});
       // Reset password state
@@ -71,6 +84,18 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
       const tagsArray = data.tags
         ? data.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== "")
         : [];
+      
+      // Process alternative domains and add them as special tags
+      if (data.altDomains) {
+        const altDomainsArray = data.altDomains
+          .split(",")
+          .map((domain: string) => domain.trim())
+          .filter((domain: string) => domain !== "")
+          .map((domain: string) => `domain:${domain}`);
+          
+        // Add the domain tags to the tags array
+        tagsArray.push(...altDomainsArray);
+      }
       
       return apiRequest("POST", "/api/links", {
         ...data,
