@@ -22,7 +22,7 @@ export function MobileMenu({
   
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent side="right" className="w-2/5 max-w-[220px] p-0">
+      <SheetContent side="right" className="w-[45%] max-w-[200px] p-0">
         <SheetHeader className="p-2 border-b">
           <SheetTitle className="font-medium flex items-center text-xs">
             <span className="text-primary mr-1">✨</span>

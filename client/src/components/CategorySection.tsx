@@ -85,27 +85,64 @@ export function CategorySection({ category, links, openNewLinkModal }: CategoryS
                 </div>
               </div>
               <p className="text-muted-foreground text-sm mt-2 line-clamp-2">{link.description}</p>
-              <div className="flex items-center mt-2">
-                <Link className="h-3 w-3 mr-1 text-muted-foreground" />
-                <a 
-                  href={link.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline truncate flex-1"
-                >
-                  {link.url}
-                </a>
+              <div className="flex flex-col gap-1 mt-2">
+                {/* Main URL */}
+                <div className="flex items-center">
+                  <Link className="h-3 w-3 mr-1 text-muted-foreground" />
+                  <a 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline truncate flex-1"
+                  >
+                    {link.url}
+                  </a>
+                </div>
+                
+                {/* Alternative domains - extract from tags that start with "domain:" */}
+                {link.tags && link.tags
+                  .filter(tag => tag.startsWith('domain:'))
+                  .map((domain, idx) => {
+                    const altDomain = domain.replace('domain:', '');
+                    // Skip if it's empty or the same as the main URL
+                    if (!altDomain || link.url.includes(altDomain)) return null;
+                    
+                    // Format as a proper URL if needed
+                    let formattedUrl = altDomain;
+                    if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
+                      formattedUrl = 'https://' + formattedUrl;
+                    }
+                    
+                    return (
+                      <div key={idx} className="flex items-center ml-4">
+                        <Link className="h-3 w-3 mr-1 text-muted-foreground opacity-60" />
+                        <a 
+                          href={formattedUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-sm text-primary/80 hover:underline truncate flex-1"
+                        >
+                          {altDomain}
+                        </a>
+                      </div>
+                    );
+                  })
+                  .filter(Boolean)
+                }
               </div>
-              {link.tags && link.tags.length > 0 && (
+              {link.tags && link.tags.filter(tag => !tag.startsWith('domain:')).length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-2">
-                  {link.tags.map((tag, index) => (
-                    <span 
-                      key={index} 
-                      className="text-sm bg-muted text-muted-foreground px-2 py-0.5 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {link.tags
+                    .filter(tag => !tag.startsWith('domain:')) // Filter out domain tags
+                    .map((tag, index) => (
+                      <span 
+                        key={index} 
+                        className="text-sm bg-muted text-muted-foreground px-2 py-0.5 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))
+                  }
                 </div>
               )}
             </div>

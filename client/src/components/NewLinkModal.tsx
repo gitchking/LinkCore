@@ -300,6 +300,27 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
               )}
             </div>
             
+            {/* Alternative Domains */}
+            <div className="space-y-1">
+              <Label htmlFor="altDomains">
+                Alternative Domains
+              </Label>
+              <Input
+                id="altDomains"
+                name="altDomains"
+                type="text"
+                placeholder="example.net, example.org (no http://, separated by commas)"
+                value={formData.altDomains || ""}
+                onChange={(e) => {
+                  // Store in form data but will be processed during submission
+                  setFormData(prev => ({ ...prev, altDomains: e.target.value }));
+                }}
+              />
+              <p className="mt-1 text-xs text-muted-foreground">
+                Add alternative domains if this website is accessible through multiple URLs
+              </p>
+            </div>
+            
             {/* Tags Field */}
             <div className="space-y-1">
               <Label htmlFor="linkTags">
