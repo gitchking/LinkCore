@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import History from "@/pages/History";
+import Articles from "@/pages/Articles";
 import { ThemeProvider } from "./lib/theme-context";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/history" component={History} />
+      <Route path="/articles" component={Articles} />
       <Route component={NotFound} />
     </Switch>
   );

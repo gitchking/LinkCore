@@ -24,7 +24,10 @@ export function MobileMenu({
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent side="right" className="w-3/4 max-w-xs p-0">
         <SheetHeader className="p-4 border-b">
-          <SheetTitle className="font-semibold">Menu</SheetTitle>
+          <SheetTitle className="font-semibold flex items-center">
+            <span className="text-primary mr-2">✨</span>
+            Animatrix Menu
+          </SheetTitle>
         </SheetHeader>
         
         <div className="p-4">
