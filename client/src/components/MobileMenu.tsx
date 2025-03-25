@@ -22,7 +22,7 @@ export function MobileMenu({
   
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent side="right" className="w-1/2 max-w-xs p-0">
+      <SheetContent side="right" className="w-2/5 max-w-[220px] p-0">
         <SheetHeader className="p-3 border-b">
           <SheetTitle className="font-semibold flex items-center text-sm">
             <span className="text-primary mr-1">✨</span>
@@ -55,8 +55,8 @@ export function MobileMenu({
                 onClose();
               }}
             >
-              <Info className="mr-2 h-5 w-5" />
-              <span>About Info</span>
+              <Info className="mr-1.5 h-4 w-4" />
+              <span>About</span>
             </a>
             
             <a
@@ -68,7 +68,7 @@ export function MobileMenu({
                 onClose();
               }}
             >
-              <Mail className="mr-2 h-5 w-5" />
+              <Mail className="mr-1.5 h-4 w-4" />
               <span>Contact</span>
             </a>
 
@@ -81,7 +81,7 @@ export function MobileMenu({
                 onClose();
               }}
             >
-              <History className="mr-2 h-5 w-5" />
+              <History className="mr-1.5 h-4 w-4" />
               <span>History</span>
             </a>
 
@@ -94,7 +94,7 @@ export function MobileMenu({
                 onClose();
               }}
             >
-              <Newspaper className="mr-2 h-5 w-5" />
+              <Newspaper className="mr-1.5 h-4 w-4" />
               <span>Articles</span>
             </a>
             
@@ -108,7 +108,7 @@ export function MobileMenu({
                   onClose();
                 }}
               >
-                <Settings className="mr-2 h-5 w-5" />
+                <Settings className="mr-1.5 h-4 w-4" />
                 <span>Settings</span>
               </a>
             )}
