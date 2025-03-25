@@ -23,10 +23,10 @@ export function MobileMenu({
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent side="right" className="w-2/5 max-w-[220px] p-0">
-        <SheetHeader className="p-3 border-b">
-          <SheetTitle className="font-semibold flex items-center text-sm">
+        <SheetHeader className="p-2 border-b">
+          <SheetTitle className="font-medium flex items-center text-xs">
             <span className="text-primary mr-1">✨</span>
-            Menu
+            Animatrix Menu
           </SheetTitle>
         </SheetHeader>
         
@@ -35,7 +35,7 @@ export function MobileMenu({
           <nav className="space-y-0.5">
             <a
               href="/"
-              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/';
@@ -48,7 +48,7 @@ export function MobileMenu({
             
             <a
               href="/about"
-              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/about';
@@ -61,7 +61,7 @@ export function MobileMenu({
             
             <a
               href="/contact"
-              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/contact';
@@ -74,7 +74,7 @@ export function MobileMenu({
 
             <a
               href="/history"
-              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/history';
@@ -87,7 +87,7 @@ export function MobileMenu({
 
             <a
               href="/articles"
-              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href = '/articles';
@@ -101,7 +101,7 @@ export function MobileMenu({
             {openSettings && (
               <a
                 href="#"
-                className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+                className="flex items-center px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
                 onClick={(e) => {
                   e.preventDefault();
                   openSettings();
