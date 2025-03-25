@@ -23,14 +23,15 @@ export function Header({
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
-          <Link href="/">
-            <div className="flex items-center space-x-2 cursor-pointer">
-              <span className="text-primary text-xl">✨</span>
-              <h1 className="text-xl font-bold text-foreground">
-                Animatrix
-              </h1>
-            </div>
-          </Link>
+          <div 
+            className="flex items-center space-x-2 cursor-pointer" 
+            onClick={() => window.location.href = '/'}
+          >
+            <span className="text-primary text-xl">✨</span>
+            <h1 className="text-xl font-bold text-foreground">
+              Animatrix
+            </h1>
+          </div>
           
           {/* Search Bar */}
           <div className="hidden md:block flex-grow max-w-md mx-4">
