@@ -5,6 +5,8 @@ import { z } from "zod";
 import { insertLinkSchema, insertContactMessageSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import fetch from "node-fetch";
+import { parseStringPromise } from "xml2js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API for links

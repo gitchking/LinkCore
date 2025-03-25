@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { X, Home, Info, Settings, Mail, History } from "lucide-react";
+import { Home, Info, Settings, Mail, History, Newspaper } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
@@ -25,12 +25,6 @@ export function MobileMenu({
       <SheetContent side="right" className="w-3/4 max-w-xs p-0">
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="font-semibold">Menu</SheetTitle>
-          <button 
-            className="absolute right-4 top-4 text-muted-foreground"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </button>
         </SheetHeader>
         
         <div className="p-4">
@@ -86,6 +80,19 @@ export function MobileMenu({
             >
               <History className="mr-2 h-5 w-5" />
               <span>History</span>
+            </a>
+
+            <a
+              href="/articles"
+              className="flex items-center px-3 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/articles';
+                onClose();
+              }}
+            >
+              <Newspaper className="mr-2 h-5 w-5" />
+              <span>Articles</span>
             </a>
             
             {openSettings && (
