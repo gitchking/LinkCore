@@ -287,6 +287,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Anime News API
+  app.get("/api/news", async (req, res) => {
+    try {
+      console.log("Fetching anime news from Anime News Network...");
+      const response = await fetch("https://www.animenewsnetwork.com/newsroom/rss.xml");
+      
+      if (!response.ok) {
+        console.error("Failed to fetch from ANN:", response.statusText);
+        return res.status(502).json({ message: "Failed to fetch from news source" });
+      }
+      
+      const xmlData = await response.text();
+      const result = await parseStringPromise(xmlData, { explicitArray: false });
+      
+      if (!result.rss || !result.rss.channel || !result.rss.channel.item) {
+        console.error("Invalid RSS format received");
+        return res.status(502).json({ message: "Invalid news data format" });
+      }
+      
+      // Ensure items is always an array
+      const items = Array.isArray(result.rss.channel.item) 
+        ? result.rss.channel.item 
+        : [result.rss.channel.item];
+      
+      // Process and transform the news items
+      const newsItems = items.slice(0, 20).map((item: any, index: number) => {
+        // Extract image from description if available
+        let thumbnail = null;
+        if (item.description) {
+          const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+          if (imgMatch && imgMatch[1]) {
+            thumbnail = imgMatch[1];
+          }
+        }
+        
+        // Clean description text
+        let cleanDescription = item.description || "";
+        cleanDescription = cleanDescription.replace(/<[^>]*>/g, ""); // Remove HTML tags
+        
+        return {
+          id: item.guid || `news-${index}`,
+          title: item.title || "Untitled",
+          description: cleanDescription,
+          url: item.link || "",
+          date: item.pubDate || new Date().toISOString(),
+          thumbnail: thumbnail
+        };
+      });
+      
+      console.log(`Successfully fetched ${newsItems.length} anime news items`);
+      res.json(newsItems);
+    } catch (error) {
+      console.error("Error fetching anime news:", error);
+      res.status(500).json({ message: "Failed to fetch anime news" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
