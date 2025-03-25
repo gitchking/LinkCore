@@ -22,8 +22,8 @@ export function CategoryNavigation({ activeCategory, setActiveCategory }: Catego
   const allCategories = Object.keys(CATEGORIES);
   
   return (
-    <div className="pt-0 bg-background border-b shadow-sm sticky top-16 z-40">
-      <div className="max-w-5xl mx-auto px-4">
+    <div className="pt-0 bg-background border-b shadow-sm sticky top-16 z-40 w-full">
+      <div className="w-full px-4">
         <div className="overflow-x-auto scrollbar-hide">
           <nav className="flex space-x-1 py-3">
             {/* Featured tab */}
