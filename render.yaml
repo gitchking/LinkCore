@@ -1,0 +1,23 @@
+services:
+  # Backend API service
+  - type: web
+    name: animatrix-api
+    env: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: VITE_API_URL
+        value: /api
+
+  # Frontend static site
+  - type: static
+    name: animatrix
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: /api 
