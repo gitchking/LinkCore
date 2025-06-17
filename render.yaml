@@ -3,7 +3,10 @@ services:
   - type: web
     name: animatrix-api
     env: node
-    buildCommand: cd server && npm install && npm run build
+    buildCommand: |
+      cd server && npm install
+      cd ../shared && npm install
+      cd ../server && npm run build
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
@@ -12,12 +15,24 @@ services:
         value: 3001
       - key: VITE_API_URL
         value: /api
+      - key: DATABASE_URL
+        value: file:///data/links.json
+    healthCheckPath: /api/health
+    autoDeploy: true
 
   # Frontend static site
   - type: static
     name: animatrix
-    buildCommand: cd client && npm install && npm run build
+    buildCommand: |
+      cd client && npm install
+      cd ../shared && npm install
+      cd ../client && npm run build
     staticPublishPath: client/dist
     envVars:
       - key: VITE_API_URL
-        value: /api 
+        value: /api
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    autoDeploy: true 
