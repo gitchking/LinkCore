@@ -1,11 +1,22 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { PlusCircle, Menu, Search, Settings as SettingsIcon, Contact as ContactIcon, Mail, History as HistoryIcon, Newspaper } from "lucide-react";
+import { PlusCircle, Menu, Search, Settings as SettingsIcon, Contact as ContactIcon, Mail, History as HistoryIcon, Newspaper, Home, Info } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useDevMode } from "../lib/useDevMode";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   openNewLinkModal: () => void;
-  openMobileMenu: () => void;
   openSettings?: () => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
@@ -13,7 +24,6 @@ interface HeaderProps {
 
 export function Header({ 
   openNewLinkModal, 
-  openMobileMenu, 
   openSettings, 
   searchQuery, 
   setSearchQuery
@@ -87,14 +97,83 @@ export function Header({
               <PlusCircle className="mr-1 h-4 w-4" /> Add Link
             </Button>
 
-            <Button
-              onClick={openMobileMenu}
-              variant="outline"
-              size="icon"
-              className="w-10 h-10 rounded-full"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="w-10 h-10 rounded-full"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[calc(100vw-12rem)] max-w-[140px] p-1">
+                <DropdownMenuItem
+                  onClick={() => {
+                    window.location.href = '/';
+                  }}
+                  className="px-2 py-1.5"
+                >
+                  <Home className="mr-2 h-4 w-4" />
+                  <span>Home</span>
+                </DropdownMenuItem>
+                
+                <DropdownMenuItem
+                  onClick={() => {
+                    window.location.href = '/about';
+                  }}
+                  className="px-2 py-1.5"
+                >
+                  <Info className="mr-2 h-4 w-4" />
+                  <span>About</span>
+                </DropdownMenuItem>
+                
+                <DropdownMenuItem
+                  onClick={() => {
+                    window.location.href = '/contact';
+                  }}
+                  className="px-2 py-1.5"
+                >
+                  <Mail className="mr-2 h-4 w-4" />
+                  <span>Contact</span>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={() => {
+                    window.location.href = '/history';
+                  }}
+                  className="px-2 py-1.5"
+                >
+                  <HistoryIcon className="mr-2 h-4 w-4" />
+                  <span>History</span>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={() => {
+                    window.location.href = '/articles';
+                  }}
+                  className="px-2 py-1.5"
+                >
+                  <Newspaper className="mr-2 h-4 w-4" />
+                  <span>Articles</span>
+                </DropdownMenuItem>
+                
+                {openSettings && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      onClick={() => {
+                        openSettings();
+                      }}
+                      className="px-2 py-1.5"
+                    >
+                      <SettingsIcon className="mr-2 h-4 w-4" />
+                      <span>Settings</span>
+                    </DropdownMenuItem>
+                  </>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>

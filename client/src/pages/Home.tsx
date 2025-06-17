@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useLocation } from "wouter";
 import { Header } from "@/components/Header";
 import { CategoryNavigation } from "@/components/CategoryNavigation";
 import { CategorySection } from "@/components/CategorySection";
@@ -8,15 +9,19 @@ import { MobileMenu } from "@/components/MobileMenu";
 import { SettingsDialog } from "@/components/SettingsDialog";
 import { PostManagementDialog } from "@/components/PostManagementDialog";
 import { Button } from "@/components/ui/button";
-import { Plus, Settings, Wrench } from "lucide-react";
+import { Plus, Settings, Wrench, Home as HomeIcon } from "lucide-react";
 import { CATEGORIES } from "@/lib/icons";
 import { apiRequest } from "@/lib/queryClient";
+import { useDevMode } from "../lib/useDevMode";
+import { Link as LinkType } from "@/types";
+import { LinkCard } from "../components/LinkCard";
+import { useInView } from "react-intersection-observer";
 
-export default function Home() {
+export default function HomePage() {
   // State
   const [activeCategory, setActiveCategory] = useState('featured');
   const [newLinkModalOpen, setNewLinkModalOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -26,65 +31,90 @@ export default function Home() {
     const savedPreference = localStorage.getItem('showNSFW');
     return savedPreference !== null ? savedPreference === 'true' : true;
   });
-  const [isDevMode, setIsDevMode] = useState(false);
+  const { isDevMode, setIsDevMode } = useDevMode();
   const [postManagementOpen, setPostManagementOpen] = useState(false);
+  const [, setLocation] = useLocation();
+  const [page, setPage] = useState(1);
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: false
+  });
+  const ITEMS_PER_PAGE = 20;
   
   // Query client for mutations
   const queryClient = useQueryClient();
 
-  // Fetch links
-  const { data: links = [] } = useQuery({
-    queryKey: ['/api/links'],
-    staleTime: 5 * 60 * 1000, // 5 minutes
+  const { data: links = [], isLoading } = useQuery<LinkType[]>({
+    queryKey: ['links', selectedCategory, page],
+    queryFn: async () => {
+      const response = await fetch(`/api/links?category=${selectedCategory || ''}&page=${page}&limit=${ITEMS_PER_PAGE}`);
+      if (!response.ok) throw new Error('Failed to fetch links');
+      return response.json();
+    },
+    staleTime: 5 * 60 * 1000 // 5 minutes
   });
 
-  // Filter links by search query and NSFW settings
-  const filteredLinks = useMemo(() => {
-    let result = links as any[];
-    
-    // First filter by NSFW setting
-    if (!showNSFW) {
-      result = result.filter(link => !link.nsfw);
+  useEffect(() => {
+    if (inView && !isLoading) {
+      setPage(prev => prev + 1);
     }
-    
-    // Then filter by search query if present
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(link => 
-        link.title.toLowerCase().includes(query) || 
-        (link.description && link.description.toLowerCase().includes(query)) || 
-        link.url.toLowerCase().includes(query) ||
-        (link.tags && link.tags.some((tag: string) => tag.toLowerCase().includes(query)))
-      );
-    }
-    
-    return result;
-  }, [links, searchQuery, showNSFW]);
+  }, [inView, isLoading]);
 
-  // Group links by category
+  // Memoize filtered links by category
   const linksByCategory = useMemo(() => {
-    const result: Record<string, any[]> = {};
+    const result: Record<string, LinkType[]> = {};
     
-    // Initialize all categories with empty arrays
+    // Initialize categories
     Object.keys(CATEGORIES).forEach(category => {
       result[category] = [];
     });
     
-    // Populate with links
-    filteredLinks.forEach((link: any) => {
+    // Filter and categorize links
+    links.forEach(link => {
+      // Skip if doesn't match search query
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        const matches = 
+          link.title.toLowerCase().includes(query) || 
+          (link.description && link.description.toLowerCase().includes(query)) || 
+          link.url.toLowerCase().includes(query) ||
+          (link.tags && link.tags.some((tag: string) => tag.toLowerCase().includes(query)));
+        
+        if (!matches) return;
+      }
+      
       // Add to appropriate category
-      if (result[link.category]) {
+      if (link.category && result[link.category]) {
         result[link.category].push(link);
       }
       
-      // Also add to featured if marked as featured
-      if (link.featured && result.featured) {
+      // Add to featured if applicable
+      if (link.featured) {
         result.featured.push(link);
       }
     });
     
     return result;
-  }, [filteredLinks]);
+  }, [links, searchQuery]);
+
+  // Add memoized pagination for tools
+  const paginatedTools = useMemo(() => {
+    if (activeCategory !== 'tools') return linksByCategory.tools || [];
+    
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    return linksByCategory.tools.slice(start, end);
+  }, [linksByCategory.tools, activeCategory, page]);
+
+  // Add load more function
+  const loadMore = useCallback(() => {
+    setPage(prev => prev + 1);
+  }, []);
+
+  // Reset page when category changes
+  useEffect(() => {
+    setPage(1);
+  }, [activeCategory]);
 
   // Modal handlers
   const openNewLinkModal = (category = '') => {
@@ -94,7 +124,7 @@ export default function Home() {
 
   const closeNewLinkModal = () => {
     setNewLinkModalOpen(false);
-    setSelectedCategory('');
+    setSelectedCategory(undefined);
   };
 
   // Mobile menu handlers
@@ -130,35 +160,74 @@ export default function Home() {
   }, [activeCategory]);
 
   return (
-    <>
-      <Header 
-        openNewLinkModal={() => openNewLinkModal()} 
-        openMobileMenu={openMobileMenu}
-        openSettings={() => setSettingsOpen(true)}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      
-      <CategoryNavigation 
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
-      
-      <main className="w-full max-w-[1500px] mx-auto px-0 py-6 mb-24">
-        {activeCategory === 'featured' ? (
-          <CategorySection 
-            category="featured"
-            links={linksByCategory.featured || []}
-            openNewLinkModal={openNewLinkModal}
-          />
-        ) : (
-          <CategorySection
-            category={activeCategory}
-            links={linksByCategory[activeCategory] || []}
-            openNewLinkModal={openNewLinkModal}
-          />
-        )}
-      </main>
+    <div className="flex h-screen bg-background">
+      {/* Sidebar */}
+      <div className="w-64 fixed left-0 top-0 h-full border-r bg-card">
+        <div className="p-4">
+          <h1 className="text-xl font-bold mb-6">Animatrix</h1>
+          <nav className="space-y-2 overflow-y-auto max-h-[calc(100vh-6rem)] scrollbar-none hover:scrollbar-thin hover:scrollbar-thumb-accent hover:scrollbar-track-transparent">
+            {Object.entries(CATEGORIES).map(([category, { icon, name }]) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`flex items-center space-x-2 px-3 py-2 w-full rounded-md transition-colors ${
+                  activeCategory === category
+                    ? 'bg-accent text-accent-foreground'
+                    : 'hover:bg-accent/50'
+                }`}
+              >
+                {icon}
+                <span className="capitalize">{name}</span>
+              </button>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 ml-64">
+        <Header 
+          openNewLinkModal={() => openNewLinkModal()} 
+          openSettings={() => setSettingsOpen(true)}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+        
+        <main className="w-full max-w-[1500px] mx-auto px-6 py-6 mb-24">
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold capitalize">{CATEGORIES[activeCategory]?.name || activeCategory}</h2>
+          </div>
+          
+          {activeCategory === 'featured' ? (
+            <CategorySection 
+              category="featured"
+              links={linksByCategory.featured || []}
+              openNewLinkModal={openNewLinkModal}
+            />
+          ) : activeCategory === 'tools' ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {paginatedTools.map((link) => (
+                  <LinkCard key={link.id} link={link} />
+                ))}
+              </div>
+              {paginatedTools.length < linksByCategory.tools.length && (
+                <div className="mt-4 text-center">
+                  <Button onClick={loadMore} variant="outline">
+                    Load More
+                  </Button>
+                </div>
+              )}
+            </>
+          ) : (
+            <CategorySection
+              category={activeCategory}
+              links={linksByCategory[activeCategory] || []}
+              openNewLinkModal={openNewLinkModal}
+            />
+          )}
+        </main>
+      </div>
       
       {/* Floating Action Buttons for mobile */}
       <div className="fixed bottom-6 right-6 md:hidden flex flex-col space-y-4">
@@ -195,16 +264,6 @@ export default function Home() {
         initialCategory={selectedCategory}
       />
       
-      <MobileMenu 
-        isOpen={mobileMenuOpen}
-        onClose={closeMobileMenu}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        openSettings={() => setSettingsOpen(true)}
-      />
-      
       <SettingsDialog
         isOpen={settingsOpen}
         onClose={() => setSettingsOpen(false)}
@@ -228,6 +287,6 @@ export default function Home() {
         onClose={() => setPostManagementOpen(false)}
         links={links as any[]}
       />
-    </>
+    </div>
   );
 }

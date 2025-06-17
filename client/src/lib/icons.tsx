@@ -10,28 +10,33 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
   },
   anime: {
     name: 'Anime',
-    icon: <Tv className="text-purple-500 mr-2 h-5 w-5" />,
-    color: 'purple'
+    icon: <Tv className="text-violet-500 mr-2 h-5 w-5" />,
+    color: 'violet'
+  },
+  movie: {
+    name: 'Movies',
+    icon: <Film className="text-red-500 mr-2 h-5 w-5" />,
+    color: 'red'
   },
   manga: {
     name: 'Manga',
-    icon: <Book className="text-red-500 mr-2 h-5 w-5" />,
-    color: 'red'
+    icon: <Book className="text-rose-500 mr-2 h-5 w-5" />,
+    color: 'rose'
   },
   novels: {
     name: 'Novels',
-    icon: <BookOpen className="text-blue-500 mr-2 h-5 w-5" />,
-    color: 'blue'
+    icon: <BookOpen className="text-sky-500 mr-2 h-5 w-5" />,
+    color: 'sky'
   },
   dramas: {
     name: 'Dramas',
-    icon: <Film className="text-pink-500 mr-2 h-5 w-5" />,
-    color: 'pink'
+    icon: <Film className="text-fuchsia-500 mr-2 h-5 w-5" />,
+    color: 'fuchsia'
   },
   games: {
     name: 'Games',
-    icon: <Gamepad className="text-green-500 mr-2 h-5 w-5" />,
-    color: 'green'
+    icon: <Gamepad className="text-emerald-500 mr-2 h-5 w-5" />,
+    color: 'emerald'
   },
   apps: {
     name: 'Apps',
@@ -45,13 +50,13 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
   },
   music: {
     name: 'Music',
-    icon: <Music className="text-orange-500 mr-2 h-5 w-5" />,
-    color: 'orange'
+    icon: <Music className="text-amber-500 mr-2 h-5 w-5" />,
+    color: 'amber'
   },
   databases: {
     name: 'Databases',
-    icon: <Database className="text-gray-500 mr-2 h-5 w-5" />,
-    color: 'gray'
+    icon: <Database className="text-slate-500 mr-2 h-5 w-5" />,
+    color: 'slate'
   },
   tools: {
     name: 'Tools',
@@ -60,13 +65,13 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
   },
   ASMR: {
     name: 'ASMR',
-    icon: <Headphones className="text-purple-500 mr-2 h-5 w-5" />,
-    color: 'purple'
+    icon: <Headphones className="text-lime-500 mr-2 h-5 w-5" />,
+    color: 'lime'
   },
   trends: {
     name: 'Trends',
-    icon: <TrendingUp className="text-rose-500 mr-2 h-5 w-5" />,
-    color: 'rose'
+    icon: <TrendingUp className="text-orange-500 mr-2 h-5 w-5" />,
+    color: 'orange'
   },
   guides: {
     name: 'Guides',
@@ -75,13 +80,13 @@ export const CATEGORIES: Record<string, { name: string, icon: JSX.Element, color
   },
   imageboards: {
     name: 'Imageboards',
-    icon: <Image className="text-purple-500 mr-2 h-5 w-5" />,
-    color: 'purple'
+    icon: <Image className="text-pink-500 mr-2 h-5 w-5" />,
+    color: 'pink'
   },
   vtubers: {
     name: 'VTubers',
-    icon: <Video className="text-pink-500 mr-2 h-5 w-5" />,
-    color: 'pink'
+    icon: <Video className="text-purple-500 mr-2 h-5 w-5" />,
+    color: 'purple'
   },
   amvs: {
     name: 'AMVs',

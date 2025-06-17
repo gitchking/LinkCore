@@ -1,5 +1,13 @@
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Home, Info, Settings, Mail, History, Newspaper } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Home, Info, Settings, Mail, History, Newspaper, Menu } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
@@ -21,100 +29,88 @@ export function MobileMenu({
 }: MobileMenuProps) {
   
   return (
-    <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent side="right" className="w-[45%] max-w-[200px] p-0">
-        <SheetHeader className="p-2 border-b">
-          <SheetTitle className="font-medium flex items-center text-base">
-            <span className="text-primary mr-1">✨</span>
-            Animatrix Menu
-          </SheetTitle>
-        </SheetHeader>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="w-10 h-10 rounded-full"
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuLabel className="font-medium flex items-center">
+          <span className="text-primary mr-1">✨</span>
+          Animatrix Menu
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         
-        <div className="p-2">
-          {/* Main Menu Items */}
-          <nav className="space-y-2">
-            <a
-              href="/"
-              className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/';
-                onClose();
-              }}
-            >
-              <Home className="mr-2 h-4 w-4" />
-              <span>Home</span>
-            </a>
-            
-            <a
-              href="/about"
-              className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/about';
-                onClose();
-              }}
-            >
-              <Info className="mr-2 h-4 w-4" />
-              <span>About</span>
-            </a>
-            
-            <a
-              href="/contact"
-              className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/contact';
-                onClose();
-              }}
-            >
-              <Mail className="mr-2 h-4 w-4" />
-              <span>Contact</span>
-            </a>
+        <DropdownMenuItem
+          onClick={() => {
+            window.location.href = '/';
+            onClose();
+          }}
+        >
+          <Home className="mr-2 h-4 w-4" />
+          <span>Home</span>
+        </DropdownMenuItem>
+        
+        <DropdownMenuItem
+          onClick={() => {
+            window.location.href = '/about';
+            onClose();
+          }}
+        >
+          <Info className="mr-2 h-4 w-4" />
+          <span>About</span>
+        </DropdownMenuItem>
+        
+        <DropdownMenuItem
+          onClick={() => {
+            window.location.href = '/contact';
+            onClose();
+          }}
+        >
+          <Mail className="mr-2 h-4 w-4" />
+          <span>Contact</span>
+        </DropdownMenuItem>
 
-            <a
-              href="/history"
-              className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/history';
-                onClose();
-              }}
-            >
-              <History className="mr-2 h-4 w-4" />
-              <span>History</span>
-            </a>
+        <DropdownMenuItem
+          onClick={() => {
+            window.location.href = '/history';
+            onClose();
+          }}
+        >
+          <History className="mr-2 h-4 w-4" />
+          <span>History</span>
+        </DropdownMenuItem>
 
-            <a
-              href="/articles"
-              className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/articles';
+        <DropdownMenuItem
+          onClick={() => {
+            window.location.href = '/articles';
+            onClose();
+          }}
+        >
+          <Newspaper className="mr-2 h-4 w-4" />
+          <span>Articles</span>
+        </DropdownMenuItem>
+        
+        {openSettings && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={() => {
+                openSettings();
                 onClose();
               }}
             >
-              <Newspaper className="mr-2 h-4 w-4" />
-              <span>Articles</span>
-            </a>
-            
-            {openSettings && (
-              <a
-                href="#"
-                className="flex items-center px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors duration-150"
-                onClick={(e) => {
-                  e.preventDefault();
-                  openSettings();
-                  onClose();
-                }}
-              >
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-              </a>
-            )}
-          </nav>
-        </div>
-      </SheetContent>
-    </Sheet>
+              <Settings className="mr-2 h-4 w-4" />
+              <span>Settings</span>
+            </DropdownMenuItem>
+          </>
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

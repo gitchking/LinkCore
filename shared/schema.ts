@@ -18,6 +18,7 @@ export const links = pgTable("links", {
   featured: boolean("featured").default(false),
   nsfw: boolean("nsfw").default(false),
   createdAt: text("created_at"), // storing as ISO string for simplicity
+  views: integer("views").default(0),
 });
 
 export const contactMessages = pgTable("contact_messages", {

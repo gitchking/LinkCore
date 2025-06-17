@@ -190,7 +190,7 @@ export function NewLinkModal({ isOpen, onClose, initialCategory = "" }: NewLinkM
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center">
             <PlusCircle className="text-primary mr-2 h-5 w-5" />

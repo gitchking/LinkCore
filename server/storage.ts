@@ -9,7 +9,7 @@ export interface IStorage {
   // Link methods
   getAllLinks(): Promise<Link[]>;
   getLink(id: number): Promise<Link | undefined>;
-  createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link>;
+  createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link | null>;
   updateLink(link: Link): Promise<Link>;
   updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined>;
   deleteLink(id: number): Promise<boolean>;
@@ -31,27 +31,47 @@ import * as path from 'path';
 // Define the file path for data persistence
 const DATA_FILE = path.join(process.cwd(), 'links.json');
 
-// Helper function to save data to file
-function saveToFile(data: any) {
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error saving data to file:', error);
-  }
-}
+// Helper function to load data from file with caching
+let cachedData: any = null;
+let lastLoadTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-// Helper function to load data from file
 function loadFromFile(): any {
   try {
+    const now = Date.now();
+    // Return cached data if it's still valid
+    if (cachedData && (now - lastLoadTime) < CACHE_DURATION) {
+      return cachedData;
+    }
+
     if (fs.existsSync(DATA_FILE)) {
       const data = fs.readFileSync(DATA_FILE, 'utf8');
-      return JSON.parse(data);
+      cachedData = JSON.parse(data);
+      lastLoadTime = now;
+      return cachedData;
     }
   } catch (error) {
     console.error('Error loading data from file:', error);
   }
   return null;
 }
+
+// Helper function to save data to file
+function saveToFile(data: any) {
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+    // Update cache after saving
+    cachedData = data;
+    lastLoadTime = Date.now();
+  } catch (error) {
+    console.error('Error saving data to file:', error);
+  }
+}
+
+// Add cache for tools category
+let toolsCache: Link[] | null = null;
+let toolsCacheTime: number = 0;
+const TOOLS_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 class MemStorage implements IStorage {
   private users: Map<number, User>;
@@ -573,6 +593,196 @@ class MemStorage implements IStorage {
         featured: site.url === "https://e-hentai.org" // Feature E-Hentai as a popular site
       } as InsertLink & { createdAt: string, featured: boolean });
     }
+
+    const movieLinks = [
+      { url: "https://www.cineby.app/", title: "Cineby Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://www.bitcine.app/", title: "BitCine Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://www.fmovies.cat/", title: "FMovies Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://hexa.watch/", title: "Hexa Watch Movie Streaming", description: "Streams movies and series for free with a clean interface." },
+      { url: "https://xprime.tv/", title: "XPrime Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://watch.bludclart.com/", title: "BludClart Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://watch.streamflix.one/", title: "StreamFlix Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://cinemaos.live/", title: "CinemaOS Live Movie Streaming", description: "Streams movies and TV shows for free." },
+      { url: "https://cinemaos-v3.vercel.app/", title: "CinemaOS V3 Movie Streaming", description: "Alternative CinemaOS domain for free movie streaming." },
+      { url: "https://veloratv.ru/", title: "VeloraTV Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://456movie.net/", title: "456Movie Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://345movie.net/", title: "345Movie Movie Streaming", description: "Provides free movie and TV show streaming." },
+      { url: "https://watch.spencerdevs.xyz/", title: "SpencerDevs Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://flixer.su/", title: "Flixer Movie Streaming", description: "Offers free streaming of movies and TV series." },
+      { url: "https://flickystream.net/", title: "FlickyStream Movie Streaming", description: "Streams movies and shows for free with a modern interface." },
+      { url: "https://www.1shows.ru/", title: "1Shows Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://www.rgshows.me/", title: "RGShows Movie Streaming", description: "Streams movies and series for free with subtitle support." },
+      { url: "https://vidbox.to/", title: "VidBox Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://rivestream.org/", title: "Rivestream Movie Streaming", description: "Streams movies and shows for free via Rivestream platform." },
+      { url: "https://rivestream.xyz/", title: "Rivestream XYZ Movie Streaming", description: "Alternative Rivestream domain for free movie streaming." },
+      { url: "https://cinemaos-v2.vercel.app/", title: "CinemaOS V2 Movie Streaming", description: "Another CinemaOS domain for free movie streaming." },
+      { url: "https://rivestream.net/", title: "Rivestream Net Movie Streaming", description: "Streams movies and series for free on Rivestream." },
+      { url: "https://beech.watch/", title: "Beech Watch Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://mocine.cam/", title: "MoCine Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://watch.vidora.su/", title: "Vidora Movie Streaming", description: "Provides free streaming of movies and TV content." },
+      { url: "https://willow.arlen.icu/", title: "Willow Movie Streaming", description: "Streams movies and shows for free with a simple interface." },
+      { url: "https://salix.pages.dev/", title: "Salix Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://asgardstream.xyz/", title: "AsgardStream Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://uira.live/", title: "Uira Live Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://netplayz.ru/", title: "NetPlayz Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://nunflix.org/", title: "NunFlix Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://nunflix-firebase.web.app/", title: "NunFlix Firebase Movie Streaming", description: "Alternative NunFlix domain for free movie streaming." },
+      { url: "https://nunflix-ey9.pages.dev/", title: "NunFlix EY9 Movie Streaming", description: "Another NunFlix domain for free movie streaming." },
+      { url: "https://nunflix-firebase.firebaseapp.com/", title: "NunFlix Firebase App Movie Streaming", description: "Streams movies for free via NunFlix Firebase platform." },
+      { url: "https://nunflix-doc.pages.dev/", title: "NunFlix Doc Movie Streaming", description: "Provides free streaming of movies on NunFlix." },
+      { url: "https://moviemaze.cc/", title: "MovieMaze Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://ee3.me/", title: "EE3 Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://rips.cc/", title: "Rips Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://hydrahd.sh/", title: "HydraHD Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://hydrahd.info/", title: "HydraHD Info Movie Streaming", description: "Alternative HydraHD domain for free movie streaming." },
+      { url: "https://popcornmovies.org/", title: "PopcornMovies Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://vidjoy.pro/", title: "VidJoy Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://mapple.tv/", title: "Mapple TV Movie Streaming", description: "Provides free streaming of movies and shows." },
+      { url: "https://maxflix.top/", title: "MaxFlix Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://bingeflix.tv/", title: "BingeFlix Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://movies.7xtream.com/", title: "7Xtream Movies Streaming", description: "Streams movies for free via 7Xtream platform." },
+      { url: "https://cinema.7xtream.com/", title: "7Xtream Cinema Streaming", description: "Provides free movie streaming on 7Xtream." },
+      { url: "https://movies2.7xtream.com/", title: "7Xtream Movies2 Streaming", description: "Alternative 7Xtream domain for free movie streaming." },
+      { url: "https://nepu.to/", title: "Nepu Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://alienflix.net/", title: "AlienFlix Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://hexawatch.cc/", title: "HexaWatch Movie Streaming", description: "Streams movies and series for free with a clean interface." },
+      { url: "https://movies7.im/", title: "Movies7 Movie Streaming", description: "Provides free streaming of movies and TV content." },
+      { url: "https://redflix.co/", title: "RedFlix Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://enjoytown.pro/", title: "EnjoyTown Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://watch.hopfly.site/", title: "HopFly Movie Streaming", description: "Streams movies and TV shows for free." },
+      { url: "https://neoxa.transdev.pw/", title: "Neoxa Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://lookmovie2.to/", title: "LookMovie2 Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://proxymirrorlookmovie.github.io/", title: "LookMovie Proxy Streaming", description: "Alternative proxy for LookMovie free movie streaming." },
+      { url: "https://broflix.si/", title: "BroFlix Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://www.arabiflix.com/", title: "ArabiFlix Movie Streaming", description: "Streams Arabic movies and series for free." },
+      { url: "https://www.kaitovault.com/", title: "KaitoVault Movie Streaming", description: "Provides free streaming of movies and TV content." },
+      { url: "https://yampi.live/", title: "Yampi Live Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://www.m-zone.org/", title: "M-Zone Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://lekuluent.et/", title: "Lekuluent Movie Streaming", description: "Streams movies and TV shows for free." },
+      { url: "https://catflix.su/", title: "CatFlix Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://soaper.top/", title: "Soaper Top Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://soaper.vip/", title: "Soaper VIP Movie Streaming", description: "Alternative Soaper domain for free movie streaming." },
+      { url: "https://soaper.cc/", title: "Soaper CC Movie Streaming", description: "Streams movies and series for free on Soaper." },
+      { url: "https://soaper.live/", title: "Soaper Live Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://www.soaperpage.com/", title: "SoaperPage Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://ridomovies.tv/", title: "RidoMovies Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://cinemadeck.com/", title: "CinemaDeck Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://cinemadeck.st/", title: "CinemaDeck ST Movie Streaming", description: "Alternative CinemaDeck domain for free movie streaming." },
+      { url: "https://wooflix.tv/", title: "WooFlix Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://qstream.pages.dev/", title: "QStream Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://watch.flixindia.site/", title: "FlixIndia Movie Streaming", description: "Streams Indian movies and shows for free." },
+      { url: "https://watch2me.site/", title: "Watch2Me Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://smashystream.xyz/", title: "SmashyStream Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://flix.smashystream.xyz/", title: "SmashyStream Flix Streaming", description: "Alternative SmashyStream domain for free movie streaming." },
+      { url: "https://onionplay.ch/", title: "OnionPlay Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://yassflix.net/", title: "YassFlix Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://stigstream.xyz/", title: "StigStream Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://stigstream.co.uk/", title: "StigStream UK Movie Streaming", description: "Alternative StigStream domain for free movie streaming." },
+      { url: "https://flickermini.pages.dev/", title: "FlickerMini Movie Streaming", description: "Streams movies and series for free with a simple interface." },
+      { url: "https://flickeraddon.pages.dev/", title: "FlickerAddon Movie Streaming", description: "Provides free streaming of movies via Flicker platform." },
+      { url: "https://mp4hydra.org/", title: "MP4Hydra Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://mp4hydra.top/", title: "MP4Hydra Top Movie Streaming", description: "Alternative MP4Hydra domain for free movie streaming." },
+      { url: "https://ableflix.xyz/", title: "AbleFlix Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://ableflix.cc/", title: "AbleFlix CC Movie Streaming", description: "Streams movies for free via AbleFlix's CC domain." },
+      { url: "https://altair.mollusk.top/", title: "Altair Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://novastream.top/", title: "NovaStream Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://nkiri.cc/", title: "Nkiri Movie Streaming", description: "Offers free streaming of movies, including Nollywood titles." },
+      { url: "https://soapertv.cc/", title: "SoaperTV Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://popcorntimeonline.cc/", title: "PopcornTime Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://streammovies.to/", title: "StreamMovies Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://watch.autoembed.cc/", title: "AutoEmbed Movie Streaming", description: "Offers free streaming of movies with embedded players." },
+      { url: "https://nextplay.pages.dev/", title: "NextPlay Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://netplex-v2.pages.dev/", title: "NetPlex V2 Movie Streaming", description: "Provides free streaming of movies via NetPlex platform." },
+      { url: "https://www.showbox.media/", title: "ShowBox Movie Streaming", description: "Streams movies and TV shows for free." },
+      { url: "https://uniquestream.net/", title: "UniqueStream Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://streamm4u.com.co/", title: "StreamM4U Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://www.watchroo.com/", title: "WatchRoo Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://fireflix.pages.dev/", title: "FireFlix Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://www.letstream.site/", title: "LetStream Movie Streaming", description: "Offers free streaming of movies and shows." },
+      { url: "https://mokmobi.ovh/", title: "MokMobi OVH Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://mokmobi.site/", title: "MokMobi Site Movie Streaming", description: "Alternative MokMobi domain for free movie streaming." },
+      { url: "https://net3lix.world/", title: "Net3lix Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://viewvault.org/", title: "ViewVault Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://noxe.live/", title: "Noxe Live Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://cinego.co/", title: "CineGo Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://bflix.sh/", title: "BFlix Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://www.primewire.tf/", title: "PrimeWire Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://novafork.cc/", title: "NovaFork Movie Streaming", description: "Offers free streaming of movies via NovaFork platform." },
+      { url: "https://www.levidia.ch/", title: "Levidia Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://supernova.to/", title: "SuperNova Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://ww1.goojara.to/", title: "Goojara Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://uflix.to/", title: "UFlix Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://uflix.cc/", title: "UFlix CC Movie Streaming", description: "Alternative UFlix domain for free movie streaming." },
+      { url: "https://movies4f.com/", title: "Movies4F Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://netplex.site/", title: "NetPlex Site Movie Streaming", description: "Provides free streaming of movies via NetPlex." },
+      { url: "https://netplex.pages.dev/", title: "NetPlex Pages Movie Streaming", description: "Streams movies for free on NetPlex's Pages platform." },
+      { url: "https://www.pressplay.top/", title: "PressPlay Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://pressplay.cam/", title: "PressPlay Cam Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://fsharetv.co/", title: "FShareTV Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://azmovies.ag/", title: "AZMovies Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://corsflix.net/", title: "CorsFlix Movie Streaming", description: "Offers free streaming of movies and series." },
+      { url: "https://yoyomovies.net/", title: "YoyoMovies Movie Streaming", description: "Streams movies and TV content for free." },
+      { url: "https://fmovies-hd.to/", title: "FMovies HD Movie Streaming", description: "Provides free streaming of movies in high quality." },
+      { url: "https://slidemovies.org/", title: "SlideMovies Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://heartive.pages.dev/", title: "Heartive Movie Streaming", description: "Offers free streaming of movies and TV shows." },
+      { url: "https://soapy.to/", title: "Soapy Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://yesmovies.ag/", title: "YesMovies Movie Streaming", description: "Provides free streaming of movies and TV content." },
+      { url: "https://solarmovieru.com/home.html", title: "SolarMovie Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://zmov.vercel.app/", title: "ZMov Movie Streaming", description: "Offers free streaming of movies via Vercel platform." },
+      { url: "https://watch.coen.ovh/", title: "Coen Watch Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://plexmovies.online/", title: "PlexMovies Movie Streaming", description: "Provides free streaming of movies and TV shows." },
+      { url: "https://watchstream.site/", title: "WatchStream Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://wovie.vercel.app/", title: "Wovie Movie Streaming", description: "Offers free streaming of movies via Vercel platform." },
+      { url: "https://sflix2.to/", title: "SFlix2 Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://hollymoviehd.cc/", title: "HollyMovieHD Movie Streaming", description: "Provides free streaming of movies in high quality." },
+      { url: "https://yeshd.net/", title: "YesHD Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://novamovie.net/", title: "NovaMovie Movie Streaming", description: "Offers free streaming of movies and TV content." },
+      { url: "https://hollymoviehd-official.com/", title: "HollyMovieHD Official Streaming", description: "Streams movies for free via official HollyMovieHD site." },
+      { url: "https://projectfreetv.sx/", title: "ProjectFreeTV Movie Streaming", description: "Provides free streaming of movies and series." },
+      { url: "https://www.tvids.net/", title: "TVids Movie Streaming", description: "Streams movies and TV shows for free with subtitles." },
+      { url: "https://watch-tvseries.net/", title: "WatchTVSeries Movie Streaming", description: "Offers free streaming of movies and TV series." },
+      { url: "https://zoechip.org/", title: "ZoeChip Movie Streaming", description: "Streams movies and shows for free with subtitles." },
+      { url: "https://www.downloads-anymovies.co/", title: "Downloads AnyMovies Streaming", description: "Provides free streaming and downloads of movies." },
+      { url: "https://tubitv.com/", title: "TubiTV Movie Streaming", description: "Streams movies and shows for free with ads legally." },
+      { url: "https://watch.plex.tv/", title: "Plex TV Movie Streaming", description: "Offers free, ad-supported movie and TV streaming." },
+      { url: "https://pluto.tv/", title: "Pluto TV Movie Streaming", description: "Streams movies and TV shows for free with ads." },
+      { url: "https://www.freegreatmovies.com/", title: "FreeGreatMovies Streaming", description: "Provides free streaming of classic movies and shows." },
+      { url: "https://vole.wtf/voleflix/", title: "VoleFlix Movie Streaming", description: "Streams movies and series for free with a unique interface." },
+      { url: "https://moviesfoundonline.com/", title: "MoviesFoundOnline Streaming", description: "Offers free streaming of public domain movies." },
+      { url: "https://www.crackle.com/", title: "Crackle Movie Streaming", description: "Streams movies and shows for free with ads legally." },
+      { url: "https://www.amazon.com/gp/video/storefront/?ie=UTF8&contentId=freetv", title: "Amazon FreeTV Streaming", description: "Provides free, ad-supported movies via Amazon." },
+      { url: "https://therokuchannel.roku.com/", title: "Roku Channel Movie Streaming", description: "Streams movies and TV shows for free with ads." },
+      { url: "https://www.darkroom.film/", title: "DarkRoom Film Streaming", description: "Offers free streaming of independent movies." },
+      { url: "https://watch.sling.com/", title: "Sling Free Movie Streaming", description: "Streams free movies and shows with ads via Sling." },
+      { url: "https://www.vudu.com/content/movies/uxpage/View-All-Free-Movies-TV/207", title: "Vudu Free Movie Streaming", description: "Provides free, ad-supported movies via Vudu." },
+      { url: "https://athome.fandango.com/content/browse/free", title: "Fandango AtHome Free Streaming", description: "Streams free movies and shows with ads." },
+      { url: "https://shout-tv.com/", title: "Shout TV Movie Streaming", description: "Provides free streaming of cult movies and shows." },
+      { url: "https://kanopy.com/", title: "Kanopy Movie Streaming", description: "Streams free movies with a library card account." },
+      { url: "https://www.hoopladigital.com/", title: "Hoopla Digital Movie Streaming", description: "Provides free movie streaming with library access." },
+      { url: "https://watch.foundtv.com/", title: "FoundTV Movie Streaming", description: "Streams free movies and TV shows with ads." },
+      { url: "https://7plus.com.au/", title: "7Plus Movie Streaming", description: "Offers free streaming of movies and shows in Australia." },
+      { url: "https://www.playary.com/", title: "Playary Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://filmzie.com/", title: "Filmzie Movie Streaming", description: "Provides free, ad-supported movie and show streaming." },
+      { url: "https://fawesome.tv/", title: "Fawesome TV Movie Streaming", description: "Streams movies and TV shows for free with ads." },
+      { url: "https://www.arte.tv/en", title: "Arte TV Movie Streaming", description: "Streams free European movies and shows." },
+      { url: "https://www.bbc.co.uk/iplayer", title: "BBC iPlayer Movie Streaming", description: "Streams free movies and shows for UK residents." },
+      { url: "https://moviexfilm.com/", title: "MovieXFilm Movie Streaming", description: "Streams movies and series for free with subtitles." },
+      { url: "https://flixhouse.com/", title: "FlixHouse Movie Streaming", description: "Offers free streaming of independent movies and shows." }
+    ];
+
+    // Add all movie links
+    for (const link of movieLinks) {
+      this.createLink({
+        url: link.url,
+        title: link.title,
+        description: link.description,
+        category: "movie",
+        tags: ["movie", "streaming"],
+        nsfw: false,
+        createdAt: new Date().toISOString(),
+        featured: false
+      } as InsertLink & { createdAt: string, featured: boolean });
+    }
   }
 
   // User methods
@@ -602,52 +812,41 @@ class MemStorage implements IStorage {
     return this.links.get(id);
   }
 
-  async createLink(insertLink: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
-    const id = this.linkId++;
-    
-    // Type assertion to properly define the structure of insertLink
-    const typedLink = insertLink as unknown as {
-      url: string;
-      title: string;
-      description: string;
-      category: string;
-      tags: string[];
-      nsfw: boolean;
-      createdAt: string;
-      featured: boolean;
+  async createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link | null> {
+    const data = loadFromFile();
+    if (!data) {
+      throw new Error('Failed to load data');
+    }
+
+    // Check if link with same URL already exists
+    const existingLink = data.links.find((l: Link) => l.url === link.url);
+    if (existingLink) {
+      console.log(`Link with URL ${link.url} already exists, skipping...`);
+      return existingLink;
+    }
+
+    // Skip if it's a movie category link with anime tags
+    if (link.category === 'movie' && link.tags && link.tags.some(tag => tag.toLowerCase().includes('anime'))) {
+      console.log(`Skipping movie link with anime tags: ${link.url}`);
+      return null;
+    }
+
+    const newLink: Link = {
+      id: data.links.length + 1,
+      url: link.url,
+      title: link.title,
+      description: link.description || null,
+      category: link.category,
+      tags: link.tags || null,
+      nsfw: link.nsfw || null,
+      createdAt: link.createdAt,
+      featured: link.featured,
+      views: 0
     };
-    
-    // Extract all the properties we need to create a valid Link object
-    const {
-      url,
-      title,
-      description,
-      category,
-      tags,
-      nsfw = false, // Default to false if undefined
-      createdAt,
-      featured
-    } = typedLink;
-    
-    // Create the complete link object
-    const link: Link = {
-      id,
-      url,
-      title,
-      description,
-      category,
-      tags,
-      nsfw,
-      createdAt,
-      featured
-    };
-    
-    this.links.set(id, link);
-    
-    // Save to file to persist data
-    this.saveData();
-    
-    return link;
+
+    data.links.push(newLink);
+    saveToFile(data);
+    return newLink;
   }
   
   // Helper method to save all data to file
@@ -697,6 +896,27 @@ class MemStorage implements IStorage {
   }
 
   async getLinksByCategory(category: string): Promise<Link[]> {
+    // Special handling for tools category
+    if (category === 'tools') {
+      const now = Date.now();
+      if (toolsCache && (now - toolsCacheTime) < TOOLS_CACHE_DURATION) {
+        return toolsCache;
+      }
+      
+      const tools = Array.from(this.links.values()).filter(link => link.category === category);
+      toolsCache = tools;
+      toolsCacheTime = now;
+      return tools;
+    }
+    
+    // For movie category, filter out links with anime tags
+    if (category === 'movie') {
+      return Array.from(this.links.values()).filter(link => 
+        link.category === category && 
+        (!link.tags || !link.tags.some(tag => tag.toLowerCase().includes('anime')))
+      );
+    }
+    
     return Array.from(this.links.values()).filter(link => link.category === category);
   }
 
@@ -754,233 +974,5 @@ class MemStorage implements IStorage {
   }
 }
 
-import { FirebaseStorage } from './firebaseStorage';
-
-// Create a resilient storage class that wraps FirebaseStorage and falls back to MemStorage
-class ResilientStorage implements IStorage {
-  private primaryStorage: IStorage;
-  private fallbackStorage: IStorage;
-  private useFallbackOnly: boolean = false;
-
-  constructor(primary: IStorage, fallback: IStorage) {
-    this.primaryStorage = primary;
-    this.fallbackStorage = fallback;
-    console.log('ResilientStorage initialized with primary and fallback storage');
-    
-    // Check if Firebase credentials are missing - if so, use fallback only
-    const firebaseCredentialsMissing = !process.env.FIREBASE_PROJECT_ID || 
-                                      !process.env.FIREBASE_CLIENT_EMAIL || 
-                                      !process.env.FIREBASE_PRIVATE_KEY;
-    if (firebaseCredentialsMissing) {
-      this.useFallbackOnly = true;
-      console.log('Firebase credentials are missing, using fallback storage directly');
-    }
-  }
-
-  // Generic method to handle all operations with fallback support
-  private async withFallback<T>(operation: () => Promise<T>, fallbackOperation: () => Promise<T>, methodName: string): Promise<T> {
-    // If we've determined Firebase is not usable, go straight to fallback
-    if (this.useFallbackOnly) {
-      try {
-        console.log(`Using fallback directly for ${methodName}`);
-        return await fallbackOperation();
-      } catch (fallbackError) {
-        console.error(`Fallback storage failed in ${methodName}:`, fallbackError);
-        throw fallbackError;
-      }
-    }
-    
-    try {
-      // First attempt with primary storage
-      return await operation();
-    } catch (error) {
-      // Log the error and try the fallback
-      console.error(`Error in ${methodName}, using fallback:`, error);
-      try {
-        return await fallbackOperation();
-      } catch (fallbackError) {
-        console.error(`Fallback also failed in ${methodName}:`, fallbackError);
-        throw fallbackError; // If both fail, propagate the fallback error
-      }
-    }
-  }
-
-  // User methods
-  async getUser(id: number): Promise<User | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.getUser(id),
-      () => this.fallbackStorage.getUser(id),
-      'getUser'
-    );
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.getUserByUsername(username),
-      () => this.fallbackStorage.getUserByUsername(username),
-      'getUserByUsername'
-    );
-  }
-
-  async createUser(user: InsertUser): Promise<User> {
-    return this.withFallback(
-      () => this.primaryStorage.createUser(user),
-      () => this.fallbackStorage.createUser(user),
-      'createUser'
-    );
-  }
-
-  // Link methods
-  async getAllLinks(): Promise<Link[]> {
-    return this.withFallback(
-      () => this.primaryStorage.getAllLinks(),
-      () => this.fallbackStorage.getAllLinks(),
-      'getAllLinks'
-    );
-  }
-
-  async getLink(id: number): Promise<Link | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.getLink(id),
-      () => this.fallbackStorage.getLink(id),
-      'getLink'
-    );
-  }
-
-  async createLink(link: InsertLink & { createdAt: string, featured: boolean }): Promise<Link> {
-    return this.withFallback(
-      () => this.primaryStorage.createLink(link),
-      () => this.fallbackStorage.createLink(link),
-      'createLink'
-    );
-  }
-
-  async updateLink(link: Link): Promise<Link> {
-    return this.withFallback(
-      () => this.primaryStorage.updateLink(link),
-      () => this.fallbackStorage.updateLink(link),
-      'updateLink'
-    );
-  }
-
-  async updateLinkFeatured(id: number, featured: boolean): Promise<Link | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.updateLinkFeatured(id, featured),
-      () => this.fallbackStorage.updateLinkFeatured(id, featured),
-      'updateLinkFeatured'
-    );
-  }
-
-  async deleteLink(id: number): Promise<boolean> {
-    return this.withFallback(
-      () => this.primaryStorage.deleteLink(id),
-      () => this.fallbackStorage.deleteLink(id),
-      'deleteLink'
-    );
-  }
-
-  async getFeaturedLinks(): Promise<Link[]> {
-    return this.withFallback(
-      () => this.primaryStorage.getFeaturedLinks(),
-      () => this.fallbackStorage.getFeaturedLinks(),
-      'getFeaturedLinks'
-    );
-  }
-
-  async getLinksByCategory(category: string): Promise<Link[]> {
-    return this.withFallback(
-      () => this.primaryStorage.getLinksByCategory(category),
-      () => this.fallbackStorage.getLinksByCategory(category),
-      'getLinksByCategory'
-    );
-  }
-
-  async searchLinks(query: string): Promise<Link[]> {
-    return this.withFallback(
-      () => this.primaryStorage.searchLinks(query),
-      () => this.fallbackStorage.searchLinks(query),
-      'searchLinks'
-    );
-  }
-
-  // Contact message methods
-  async getAllContactMessages(): Promise<ContactMessage[]> {
-    return this.withFallback(
-      () => this.primaryStorage.getAllContactMessages(),
-      () => this.fallbackStorage.getAllContactMessages(),
-      'getAllContactMessages'
-    );
-  }
-
-  async getContactMessage(id: number): Promise<ContactMessage | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.getContactMessage(id),
-      () => this.fallbackStorage.getContactMessage(id),
-      'getContactMessage'
-    );
-  }
-
-  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
-    return this.withFallback(
-      () => this.primaryStorage.createContactMessage(message),
-      () => this.fallbackStorage.createContactMessage(message),
-      'createContactMessage'
-    );
-  }
-
-  async markContactMessageAsRead(id: number): Promise<ContactMessage | undefined> {
-    return this.withFallback(
-      () => this.primaryStorage.markContactMessageAsRead(id),
-      () => this.fallbackStorage.markContactMessageAsRead(id),
-      'markContactMessageAsRead'
-    );
-  }
-
-  async deleteContactMessage(id: number): Promise<boolean> {
-    return this.withFallback(
-      () => this.primaryStorage.deleteContactMessage(id),
-      () => this.fallbackStorage.deleteContactMessage(id),
-      'deleteContactMessage'
-    );
-  }
-}
-
-// Create the appropriate storage implementation
-let storage: IStorage;
-
-// Check for environment variable to determine which storage to use
-const useFirebase = process.env.USE_FIREBASE === 'true';
-
-// Create in-memory storage regardless
-const memStorage = new MemStorage();
-
-// Let's immediately check what links are available in memory storage
-memStorage.getAllLinks().then(links => {
-  console.log(`Memory Storage initialized with ${links.length} links`);
-  const animeLinks = links.filter(link => link.category === 'anime');
-  console.log(`Memory Storage has ${animeLinks.length} anime links`);
-});
-
-if (useFirebase) {
-  try {
-    console.log('Setting up resilient storage with Firebase primary and in-memory fallback');
-    const firebaseStorage = new FirebaseStorage();
-    // Create a resilient storage that will gracefully fall back to in-memory if Firebase fails
-    storage = new ResilientStorage(firebaseStorage, memStorage);
-  } catch (error) {
-    console.error('Error initializing Firebase storage:', error);
-    console.log('Using in-memory storage due to Firebase initialization failure');
-    storage = memStorage;
-  }
-} else {
-  console.log('Using in-memory storage (by configuration)');
-  storage = memStorage;
-}
-
-// Export a function to get the memory storage instance when needed
-export function getMemoryStorageInstance() {
-  // Return the already initialized memStorage instead of creating a new one
-  return memStorage;
-}
-
-export { storage };
+// Export a singleton instance
+export const storage = new MemStorage();
